@@ -49,18 +49,11 @@ B1. Log in to Bluehost → **Advanced** (cPanel) → **Files → Git™ Version 
 B2. Click **Create**. Fill in:
 - Clone a Repository: **ON**
 - Clone URL: `https://github.com/opmhiowner/lkob.git`
-- Repository Path: `/home/CPANEL_USER/repos/lkob` (replace CPANEL_USER with the user name shown at the top right of cPanel)
+- Repository Path: `repos/lkob` (cPanel fills in the rest of the path itself)
 - Repository Name: `lkob`
 Click **Create**. (The repository is public, so no SSH key is needed.)
 
-B3. Tell the deploy script your cPanel user name. In the repository on your computer:
-```
-sed -i 's/CPANEL_USER/your_cpanel_user_name/' .cpanel.yml
-git add .cpanel.yml
-git commit -m "deploy: cPanel user name"
-git push origin main
-```
-(On a Mac the first line is `sed -i '' 's/CPANEL_USER/your_cpanel_user_name/' .cpanel.yml`.)
+B3. Nothing to edit: `.cpanel.yml` uses the account's own home folder (`$HOME`), so it needs no user name.
 
 B4. Back in cPanel → Git Version Control → **Manage** (next to `lkob`) → tab **Pull or Deploy**:
 1. **Update from Remote** (pulls `main`)
