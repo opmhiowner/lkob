@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#333333">
+<title>LKO binder</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="LKO">
+<meta name="mobile-web-app-capable" content="yes">
+<style>
+  :root{
+    --bar:#333333; --bar-dk:#252525;
+    --orange:#e8731a; --orange-dk:#b8540e; --amber:#ff9a3c; --amber-wash:#fff4ea;
+    --page:#ffffff; --ink:#111111; --pencil:#6d6d6d; --rule:#e5e5e5;
+    --paper:#faf9f5; --hi:#1f7a6b; --lv:#b06a1f; --dup:#b8540e; --sc:#2f6ea8;
+    --del:#b23a2e; --del-wash:#fdf3f2;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  /* simplified header: hide keyword chips, stats line, and dup/sort buttons */
+  .searchbar .chips,#stats,#s-dups{display:none}
+  .mlabel{color:var(--pencil);font-size:12px;margin-right:6px;align-self:center}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--page);color:var(--ink);
+       font:15px/1.55 "Segoe UI",-apple-system,"Helvetica Neue",Arial,sans-serif}
+  .mono{font-family:ui-monospace,"Courier New",monospace}
+
+  .brandbar{background:var(--bar)}
+  .brandbar-in{max-width:1180px;margin:0 auto;display:flex}
+  .sitenav{display:flex;flex-wrap:wrap}
+  .sitenav a{color:#f0f0eb;text-decoration:none;font-size:14px;letter-spacing:.02em;text-transform:uppercase;
+    padding:19px 14px;white-space:nowrap;border-right:1px solid rgba(255,255,255,.08)}
+  .sitenav a:first-child{border-left:1px solid rgba(255,255,255,.08)}
+  .sitenav a:hover,.sitenav a[aria-current="page"]{background:var(--bar-dk)}
+  .sitenav a:focus-visible{outline:2px solid var(--amber);outline-offset:-3px}
+  .logoband{max-width:1180px;margin:0 auto;padding:22px 24px 20px}
+  .wordmark{display:inline-flex;align-items:center;gap:14px;text-decoration:none;color:#000}
+  .wordmark svg{width:auto;height:65px} /* matches wordmark text block height */
+  .wm{font-family:Georgia,"Times New Roman",serif;line-height:1}
+  .wm b{display:block;font-size:38px;border-bottom:2px solid #000;padding-bottom:2px}
+  .wm i{display:block;font-style:normal;font-size:20px;font-weight:700;margin-top:3px}
+  .hairline{border-top:1px solid var(--rule)}
+
+  .searchbar{position:sticky;top:0;z-index:20;background:var(--page);border-bottom:1px solid var(--rule)}
+  .fuzznote{margin:14px 0 0;padding:10px 14px;background:var(--paper);border-left:3px solid var(--orange);
+    font-size:13px;color:var(--pencil)}
+  .toc{margin:16px 0 4px;background:var(--paper);border:1px solid var(--rule);border-left:3px solid var(--orange)}
+  .toc summary{cursor:pointer;padding:12px 16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--orange-dk);font-weight:700;user-select:none}
+  .tocgrid{columns:2;gap:0 26px;padding:2px 14px 12px}
+  .tocrow{display:flex;align-items:baseline;gap:10px;width:100%;border:0;background:transparent;cursor:pointer;
+    padding:5px 4px;text-align:left;break-inside:avoid;border-bottom:1px dotted var(--rule)}
+  .tocrow:hover .tocname{color:var(--orange-dk);text-decoration:underline}
+  .tocpg{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--orange-dk);min-width:52px;flex:0 0 auto}
+  .tocname{font-size:13.5px;color:#2c2c30}
+  @media (max-width:700px){ .tocgrid{columns:1} .tocname{font-size:14px} .tocrow{padding:8px 4px} }
+  .sb-in{max-width:1180px;margin:0 auto;padding:14px 24px 0}
+  h1{font-size:38px;font-weight:800;color:var(--orange);margin:2px 0 0;text-align:center;
+     letter-spacing:.02em;font-family:Georgia,"Times New Roman",serif}
+  .tagline{margin:2px 0 6px;text-align:center;color:var(--orange-dk);font-size:17px;
+     font-style:italic;font-family:Georgia,"Times New Roman",serif}
+  .field{display:flex;align-items:center;gap:12px;margin-top:10px}
+  .field .caret{color:var(--orange);font-size:22px}
+  #q{flex:1;border:0;border-bottom:2px solid var(--bar);background:transparent;padding:8px 2px 10px;
+     font:400 22px/1.2 inherit;color:var(--ink);outline:none}
+  #q::placeholder{color:#b6b1a6}
+  #q:focus{border-bottom-color:var(--orange)}
+  #clear{border:0;background:transparent;cursor:pointer;color:var(--pencil);font-size:12px;letter-spacing:.1em;
+    min-width:44px;min-height:44px}
+  .tabs{display:flex;margin-top:12px;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs button{border:0;border-bottom:3px solid transparent;background:transparent;padding:11px 15px;cursor:pointer;
+    font:600 13px/1 inherit;color:var(--pencil);white-space:nowrap;min-height:44px}
+  .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--orange)}
+  .tabs .n{color:var(--pencil);font-weight:400;font-size:11px;margin-left:5px}
+  .tabs button[data-tab="marked"][aria-selected="true"]{border-bottom-color:var(--del);color:var(--del)}
+  .chips{display:flex;gap:7px;padding:10px 0 2px;overflow-x:auto;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto;border:1px solid var(--rule);background:transparent;color:var(--pencil);border-radius:999px;
+    padding:7px 13px;font:500 12px/1 inherit;cursor:pointer;min-height:34px}
+  .chip:hover,.chip:focus-visible{border-color:var(--orange);color:var(--orange-dk);outline:none}
+  .bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 0 10px;
+    font-size:12px;color:var(--pencil);flex-wrap:wrap}
+  .sorts{display:flex;gap:2px;align-items:center}
+  /* left control (match mode) */
+  .sorts button{border:1px solid var(--rule);background:transparent;color:var(--pencil);padding:6px 12px;cursor:pointer;
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;min-height:32px;border-radius:6px}
+  .sorts button[aria-pressed="true"]{background:var(--bar);color:#fff;border-color:var(--bar)}
+  .sorts .mlabel{font-size:12px}
+  /* right control (sort order): compact */
+  .sortside{margin-left:auto}
+  .sortside button{font-size:10px;padding:4px 9px;min-height:0}
+  .sortside .mlabel{font-size:11px}
+  .sortside button:first-of-type{border-top-right-radius:0;border-bottom-right-radius:0}
+  .sortside button:last-of-type{border-top-left-radius:0;border-bottom-left-radius:0}
+  @media (max-width:700px){
+    /* 1. tabs: the dominant control — bigger, evenly spread across the width */
+    .tabs{margin-top:10px}
+    .tabs button{flex:1;text-align:center;font-size:15px;padding:12px 6px;min-height:48px}
+    .tabs .n{font-size:12px}
+    /* 2. controls stack under the tabs; each row on its own line, label above buttons */
+    .bar{flex-direction:column;align-items:stretch;gap:10px;padding:10px 0 12px}
+    .sorts{flex-wrap:wrap;justify-content:center;gap:6px}
+    .sorts .mlabel{flex-basis:100%;text-align:center;margin:0 0 2px;font-size:12px}
+    /* match buttons: comfortable tap size, second in the hierarchy */
+    .sorts button{font-size:12px;padding:9px 14px;min-height:40px;flex:1;max-width:200px}
+    /* sort pair: smallest of the three */
+    .sortside{margin-left:0}
+    .sortside .mlabel{font-size:10.5px}
+    .sortside button{font-size:10px;padding:5px 10px;min-height:30px;flex:0 1 auto;max-width:none}
+    /* phone header order: title, tagline, controls scroll away; search + tabs pin.
+       The sticky offset (negative top) is set by sizePin() in JS — native scrolling,
+       no scroll listeners, no animation. */
+    .sb-in{display:flex;flex-direction:column}
+    .searchbar h1{order:1} .searchbar .tagline{order:2}
+    .searchbar .bar{order:3;padding:2px 0 10px}
+    .searchbar .field{order:4} .searchbar .tabs{order:5}
+    .searchbar .chips{order:6}
+  }
+
+  main{max-width:1180px;margin:0 auto;padding:16px 24px 56px}
+  .note{background:var(--amber-wash);border-left:3px solid var(--orange);padding:12px 14px;margin:0 0 18px;
+    font-size:13.5px;line-height:1.6;color:#3b3a36}
+  .note b{color:var(--orange-dk)}
+  .note.warn{background:var(--del-wash);border-left-color:var(--del)}
+  .note.warn b{color:var(--del)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:16px}
+  .card{border:1px solid var(--rule);background:var(--page);display:flex;flex-direction:column;text-align:left;
+    padding:0;border-top:4px solid var(--rule);transition:box-shadow .16s,transform .16s;position:relative}
+  .card:hover{box-shadow:0 6px 20px rgba(0,0,0,.13);transform:translateY(-2px)}
+  .card.b-hi{border-top-color:var(--hi)} .card.b-lv{border-top-color:var(--lv)}
+  .card.b-dup{border-top-color:var(--dup)} .card.b-sc{border-top-color:var(--sc)}
+  .card.marked{border-color:var(--del);background:var(--del-wash)}
+  .card.marked .shot img{opacity:.45;filter:grayscale(1)}
+  .card.marked .ttl{text-decoration:line-through;color:var(--del)}
+  .shot{cursor:pointer;border:0;padding:0;background:transparent;display:block;width:100%}
+  .shot img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;background:#fff;
+    border-bottom:1px solid var(--rule)}
+  .shot:focus-visible{outline:2px solid var(--orange);outline-offset:-2px}
+  .meta{padding:10px 11px 12px}
+  .pg{font:10.5px ui-monospace,"Courier New",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil)}
+  .pg{display:flex;align-items:center;gap:7px}
+  .pg .pnum{background:var(--bar);color:#fff;font-weight:700;padding:2px 7px;border-radius:3px;
+    font:700 11px/1.4 ui-monospace,monospace;letter-spacing:.03em}
+  .pg .bk{font-weight:700}
+  .jbtext em{font-style:normal;font-size:11px;color:var(--pencil)}
+  .b-hi .pg .bk{color:var(--hi)} .b-lv .pg .bk{color:var(--lv)}
+  .b-dup .pg .bk{color:var(--dup)} .b-sc .pg .bk{color:var(--sc)}
+  .ttl{font-weight:700;font-size:13.5px;margin:4px 0 5px;line-height:1.3}
+  .snip{font-size:12px;color:#4c5158;line-height:1.45;max-height:5.9em;overflow:hidden}
+  .dupline{margin-top:7px;font:10.5px ui-monospace,monospace;color:var(--dup)}
+  .delbtn{margin-top:9px;width:100%;border:1px solid var(--rule);background:#fff;color:var(--pencil);
+    padding:8px;cursor:pointer;font:600 11px/1 inherit;letter-spacing:.06em;text-transform:uppercase;min-height:38px}
+  .delbtn:hover{border-color:var(--del);color:var(--del)}
+  .delbtn[aria-pressed="true"]{background:var(--del);border-color:var(--del);color:#fff}
+  mark{background:var(--amber-wash);color:var(--orange-dk);font-weight:700;padding-bottom:2px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 8' preserveAspectRatio='none'><path d='M0 5 C 10 8, 18 2, 30 5 S 50 8, 60 4' stroke='%23c255b9' stroke-width='1.6' fill='none' stroke-linecap='round' opacity='.85'/></svg>");
+    background-repeat:no-repeat;background-position:0 100%;background-size:100% 6px}
+  .empty{padding:60px 0;max-width:46ch}
+  .empty .big{font-size:20px;margin:0 0 8px}
+  .empty .why{color:var(--pencil);font-size:14px}
+  .jumpbar{display:flex;align-items:center;gap:14px;border:2px solid var(--sc);background:#f2f8fc;
+    padding:12px 14px;margin-bottom:18px}
+  .jumpbar img{width:44px;height:57px;object-fit:cover;object-position:top;border:1px solid var(--rule);background:#fff}
+  .jbtext{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+  .jbtext b{font:700 15px/1 ui-monospace,monospace;color:var(--sc);letter-spacing:.05em}
+  .jbtext span{font-size:13px;color:#3b3a36;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .jbopen{border:1px solid var(--sc);background:var(--sc);color:#fff;padding:10px 16px;cursor:pointer;
+    font:600 13px/1 inherit;min-height:42px;white-space:nowrap}
+  .jbopen:hover{background:#255a86}
+  .sharebox{border:1px solid var(--sc);background:#f2f8fc;padding:10px 12px;margin-bottom:14px}
+  .sharecode{display:flex;align-items:baseline;gap:9px;margin-bottom:8px;flex-wrap:wrap}
+  .scl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil)}
+  .sharecode b{font:700 19px/1 ui-monospace,monospace;color:var(--sc);letter-spacing:.06em}
+  .sharebtns{display:flex;gap:6px}
+  .sbtn{flex:1;border:1px solid var(--sc);background:#fff;color:var(--sc);padding:8px;cursor:pointer;
+    font:600 11px/1 inherit;min-height:38px;text-transform:uppercase;letter-spacing:.04em}
+  .sbtn:hover{background:var(--sc);color:#fff}
+  .tryor{border:1px solid var(--orange);background:var(--amber-wash);color:var(--orange-dk);
+    padding:4px 10px;border-radius:3px;cursor:pointer;font:600 13px/1 inherit;min-height:32px}
+  .tryor:hover{background:#fbe8f4}
+
+  /* ---- scan-in panel ---- */
+  .drop{border:2px dashed var(--rule);padding:30px 20px;text-align:center;margin-bottom:20px;border-radius:4px}
+  .drop.over{border-color:var(--orange);background:var(--amber-wash)}
+  .drop h2{margin:0 0 6px;font-size:17px}
+  .drop p{margin:0 0 16px;color:var(--pencil);font-size:13px}
+  .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .btn{border:1px solid var(--bar);background:var(--bar);color:#fff;padding:11px 18px;cursor:pointer;
+    font:600 13px/1 inherit;min-height:44px}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--bar);color:#fff}
+  .btn:disabled{opacity:.4;cursor:default}
+  .btn.danger{background:var(--del);border-color:var(--del)}
+  .editrow{display:flex;flex-direction:column;gap:6px;padding:9px 11px 11px;border-top:1px solid var(--rule)}
+  .editrow input{border:1px solid var(--rule);padding:8px;font:13px inherit;min-height:38px;width:100%}
+  .editrow input:focus{outline:2px solid var(--orange);outline-offset:-1px}
+  .editrow .row2{display:flex;gap:6px}
+  .editrow .row2 button{flex:1;border:1px solid var(--rule);background:#fff;cursor:pointer;font:11px inherit;
+    padding:8px;min-height:38px}
+  .editrow .row2 button:hover{border-color:var(--orange);color:var(--orange-dk)}
+  .flag{margin-top:7px;font:10.5px ui-monospace,monospace;color:var(--del)}
+  .busy{font-size:12px;color:var(--pencil);padding:6px 11px}
+
+  /* ---- viewer ---- */
+  .viewer{position:fixed;inset:0;background:rgba(26,26,24,.94);z-index:40;display:none;grid-template-columns:1fr 400px}
+  .viewer[open]{display:grid}
+  .varrow{position:absolute;top:50%;transform:translateY(-50%);z-index:45;border:0;cursor:pointer;
+    background:rgba(20,20,18,.45);color:#fff;font-size:36px;line-height:1;padding:16px 11px;border-radius:8px}
+  .varrow:hover:not(:disabled){background:rgba(20,20,18,.75)}
+  .varrow:disabled{opacity:.2;cursor:default}
+  .varrow.left{left:12px} .varrow.right{right:412px}
+  .stage{overflow:auto;padding:26px;display:flex;align-items:flex-start;justify-content:center;
+    overscroll-behavior:contain;touch-action:pan-x pan-y pinch-zoom}
+  .stage img{max-width:100%;background:#fff;box-shadow:0 10px 50px rgba(0,0,0,.5)}
+  .stage img.zoom{max-width:none;width:200%}
+  .side{background:var(--paper);border-left:3px solid var(--orange);display:flex;flex-direction:column;overflow:hidden}
+  .side-head{padding:14px 18px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:10px}
+  .tab{background:var(--bar);color:#fff;padding:4px 11px;font:11px ui-monospace,monospace;letter-spacing:.12em}
+  .v-ttl{font-weight:700;font-size:14px;flex:1;line-height:1.3}
+  .x{border:0;background:transparent;font-size:20px;cursor:pointer;color:var(--pencil);min-width:44px;min-height:44px}
+  .side-body{overflow:auto;padding:14px 18px;font-size:13px;line-height:1.7;color:#3b3a36;overscroll-behavior:contain}
+  .side-body h3{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);margin:0 0 8px}
+  .kws{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;align-items:center}
+  .kws span{border:1px solid var(--rule);border-radius:999px;padding:3px 9px;font-size:11px;color:var(--pencil)}
+  .kwchip{display:inline-flex;align-items:center;gap:4px}
+  .kwx{border:0;background:transparent;color:var(--pencil);cursor:pointer;font-size:14px;line-height:1;padding:0 0 0 2px}
+  .kwx:hover{color:var(--del)}
+  .kwadd{border:0!important;padding:0!important}
+  #v-kwadd{border:1px dashed var(--rule);border-radius:999px;padding:4px 10px;font:11px inherit;min-width:110px;outline:none}
+  #v-kwadd:focus{border-color:var(--orange);border-style:solid}
+  .kwedited{border:0!important;color:var(--orange-dk)!important;font-size:10px!important;letter-spacing:.08em;text-transform:uppercase}
+  .vbadge{position:absolute;top:6px;right:6px;background:var(--sc);color:#fff;font:700 10px/1 ui-monospace,monospace;
+    padding:3px 6px;border-radius:3px;letter-spacing:.04em}
+  .vers{margin-bottom:12px}
+  .vrow{display:flex;gap:6px;margin-bottom:5px}
+  .vsel{flex:1;text-align:left;border:1px solid var(--rule);background:#fff;padding:8px 11px;cursor:pointer;
+    font:12px inherit;min-height:40px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .vrow.on .vsel{border-color:var(--sc);color:var(--sc);font-weight:700}
+  .vwhen{color:var(--pencil);font-size:10px;font-weight:400}
+  .vmake{border:1px solid var(--rule);background:#fff;cursor:pointer;font:10px inherit;padding:0 10px;min-height:40px;
+    min-width:88px;text-transform:uppercase;letter-spacing:.04em}
+  .vmake:hover{border-color:var(--sc);color:var(--sc)}
+  .vreplace{width:100%;border:1px solid var(--sc);background:var(--sc);color:#fff;padding:10px;cursor:pointer;
+    font:600 12px/1 inherit;min-height:42px;margin-bottom:6px}
+  .vreplace:hover{background:#255a86}
+
+  /* duplicate groups: both scans side by side */
+  .dupwrap{display:flex;flex-direction:column;gap:16px}
+  .dupgroup{border:1px solid var(--rule);border-left:4px solid var(--dup);background:var(--page)}
+  .dghead{display:flex;align-items:baseline;gap:12px;padding:11px 14px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+  .dgkind{font:700 10px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--dup);
+    background:var(--amber-wash);padding:4px 8px;border-radius:3px}
+  .dgttl{font-weight:700;font-size:14px}
+  .dupcopies{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--rule)}
+  .dupcopy{background:var(--page);display:flex;flex-direction:column;padding:12px}
+  .dupcopy.c-hi{box-shadow:inset 4px 0 0 var(--hi)}
+  .dupcopy.c-lv{box-shadow:inset 4px 0 0 var(--lv)}
+  .dupcopy.marked{background:var(--del-wash)}
+  .dupcopy.marked .shot img{opacity:.4;filter:grayscale(1)}
+  .dupcopy .shot{border:0;background:transparent;padding:0;cursor:pointer;margin-bottom:9px}
+  .dupcopy .shot img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border:1px solid var(--rule);background:#fff}
+  .dupcopy .shot:focus-visible img{outline:2px solid var(--dup);outline-offset:2px}
+  .dcmeta .pg{margin-bottom:8px}
+  .keepflag{background:var(--hi);color:#fff;font-size:9px;padding:1px 6px;border-radius:3px;letter-spacing:.05em;
+    text-transform:uppercase;font-weight:700;margin-left:4px}
+  .dcmeta .delbtn{margin-top:0}
+  @media (max-width:760px){
+    .dupcopies{grid-template-columns:1fr 1fr}
+    .dupcopy{padding:9px}
+    .dgttl{font-size:13px}
+  }
+
+  /* concepts */
+  .card.concept{border-top-color:var(--orange);cursor:pointer}
+  .cbk{color:var(--orange-dk)!important}
+  .cmeta{padding:12px 13px 14px}
+  .cone{font-weight:700;font-size:13px;color:var(--orange-dk);margin:4px 0 7px;line-height:1.35}
+  .clearn{margin-top:9px;font-size:11px;font-weight:600;color:var(--orange-dk);letter-spacing:.02em}
+  .cbadge{position:absolute;top:6px;left:6px;background:#fff;border:1px solid var(--rule);border-radius:4px;
+    font-size:12px;padding:1px 4px;line-height:1.2}
+  .vbadge + .cbadge{left:6px}
+  #v-concepts h3{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);margin:0 0 8px}
+  .claunch{margin-bottom:14px}
+  .cbtn{display:flex;flex-direction:column;gap:2px;width:100%;text-align:left;border:1px solid var(--orange);
+    background:var(--amber-wash);color:var(--orange-dk);padding:10px 12px;cursor:pointer;font:600 13px/1.2 inherit;min-height:44px}
+  .cbtn small{font-weight:400;color:var(--pencil);font-size:11px}
+  .cbtn:hover{background:#fbe8f4}
+
+  .cmodal{position:fixed;inset:0;background:rgba(26,26,24,.6);z-index:50;display:flex;
+    align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto}
+  .cmodal[hidden]{display:none}
+  .cmodal-in{background:var(--page);max-width:680px;width:100%;border-top:5px solid var(--orange);
+    padding:34px 40px 40px;position:relative;box-shadow:0 20px 70px rgba(0,0,0,.4)}
+  .cmx{position:absolute;top:12px;right:12px}
+  .ceyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil)}
+  .ctitle{font:700 27px/1.15 "Segoe UI",-apple-system,Arial,sans-serif;color:var(--ink);margin:6px 0 10px}
+  .clede{font-size:17px;font-weight:700;color:var(--orange-dk);line-height:1.4;margin:0 0 22px}
+  #c-body h3{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-dk);
+    margin:22px 0 8px;border-top:1px solid var(--rule);padding-top:16px}
+  #c-body p{margin:0;line-height:1.65;color:#2c2c30}
+  #c-body ul{margin:0;padding-left:20px;line-height:1.6}
+  #c-body li{margin-bottom:6px}
+  .crel{display:flex;flex-wrap:wrap;gap:6px}
+  .crel span{border:1px solid var(--rule);border-radius:999px;padding:4px 11px;font-size:12px;color:var(--pencil)}
+  .cpages{display:flex;flex-wrap:wrap;gap:8px}
+  .cpage{display:flex;gap:9px;align-items:center;border:1px solid var(--rule);background:#fff;cursor:pointer;
+    padding:6px 10px 6px 6px;font:12px inherit;text-align:left;min-height:48px}
+  .cpage img{width:34px;height:44px;object-fit:cover;object-position:top;border:1px solid var(--rule)}
+  .cpage:hover{border-color:var(--orange)}
+  .cpage small{color:var(--pencil)}
+  .cnote{margin-top:22px!important;font-size:12px;color:var(--pencil);border-top:1px solid var(--rule);padding-top:14px}
+  @media (max-width:760px){
+    .cmodal{padding:0}
+    .cmodal-in{padding:24px 18px 32px;border-top:0;min-height:100vh}
+    .ctitle{font-size:22px}.clede{font-size:15px}
+  }
+  .copies{margin-bottom:14px}
+  .copies .cp{display:flex;gap:6px;margin-bottom:5px}
+  .copies .cp button:first-child{flex:1;text-align:left;border:1px solid var(--rule);background:#fff;padding:9px 11px;
+    cursor:pointer;font:12px inherit;min-height:40px}
+  .copies .cp button:first-child[aria-current="true"]{border-color:var(--dup);color:var(--dup);font-weight:700}
+  .copies .cp .mk{border:1px solid var(--rule);background:#fff;cursor:pointer;font:10px inherit;padding:0 10px;
+    min-width:74px;min-height:40px;text-transform:uppercase;letter-spacing:.05em}
+  .copies .cp .mk[aria-pressed="true"]{background:var(--del);border-color:var(--del);color:#fff}
+  .nav{display:flex;gap:8px;padding:10px 18px;border-top:1px solid var(--rule)}
+  .navctx{align-self:center;font-size:10.5px;color:var(--pencil);text-align:center;min-width:52px;line-height:1.3}
+  .nav button{flex:1;border:1px solid var(--rule);background:transparent;padding:9px;cursor:pointer;font-size:11px;
+    letter-spacing:.08em;text-transform:uppercase;min-height:44px}
+  .nav button:hover:not(:disabled){background:var(--bar);color:#fff;border-color:var(--bar)}
+  .nav button:disabled{opacity:.35;cursor:default}
+  .sheet-toggle{display:none}
+
+  .sitefoot{background:var(--bar);color:#c9c9c9;margin-top:40px}
+  .sitefoot-in{max-width:1180px;margin:0 auto;padding:24px 24px calc(24px + env(safe-area-inset-bottom));font-size:13px}
+  .sitefoot p{margin:0}
+  .sitefoot em{color:var(--amber)}
+
+  @media (max-width:760px){
+    .brandbar-in{padding:0}
+    .sitenav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%}
+    .sitenav::-webkit-scrollbar{display:none}
+    .sitenav a{padding:16px 13px;font-size:12.5px}
+    .sitenav a:first-child{border-left:0}
+    .logoband{padding:14px 16px}
+    .wordmark svg,.wordmark img{width:auto;height:47px}
+    .wm b{font-size:26px} .wm i{font-size:14px}
+    .sb-in{padding:10px 16px 0}
+    h1{font-size:27px} .tagline{font-size:14px} #q{font-size:19px}
+    main{padding:14px 16px calc(40px + env(safe-area-inset-bottom))}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:11px}
+    .snip{max-height:4.4em}
+    .viewer[open]{grid-template-columns:1fr;grid-template-rows:1fr auto}
+    .stage{padding:12px;padding-top:calc(12px + env(safe-area-inset-top));align-items:center}
+    .varrow.right{right:12px}
+    .varrow{font-size:30px;padding:13px 9px}
+    .side{border-left:0;border-top:3px solid var(--orange);padding-bottom:env(safe-area-inset-bottom);
+      transition:max-height .22s ease;max-height:calc(66px + env(safe-area-inset-bottom))}
+    .side[data-open="1"]{max-height:calc(62vh + env(safe-area-inset-bottom))}
+    .side-head{padding:12px 14px;min-height:66px;align-items:center}
+    .side-head .tab{flex:0 0 auto}
+    .side-head .x{min-width:44px;min-height:44px}
+    .side-body,.nav{display:none}
+    .side[data-open="1"] .side-body{display:block}
+    .side[data-open="1"] .nav{display:flex}
+    .v-ttl{display:none}
+    .sheet-toggle{display:block;margin-left:auto;border:1px solid var(--rule);background:transparent;color:var(--pencil);
+      font-size:11px;letter-spacing:.1em;padding:0 14px;min-height:38px;min-width:60px;cursor:pointer}
+    .sheet-toggle[aria-expanded="true"]{background:var(--bar);color:#fff;border-color:var(--bar)}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brandbar"><div class="brandbar-in">
+    <nav class="sitenav" aria-label="Company site">
+      <a href="https://oishis.net/">Home</a>
+      <a href="https://oishis.net/property-management-services.html">Property Management Services</a>
+      <a href="https://oishis.net/honolulu.html">Honolulu</a>
+      <a href="https://oishis.net/las-vegas.html">Las Vegas</a>
+      <a href="https://oishis.net/hours--locations.html">Hours &amp; Locations</a>
+      <a href="https://oishis.net/articles.html">Articles</a>
+      <a href="#" aria-current="page">Binders</a>
+    </nav>
+  </div></div>
+  <div class="logoband">
+    <a class="wordmark" href="https://oishis.net/">
+      <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" aria-hidden="true" viewBox="21 18 182 182"><path fill="#f57c1f" fill-rule="evenodd" d="M24.0 86.2 L24.2 89.8 L25.0 90.2 L25.2 94.8 L26.0 95.2 L26.2 99.8 L27.0 100.2 L27.2 103.8 L28.0 104.2 L28.2 107.8 L29.0 108.2 L29.2 112.8 L30.0 113.2 L30.2 117.8 L31.0 118.2 L31.2 121.8 L32.0 122.2 L32.2 126.8 L33.0 127.2 L33.2 130.8 L34.0 131.2 L34.2 135.8 L35.0 136.2 L35.2 137.8 L36.5 137.8 L37.0 138.5 L40.5 138.8 L41.0 139.5 L45.5 139.8 L46.0 140.5 L50.5 140.8 L51.0 141.5 L54.5 141.8 L55.0 142.5 L59.5 142.8 L60.0 143.5 L63.5 143.8 L64.0 144.5 L68.5 144.8 L69.0 145.5 L72.5 145.8 L73.0 146.5 L77.5 146.8 L78.0 147.5 L77.5 148.0 L75.5 148.0 L74.5 149.0 L73.0 149.2 L72.2 150.0 L72.0 151.5 L70.5 153.0 L69.0 153.2 L69.0 154.5 L67.2 156.0 L67.2 157.8 L93.0 183.5 L97.8 183.5 L98.2 182.8 L102.8 182.5 L103.2 181.8 L106.8 181.5 L107.2 180.8 L111.8 180.5 L112.2 179.8 L115.8 179.5 L116.2 178.8 L120.8 178.5 L121.2 177.8 L124.8 177.5 L125.2 176.8 L129.8 176.5 L130.2 175.8 L131.8 175.5 L131.8 171.2 L132.5 170.8 L132.8 167.2 L133.5 166.8 L133.8 162.2 L134.5 161.8 L134.8 158.2 L135.5 157.8 L135.8 153.2 L136.5 152.8 L136.8 149.2 L137.5 148.8 L137.8 144.2 L138.5 143.8 L138.8 140.2 L139.5 139.8 L139.5 138.0 L112.8 111.2 L111.0 111.2 L111.0 112.5 L107.5 116.0 L106.0 116.2 L106.0 117.5 L99.5 124.0 L98.0 124.2 L98.0 125.5 L92.5 131.0 L91.0 131.2 L91.0 132.5 L89.5 134.0 L88.0 134.2 L87.2 135.0 L87.0 136.5 L85.5 138.0 L84.0 138.2 L84.0 139.5 L83.5 140.0 L80.2 140.0 L79.8 139.2 L76.2 139.0 L75.8 138.2 L72.2 138.0 L71.8 137.2 L67.2 137.0 L66.8 136.2 L62.2 136.0 L61.8 135.2 L58.2 135.0 L57.8 134.2 L53.2 134.0 L52.8 133.2 L49.2 133.0 L48.8 132.2 L44.2 132.0 L43.8 131.2 L41.8 130.5 L41.5 128.0 L40.8 127.5 L40.5 124.0 L39.8 123.5 L39.5 119.0 L38.8 118.5 L38.5 115.0 L37.8 114.5 L37.5 110.0 L36.8 109.5 L36.5 106.0 L35.8 105.5 L35.5 101.0 L34.8 100.5 L34.5 97.0 L33.8 96.5 L33.5 92.0 L32.8 91.5 L32.5 88.0 L31.8 87.5 L31.5 85.0 L28.0 85.2 L27.5 86.0Z M88.0 146.2 L88.0 148.5 L86.5 150.0 L83.2 150.0 L82.8 149.2 L79.2 149.0 L78.8 148.2 L79.2 147.8 L82.5 147.8 L83.0 148.5 L86.8 148.5 L86.8 146.2 L87.5 145.8Z M85.2 139.8 L88.5 139.8 L89.0 140.2 L89.0 144.5 L88.2 145.0 L87.8 144.5 L87.8 141.5 L87.2 141.0 L85.2 141.0 L84.8 140.2Z M178.5 89.0 L176.2 89.0 L175.8 88.2 L171.2 88.0 L170.8 87.2 L167.2 87.0 L166.8 86.2 L162.2 86.0 L161.8 85.2 L158.2 85.0 L157.8 84.2 L153.2 84.0 L152.8 83.2 L149.2 83.0 L148.8 82.2 L144.2 82.0 L143.8 81.2 L140.0 81.2 L114.2 107.0 L114.2 108.8 L138.0 132.2 L138.2 133.8 L139.5 133.8 L141.0 135.2 L141.2 136.8 L142.5 136.8 L143.0 137.2 L143.0 140.5 L142.2 141.0 L142.0 144.5 L141.2 145.0 L141.0 149.5 L140.2 150.0 L140.0 153.5 L139.2 154.0 L139.0 158.5 L138.2 159.0 L138.0 162.5 L137.2 163.0 L137.0 167.5 L136.2 168.0 L136.0 171.5 L135.2 172.0 L135.0 176.5 L134.2 177.0 L133.5 179.0 L131.0 179.2 L130.5 180.0 L126.0 180.2 L125.5 181.0 L122.0 181.2 L121.5 182.0 L117.0 182.2 L116.5 183.0 L113.0 183.2 L112.5 184.0 L108.0 184.2 L107.5 185.0 L104.0 185.2 L103.5 186.0 L99.0 186.2 L98.5 187.0 L94.0 187.2 L93.5 188.0 L90.0 188.2 L89.5 189.0 L88.0 189.2 L88.2 192.8 L89.0 193.2 L89.2 196.8 L92.8 196.5 L93.2 195.8 L96.8 195.5 L97.2 194.8 L101.8 194.5 L102.2 193.8 L105.8 193.5 L106.2 192.8 L110.8 192.5 L111.2 191.8 L114.8 191.5 L115.2 190.8 L119.8 190.5 L120.2 189.8 L123.8 189.5 L124.2 188.8 L128.8 188.5 L129.2 187.8 L132.8 187.5 L133.2 186.8 L137.8 186.5 L138.2 185.8 L140.8 185.5 L140.8 184.2 L141.5 183.8 L141.8 180.2 L142.5 179.8 L142.8 175.2 L143.5 174.8 L143.8 170.2 L144.5 169.8 L144.8 166.2 L145.5 165.8 L145.8 161.2 L146.5 160.8 L146.8 157.2 L147.5 156.8 L147.8 152.2 L148.5 151.8 L148.8 148.2 L149.5 147.8 L149.8 143.2 L150.5 142.8 L150.8 139.2 L151.5 138.8 L152.0 139.2 L152.0 142.5 L151.2 143.0 L151.0 145.2 L152.0 146.2 L152.2 147.8 L153.5 147.8 L158.0 152.2 L158.2 153.8 L159.8 153.5 L186.5 126.8 L186.5 124.0 L185.8 123.5 L185.5 120.0 L184.8 119.5 L184.5 115.0 L183.8 114.5 L183.5 111.0 L182.8 110.5 L182.5 106.0 L181.8 105.5 L181.5 102.0 L180.8 101.5 L180.5 97.0 L179.8 96.5 L179.5 93.0 L178.8 92.5Z M150.2 132.8 L152.5 132.8 L153.0 133.2 L153.0 137.5 L152.2 138.0 L151.8 137.5 L151.8 134.5 L151.2 134.0 L150.2 134.0 L149.8 133.2Z M142.8 135.5 L142.8 132.2 L143.2 131.8 L148.5 131.8 L149.0 132.5 L148.5 133.0 L144.5 133.0 L144.0 133.5 L144.0 135.5 L143.2 136.0Z M92.2 42.0 L92.0 43.5 L91.2 44.0 L91.0 47.5 L90.2 48.0 L90.0 52.5 L89.2 53.0 L89.0 56.5 L88.2 57.0 L88.0 61.5 L87.2 62.0 L87.0 66.5 L86.2 67.0 L86.0 70.5 L85.2 71.0 L85.0 75.5 L84.2 76.0 L84.2 79.8 L111.5 106.8 L138.5 79.8 L138.5 78.0 L137.2 78.0 L136.8 77.2 L137.2 76.8 L139.5 76.8 L140.0 77.5 L144.5 77.8 L145.0 78.5 L149.5 78.8 L150.0 79.5 L153.5 79.8 L154.0 80.5 L158.5 80.8 L159.0 81.5 L162.5 81.8 L163.0 82.5 L167.5 82.8 L168.0 83.5 L171.5 83.8 L172.0 84.5 L176.5 84.8 L177.0 85.5 L180.5 85.8 L182.0 87.2 L182.2 91.8 L183.0 92.2 L183.2 95.8 L184.0 96.2 L184.2 100.8 L185.0 101.2 L185.2 104.8 L186.0 105.2 L186.2 109.8 L187.0 110.2 L187.2 114.8 L188.0 115.2 L188.2 118.8 L189.0 119.2 L189.2 123.8 L190.0 124.2 L190.2 127.8 L191.0 128.2 L191.2 131.8 L192.0 132.5 L193.8 132.5 L194.2 131.8 L197.8 131.5 L198.2 130.8 L199.8 130.2 L199.0 129.8 L198.5 125.0 L197.8 124.5 L197.5 121.0 L196.8 120.5 L196.5 116.0 L195.8 115.5 L195.5 112.0 L194.8 111.5 L194.5 107.0 L193.8 106.5 L193.5 103.0 L192.8 102.5 L192.5 98.0 L191.8 97.5 L191.5 94.0 L190.8 93.5 L190.5 89.0 L189.8 88.5 L189.5 85.0 L188.8 84.5 L188.5 80.0 L187.8 79.2 L184.2 79.0 L183.8 78.2 L180.2 78.0 L179.8 77.2 L175.2 77.0 L174.8 76.2 L170.2 76.0 L169.8 75.2 L166.2 75.0 L165.8 74.2 L161.2 74.0 L160.8 73.2 L157.2 73.0 L156.8 72.2 L152.2 72.0 L151.8 71.2 L148.2 71.0 L147.8 70.2 L156.5 61.8 L156.5 60.0 L130.8 34.2 L124.0 34.2 L123.5 35.0 L120.0 35.2 L119.5 36.0 L116.0 36.2 L115.5 37.0 L111.0 37.2 L110.5 38.0 L106.0 38.2 L105.5 39.0 L102.0 39.2 L101.5 40.0 L97.0 40.2 L96.5 41.0 L93.0 41.2Z M142.8 69.2 L143.2 68.8 L146.5 68.8 L147.0 69.5 L146.5 70.0 L143.2 70.0Z M141.5 67.8 L142.0 68.5 L141.5 69.0 L138.2 69.0 L137.8 68.2 L137.0 68.2 L136.2 69.0 L136.0 73.5 L135.2 74.0 L135.0 75.2 L136.0 76.5 L135.5 77.0 L134.2 77.0 L133.8 76.5 L133.8 74.2 L134.5 73.8 L134.8 69.2 L137.0 66.8 L138.0 67.0 L138.2 67.8Z M133.5 21.0 L130.0 21.2 L129.5 22.0 L125.0 22.2 L124.5 23.0 L121.0 23.2 L120.5 24.0 L116.0 24.2 L115.5 25.0 L112.0 25.2 L111.5 26.0 L107.0 26.2 L106.5 27.0 L103.0 27.2 L102.5 28.0 L98.0 28.2 L97.5 29.0 L94.0 29.2 L93.5 30.0 L89.0 30.2 L88.5 31.0 L85.0 31.2 L84.5 32.0 L82.0 32.2 L82.0 35.5 L81.2 36.0 L81.0 39.5 L80.2 40.0 L80.0 44.5 L79.2 45.0 L79.0 48.5 L78.2 49.0 L78.0 53.5 L77.2 54.0 L77.0 57.5 L76.2 58.0 L76.0 62.5 L75.2 63.0 L75.0 66.5 L74.2 67.0 L74.0 71.5 L73.5 72.0 L72.0 71.8 L64.8 64.2 L63.0 64.2 L37.2 90.0 L37.2 95.8 L38.0 96.2 L38.2 99.8 L39.0 100.2 L39.2 104.8 L40.0 105.2 L40.2 108.8 L41.0 109.2 L41.2 113.8 L42.0 114.2 L42.2 118.8 L43.0 119.2 L43.2 122.8 L44.0 123.2 L44.2 127.8 L45.0 128.5 L49.5 128.8 L50.0 129.5 L53.5 129.8 L54.0 130.5 L58.5 130.8 L59.0 131.5 L62.5 131.8 L63.0 132.5 L67.5 132.8 L68.0 133.5 L72.5 133.8 L73.0 134.5 L76.5 134.8 L77.0 135.5 L80.8 136.0 L81.5 136.8 L83.2 134.8 L84.8 134.5 L109.8 109.2 L82.0 81.5 L81.0 81.2 L81.0 82.5 L80.2 83.0 L79.8 82.5 L79.8 79.2 L80.5 78.8 L80.8 75.2 L81.5 74.8 L81.8 70.2 L82.5 69.8 L82.8 66.2 L83.5 65.8 L83.8 61.2 L84.5 60.8 L84.8 57.2 L85.5 56.8 L85.8 52.2 L86.5 51.8 L86.8 47.2 L87.5 46.8 L87.8 43.2 L88.5 42.8 L88.8 39.2 L89.2 38.8 L91.8 38.5 L92.2 37.8 L96.8 37.5 L97.2 36.8 L100.8 36.5 L101.2 35.8 L105.8 35.5 L106.2 34.8 L109.8 34.5 L110.2 33.8 L114.8 33.5 L115.2 32.8 L118.8 32.5 L119.2 31.8 L123.8 31.5 L124.2 30.8 L127.8 30.5 L128.2 29.8 L132.8 29.5 L133.2 28.8 L135.8 28.5 L135.5 27.0 L134.8 26.5 L134.5 23.0 L133.8 22.5Z M69.5 82.8 L70.5 81.8 L71.2 83.8 L74.5 83.8 L75.0 84.5 L78.2 84.8 L79.5 83.8 L80.0 84.2 L80.0 85.5 L79.5 86.0 L75.2 86.0 L74.8 85.2 L71.2 85.0Z M72.5 72.8 L73.0 73.2 L73.0 76.5 L72.2 77.0 L72.0 80.5 L71.2 81.0 L70.8 80.5 L70.8 77.2 L71.5 76.8 L71.8 73.2Z"/></svg>
+      <span class="wm"><b>Oishi's</b><i>Property Management</i></span>
+    </a>
+  </div>
+  <div class="hairline"></div>
+</header>
+
+<div class="searchbar">
+  <div class="sb-in">
+    <h1>LKO</h1>
+    <p class="tagline">(LKO binder)</p>
+    <div class="field">
+      <span class="caret">›</span>
+      <input id="q" type="search" autocomplete="off" spellcheck="false"
+             placeholder="Page number, a range like 5-15, or word search" aria-label="Search the binder">
+      <button id="clear" hidden>CLEAR</button>
+    </div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="chips" id="chips"></div>
+    <div class="bar">
+      <span id="stats" class="mono">Type to search. Quote a phrase for exact wording.</span>
+      <span class="sorts" role="group" aria-label="Match mode">
+        <span class="mlabel">Show pages containing:</span>
+        <button id="m-all" aria-pressed="true" title="A page must contain every word you type">every word</button>
+        <button id="m-any" aria-pressed="false" title="A page only needs one of the words you type">any of the words</button>
+        <button id="s-dups" aria-pressed="false" title="Show duplicate copies inside the main lists">Show duplicates</button>
+      </span>
+      <span class="sorts sortside" role="group" aria-label="Result order">
+        <span class="mlabel">Sort results by:</span>
+        <button id="s-rel" aria-pressed="true" title="Strongest match first">Best match</button>
+        <button id="s-page" aria-pressed="false" title="Page 1, 2, 3… order">Page order</button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<main id="out" aria-live="polite"></main>
+
+<input type="file" id="filepick" accept="image/*" multiple hidden>
+<input type="file" id="campick" accept="image/*" capture="environment" hidden>
+<input type="file" id="verpick" accept="image/*" hidden>
+<input type="file" id="vercam" accept="image/*" capture="environment" hidden>
+
+<div class="cmodal" id="cmodal" role="dialog" aria-modal="true" aria-label="Concept explainer" hidden>
+  <div class="cmodal-in">
+    <button class="x cmx" id="c-close" aria-label="Close">✕</button>
+    <div id="c-body"></div>
+  </div>
+</div>
+
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Page viewer">
+  <div class="stage"><img id="v-img" alt=""></div>
+  <button class="varrow left" id="v-arrow-prev" aria-label="Previous page">&#8249;</button>
+  <button class="varrow right" id="v-arrow-next" aria-label="Next page">&#8250;</button>
+  <aside class="side" id="v-side">
+    <div class="side-head">
+      <span class="tab" id="v-tab">Page</span>
+      <span class="v-ttl" id="v-ttl"></span>
+      <button class="sheet-toggle" id="v-sheet" aria-expanded="false">Text</button>
+      <button class="x" id="v-close" aria-label="Close">✕</button>
+    </div>
+    <div class="side-body">
+      <div id="v-share"></div>
+      <div id="v-copies"></div>
+      <div id="v-concepts"></div>
+      <div id="v-versions"></div>
+      <h3>Keywords</h3><div class="kws" id="v-kws"></div>
+      <h3>Text read from the scan</h3><div id="v-text"></div>
+    </div>
+    <div class="nav">
+      <button id="v-prev">← Previous</button>
+      <span class="navctx" id="v-navctx"></span>
+      <button id="v-next">Next →</button>
+    </div>
+  </aside>
+</div>
+
+<footer class="sitefoot"><div class="sitefoot-in">
+  <p>Oishi's Property Management &middot; Honolulu &amp; Las Vegas &middot; Property Management is our <em>only</em> business!</p>
+</div></footer>
+
+<script src="data.js?v=202607222335"></script>
+<script>
+(function(){
+  /* ============ storage: IndexedDB, with a localStorage fallback ============ */
+  const DB = (() => {
+    let db = null, mode = 'idb';
+    const open = () => new Promise(res => {
+      let r;
+      try { r = indexedDB.open('oishi-binders', 3); }
+      catch(e){ mode = 'ls'; return res(null); }
+      r.onupgradeneeded = () => {
+        const d = r.result;
+        if (!d.objectStoreNames.contains('scans')) d.createObjectStore('scans', {keyPath:'id'});
+        if (!d.objectStoreNames.contains('marks')) d.createObjectStore('marks', {keyPath:'id'});
+        if (!d.objectStoreNames.contains('kwedits')) d.createObjectStore('kwedits', {keyPath:'id'});
+        if (!d.objectStoreNames.contains('versions')) d.createObjectStore('versions', {keyPath:'id'});
+      };
+      r.onsuccess = () => { db = r.result; res(db); };
+      r.onerror = () => { mode = 'ls'; res(null); };
+      setTimeout(() => { if (!db && mode === 'idb'){ mode = 'ls'; res(null); } }, 2500);
+    });
+    const tx = (store, m) => db.transaction(store, m).objectStore(store);
+    const lsKey = s => 'oishi-' + s;
+    const lsAll = s => { try { return JSON.parse(localStorage.getItem(lsKey(s)) || '[]'); } catch(e){ return []; } };
+    const lsPut = (s, arr) => { try { localStorage.setItem(lsKey(s), JSON.stringify(arr)); return true; }
+                               catch(e){ return false; } };
+    return {
+      async init(){ await open(); return mode; },
+      mode: () => mode,
+      all(store){
+        if (mode === 'ls' || !db) return Promise.resolve(lsAll(store));
+        return new Promise(res => { const r = tx(store,'readonly').getAll(); r.onsuccess = () => res(r.result||[]); r.onerror = () => res([]); });
+      },
+      put(store, rec){
+        if (mode === 'ls' || !db){ const a = lsAll(store).filter(x => x.id !== rec.id); a.push(rec); return Promise.resolve(lsPut(store,a)); }
+        return new Promise(res => { const r = tx(store,'readwrite').put(rec); r.onsuccess = () => res(true); r.onerror = () => res(false); });
+      },
+      del(store, id){
+        if (mode === 'ls' || !db){ return Promise.resolve(lsPut(store, lsAll(store).filter(x => x.id !== id))); }
+        return new Promise(res => { const r = tx(store,'readwrite').delete(id); r.onsuccess = () => res(true); r.onerror = () => res(false); });
+      }
+    };
+  })();
+
+  /* ============ data ============ */
+  const STATIC = (window.BINDER || []).map(e => ({...e, scan:false}));
+  const CONCEPTS = window.CONCEPTS || {};   // concept library: id -> {name, definition, examples, ...}
+  let SCANS = [], MARKS = new Set(), KWEDIT = {}, hideDups = true;
+  let VERSIONS = {};                 // pageId -> [{v, img, thumb, text, kw, title, note, at}], oldest first
+  let PAGES = [], byId = {}, groups = {}, primaryOf = {};
+
+  // the version currently shown for a page (the last one is current), or null for the original
+  const curVer = p => { const h = VERSIONS[p.id]; return h && h.length ? h[h.length-1] : null; };
+  const baseThumb = p => p.scan ? p.thumb : (window.THUMB ? window.THUMB[p.id] : 'thumbs/' + p.id + '.jpg');
+  const basePage  = p => p.scan ? p.img   : (window.PAGEIMG ? window.PAGEIMG[p.id] : 'pages/' + p.id + '.jpg');
+  const thumbSrc = p => { const v = curVer(p); return v ? v.thumb : baseThumb(p); };
+  const pageSrc  = p => { const v = curVer(p); return v ? v.img   : basePage(p); };
+  const verCount = p => (VERSIONS[p.id] ? VERSIONS[p.id].length + 1 : 1);   // +1 for the original
+
+  function rebuild(){
+    PAGES = STATIC.concat(SCANS);
+    // apply any saved keyword edits over the baked-in keywords
+    PAGES.forEach(p => { if (KWEDIT[p.id]) { p.kw = KWEDIT[p.id]; p.kwEdited = true; } });
+    // a current version overrides the page's own text/keywords/title for search + display
+    PAGES.forEach(p => {
+      const v = curVer(p);
+      p.curText  = v && v.text ? v.text : p.text;
+      p.curKw    = v && v.kw && v.kw.length ? v.kw : p.kw;
+      p.curTitle = v && v.title ? v.title : p.title;
+    });
+    PAGES.forEach(p => p.hay = (p.curTitle + ' ' + p.curKw.join(' ') + ' ' + (p.note||'') + ' ' + p.curText).toLowerCase());
+    byId = Object.fromEntries(PAGES.map(p => [p.id, p]));
+    groups = {};
+    PAGES.forEach(p => { if (p.g) (groups[p.g] = groups[p.g] || []).push(p.id); });
+    primaryOf = {};
+    Object.values(groups).forEach(ids => {
+      const keep = ids.find(i => byId[i].keep) || ids.find(i => i.startsWith('LV-')) || ids.slice().sort()[0];
+      ids.forEach(i => primaryOf[i] = keep);
+    });
+  }
+  // a page is a "surplus" duplicate if it belongs to a group but isn't that group's kept copy
+  const isSurplus = p => p.g && primaryOf[p.id] && primaryOf[p.id] !== p.id;
+
+  const out = document.getElementById('out'), qEl = document.getElementById('q');
+  const statsEl = document.getElementById('stats'), clearEl = document.getElementById('clear');
+  let sort = 'rel', tab = 'all', terms = [], results = [], searchMode = 'and', matchMode = 'all';
+  let conceptResults = [];
+
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const rxEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  const pad = n => String(n).padStart(3,'0');
+  const label = p => p.scan ? 'Scanned' : p.book;
+
+  /* ============ search ============ */
+  // Commas separate terms and let a term be multiple words: "parkinson, level up"
+  // is two terms, the second a phrase. Whether ALL terms must match or ANY is set
+  // by the All/Any toggle (default: all).
+  function parse(q){
+    searchMode = (matchMode === 'any') ? 'or' : 'and';
+    if (q.indexOf(',') !== -1){
+      return q.split(',')
+              .map(s => s.trim().replace(/^["']|["']$/g, '').toLowerCase())
+              .filter(s => s.length > 1);
+    }
+    const t = [], re = /"([^"]+)"|(\S+)/g; let m;
+    while ((m = re.exec(q))) { const s = (m[1]||m[2]).toLowerCase().trim(); if (s.length > 1) t.push(s); }
+    return t;
+  }
+  function count(hay, n){ let c=0,i=hay.indexOf(n); while(i!==-1){c++;i=hay.indexOf(n,i+n.length);} return c; }
+
+  // A page code the class can be told out loud: just the number, "47".
+  // Old-style codes (HI-047 / LV 12) still work so nothing breaks.
+  function codeToId(q){
+    const s = String(q).trim();
+    const plain = s.match(/^#?\s*(\d{1,3})$/);
+    if (plain){
+      const n = parseInt(plain[1], 10);
+      const hit = PAGES.find(p => p.num === n);
+      return hit ? hit.id : null;
+    }
+    const m = s.match(/^(hi|hawaii|lv|lasvegas|las vegas|vegas)[\s\-_.#]*(\d{1,3})$/i);
+    if (!m) return null;
+    const w = m[1].toLowerCase().replace(/\s/g,'');
+    const pre = (w === 'hi' || w === 'hawaii') ? 'HI' : 'LV';
+    const id = pre + '-' + String(parseInt(m[2],10)).padStart(3,'0');
+    return byId[id] ? id : null;
+  }
+  const codeOf = p => (p.num != null ? String(p.num) : (p.scan ? 'new' : pad(p.p)));
+  function snippet(p, max){
+    const T = p.curText || p.text || '';
+    const spans = [];
+    for (const t of terms){
+      const i = T.toLowerCase().indexOf(t);
+      if (i === -1) continue;
+      spans.push([Math.max(0,i-70), Math.min(T.length, i+t.length+120)]);
+    }
+    spans.sort((a,b)=>a[0]-b[0]);
+    const m = [];
+    for (const s of spans){
+      const l = m[m.length-1];
+      if (l && s[0] <= l[1]+20) l[1] = Math.max(l[1], s[1]); else m.push(s.slice());
+    }
+    if (!m.length) return (p.note || T || '').slice(0,170);
+    return m.slice(0,max).map(([a,b]) => T.slice(a,b)).join(' … ');
+  }
+  const hl = s => { s = esc(s); return terms.length ? s.replace(new RegExp('('+terms.map(rxEsc).join('|')+')','gi'),'<mark>$1</mark>') : s; };
+
+  const dedupe = list => hideDups ? list.filter(p => !isSurplus(p)) : list;
+  const scopes = {
+    all:    () => dedupe(PAGES),
+    dup:    () => Object.values(groups).map(ids => byId[primaryOf[ids[0]]] || byId[ids[0]]).filter(Boolean),
+    scan:   () => SCANS,
+    marked: () => [...MARKS].map(id => byId[id]).filter(Boolean),
+    concepts: () => Object.entries(CONCEPTS).map(([cid,c]) => byId[c.pages.find(i=>byId[i])]).filter(Boolean)
+  };
+  function tabDefs(){
+    const vis = dedupe(PAGES).length;
+    return [
+      ['all','Everything', vis],
+      ['concepts','Concepts', PAGES.length ? Object.keys(CONCEPTS).length : 0],
+      ...(Object.keys(groups).length ? [['dup','Duplicates', Object.keys(groups).length]] : []),
+      ['scan','Add scan', SCANS.length]
+    ];
+  }
+  function paintTabs(){
+    document.getElementById('tabs').innerHTML = tabDefs().map(([k,l,n]) =>
+      `<button role="tab" data-tab="${k}" aria-selected="${k===tab}">${l}<span class="n">${n}</span></button>`).join('');
+  }
+  function paintChips(){
+    const f = {};
+    PAGES.forEach(p => (p.curKw||p.kw).forEach(w => f[w] = (f[w]||0)+1));
+    const c = Object.entries(f).filter(([w,n]) => n >= 3).sort((a,b)=>b[1]-a[1]).slice(0,12).map(e=>e[0]);
+    document.getElementById('chips').innerHTML = c.map(x => `<button class="chip">${x}</button>`).join('');
+  }
+
+  function rangeOf(q){
+    const m = String(q||'').trim().match(/^#?\s*(\d{1,3})\s*(?:-|\u2013|\u2014|:|to)\s*(\d{1,3})\s*$/i);
+    if (!m) return null;
+    let a = parseInt(m[1],10), b = parseInt(m[2],10);
+    if (a > b) [a,b] = [b,a];
+    return [a,b];
+  }
+  let fuzzedNote = null;   // {from, to} when a typo was auto-corrected
+  let VOCAB = null;        // first-letter buckets of [word, freq] from titles/keywords/text
+  function buildVocab(){
+    const freq = Object.create(null);
+    for (const p of PAGES){
+      const words = ((p.title||'') + ' ' + (p.kw||[]).join(' ') + ' ' + (p.text||''))
+        .toLowerCase().match(/[a-z]{4,}/g) || [];
+      for (const w of words) freq[w] = (freq[w]||0) + 1;
+    }
+    VOCAB = Object.create(null);
+    for (const w in freq){
+      (VOCAB[w[0]] = VOCAB[w[0]] || []).push([w, freq[w]]);
+    }
+  }
+  function editDist(a, b, max){           // Levenshtein with cutoff
+    if (Math.abs(a.length - b.length) > max) return max + 1;
+    let prev = Array.from({length: b.length + 1}, (_, i) => i);
+    for (let i = 1; i <= a.length; i++){
+      const cur = [i];
+      let rowMin = i;
+      for (let j = 1; j <= b.length; j++){
+        cur[j] = Math.min(prev[j] + 1, cur[j-1] + 1, prev[j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+        if (cur[j] < rowMin) rowMin = cur[j];
+      }
+      if (rowMin > max) return max + 1;
+      prev = cur;
+    }
+    return prev[b.length];
+  }
+  function fixTerm(t){
+    if (!/^[a-z]{4,}$/.test(t)) return null;
+    if (!VOCAB) buildVocab();
+    const max = t.length <= 5 ? 1 : 2;
+    let best = null, bestD = max + 1, bestF = 0;
+    for (const [w, f] of (VOCAB[t[0]] || [])){
+      if (w === t) return null;           // the word exists — nothing to fix
+      const d = editDist(t, w, max);
+      if (d < bestD || (d === bestD && f > bestF)){ best = w; bestD = d; bestF = f; }
+    }
+    return bestD <= max ? best : null;
+  }
+  function runTerms(termsArr, pool){
+    const res = []; let hits = 0;
+    for (const p of pool){
+      let sc = 0, matched = 0;
+      for (const t of termsArr){
+        const c = count(p.hay, t);
+        if (!c) { if (searchMode === 'and') { matched = -1; break; } continue; }
+        matched++;
+        sc += c + ((p.curTitle||p.title).toLowerCase().includes(t) ? 6 : 0) + ((p.curKw||p.kw).includes(t) ? 3 : 0);
+      }
+      const ok = searchMode === 'or' ? matched > 0 : matched === termsArr.length;
+      if (ok){
+        p.score = sc + (searchMode === 'or' ? matched * 100 : 0);
+        p.matchedCount = Math.max(matched, 0);
+        hits += sc; res.push(p);
+      }
+    }
+    return { res, hits };
+  }
+  function search(){
+    const t0 = performance.now();
+    const pool = scopes[tab]() || [];
+    let hits = 0;
+    fuzzedNote = null;
+    if (tab === 'concepts'){
+      // match only the concept itself (name / one-liner / its own search terms), on word boundaries
+      const hayC = c => [c.name, c.one_line, c.search_terms || ''].join(' ').toLowerCase();
+      const hitT = (hay, t) => new RegExp('\\b' + rxEsc(t)).test(hay);
+      conceptResults = Object.entries(CONCEPTS).filter(([cid, c]) => {
+        if (!terms.length) return true;
+        const hay = hayC(c);
+        const n = terms.filter(t => hitT(hay, t)).length;
+        return searchMode === 'or' ? n > 0 : n === terms.length;
+      });
+      if (terms.length) conceptResults.sort((a, b) => {
+        const nm = e => terms.some(t => e[1].name.toLowerCase().indexOf(t) !== -1) ? 0 : 1;
+        return nm(a) - nm(b);
+      });
+      results = conceptResults.map(([cid, c]) => byId[c.pages.find(i => byId[i])]).filter(Boolean);
+      return { ms: Math.max(1, Math.round(performance.now() - t0)), hits: conceptResults.length };
+    }
+    const rng = rangeOf(qEl.value);
+    if (rng){
+      // page-range query: show pages a..b in binder order (all copies, nothing hidden)
+      results = PAGES.filter(p => p.num >= rng[0] && p.num <= rng[1]).sort((x,y) => x.num - y.num);
+      return { ms: Math.max(1, Math.round(performance.now()-t0)), hits: results.length };
+    }
+    if (!terms.length) results = pool.slice();
+    else {
+      let run = runTerms(terms, pool);
+      if (!run.res.length){
+        // nothing found — try correcting likely typos ("kanbam" -> "kanban")
+        const corrected = terms.map(t => fixTerm(t) || t);
+        if (corrected.some((t, i) => t !== terms[i])){
+          const retry = runTerms(corrected, pool);
+          if (retry.res.length){
+            fuzzedNote = { from: terms.join(' '), to: corrected.join(' ') };
+            terms = corrected;            // so snippets and highlights match what we searched
+            run = retry;
+          }
+        }
+      }
+      results = run.res; hits = run.hits;
+    }
+    results.sort((a,b) => sort==='rel' && terms.length ? (b.score-a.score || a.id.localeCompare(b.id)) : a.id.localeCompare(b.id));
+    return { ms: Math.max(1, Math.round(performance.now()-t0)), hits };
+  }
+
+  function dupLine(p){
+    if (!p.g || !groups[p.g]) return '';
+    const o = groups[p.g].filter(i => i !== p.id);
+    return o.length ? `<div class="dupline">also in: ${o.map(i => 'p. '+pad(byId[i].p)).join(' · ')}</div>` : '';
+  }
+  function cardHTML(p, opts={}){
+    const cls = (tab==='dup' ? 'b-dup' : p.scan ? 'b-sc' : 'b-hi')
+              + (MARKS.has(p.id) ? ' marked' : '');
+    const del = opts.del ? `<button class="delbtn" data-mark="${p.id}" aria-pressed="${MARKS.has(p.id)}">
+        ${MARKS.has(p.id) ? '✓ Marked for delete' : 'Mark for delete'}</button>` : '';
+    const nv = verCount(p);
+    const vbadge = nv > 1 ? `<span class="vbadge">v${nv}</span>` : '';
+    const cbadge = (p.concepts && p.concepts.length) ? `<span class="cbadge" title="Has a Learn more explainer">📘</span>` : '';
+    return `<div class="card ${cls}">
+      <button class="shot" data-id="${p.id}" aria-label="Open ${esc(p.curTitle||p.title)}"><img loading="lazy" src="${thumbSrc(p)}" alt="">${vbadge}${cbadge}</button>
+      <div class="meta">
+        <div class="pg"><span class="pnum">${codeOf(p)}</span><span class="bk">${label(p)}</span></div>
+        <div class="ttl">${hl(p.curTitle||p.title)}</div>
+        <div class="snip">${hl(snippet(p,2))}</div>
+        ${dupLine(p)}${p.dupOf ? `<div class="flag">looks like ${p.dupOf}</div>` : ''}${del}
+      </div>${opts.edit ? editHTML(p) : ''}</div>`;
+  }
+  function editHTML(p){
+    return `<div class="editrow">
+      <input data-ttl="${p.id}" value="${esc(p.title)}" placeholder="Title this page" aria-label="Title">
+      <input data-kw="${p.id}" value="${esc(p.kw.join(', '))}" placeholder="Keywords, comma separated" aria-label="Keywords">
+      <div class="row2">
+        <button data-ocr="${p.id}">Read text</button>
+        <button data-rm="${p.id}">Remove</button>
+      </div></div>`;
+  }
+
+  // one card per duplicate GROUP, showing every copy (Hawaii + Las Vegas) side by side
+  function dupGroupHTML(gid){
+    const ids = (groups[gid] || []).slice().sort((a,b) => {   // Hawaii first, then Las Vegas
+      const rank = i => (byId[i].book === 'Hawaii' ? 0 : 1);
+      return rank(a) - rank(b) || a.localeCompare(b);
+    });
+    if (!ids.length) return '';
+    const kept = primaryOf[ids[0]];
+    const p0 = byId[ids[0]];
+    const books = [...new Set(ids.map(i => byId[i].book))];
+    const kind = 'Repeated';
+    const copies = ids.map(i => {
+      const p = byId[i];
+      const isKept = i === kept;
+      const marked = MARKS.has(i);
+      return `<div class="dupcopy ${marked?'marked':''} c-hi">
+        <button class="shot" data-id="${i}" aria-label="Open ${label(p)} page ${pad(p.p)}"><img loading="lazy" src="${thumbSrc(p)}" alt=""></button>
+        <div class="dcmeta">
+          <div class="pg"><span class="pnum">${codeOf(p)}</span><span class="bk">${label(p)}</span>${isKept?' <span class="keepflag">keep</span>':''}</div>
+          <button class="delbtn" data-mark="${i}" aria-pressed="${marked}">${marked?'✓ Marked for delete':'Mark for delete'}</button>
+        </div></div>`;
+    }).join('');
+    return `<div class="dupgroup">
+      <div class="dghead"><span class="dgkind">${kind}</span><span class="dgttl">${hl(p0.curTitle||p0.title)}</span></div>
+      <div class="dupcopies">${copies}</div>
+    </div>`;
+  }
+
+  /* ============ render ============ */
+  let tocOpen = !matchMedia('(max-width:700px)').matches;
+  function tocHTML(){
+    const rows = Object.entries(CONCEPTS)
+      .map(([cid, c]) => {
+        const nums = (c.pin || []).map(i => byId[i] && byId[i].num).filter(Boolean);
+        if (!nums.length) return null;
+        const a = Math.min(...nums), b = Math.max(...nums);
+        return { cid, name: c.name, a, b };
+      })
+      .filter(Boolean)
+      .sort((x, y) => x.a - y.a);
+    return `<details class="toc" id="tocbox"${tocOpen ? ' open' : ''}>
+      <summary>Table of contents — the binder, in teaching order</summary>
+      <div class="tocgrid">` + rows.map(r =>
+        `<button class="tocrow" data-range="${r.a}-${r.b}">
+           <span class="tocpg">${r.a === r.b ? r.a : r.a + '–' + r.b}</span>
+           <span class="tocname">${esc(r.name)}</span>
+         </button>`).join('') + `</div></details>`;
+  }
+  function render(){
+    terms = rangeOf(qEl.value) ? [] : parse(qEl.value.trim());
+    const info = search();
+    clearEl.hidden = !qEl.value;
+    paintTabs();
+
+    const unit = tab === 'dup' ? 'group' : (tab === 'concepts' ? 'concept' : 'page');
+    const modeNote = terms.length > 1
+      ? (searchMode === 'or' ? ` · any of ${terms.length} words` : ` · all ${terms.length} words`)
+      : '';
+    statsEl.textContent = terms.length
+      ? `${results.length} ${unit}${results.length===1?'':'s'} · ${info.hits} hits${modeNote} · ${info.ms} ms`
+      : `${results.length} ${unit}${results.length===1?'':'s'} · type to search — separate words with commas`;
+
+    let head = '';
+    if (fuzzedNote && tab !== 'concepts')
+      head += `<p class="fuzznote">No matches for “<b>${esc(fuzzedNote.from)}</b>” — showing results for “<b>${esc(fuzzedNote.to)}</b>”.</p>`;
+    if (tab === 'all' && !qEl.value.trim())
+      head = tocHTML() + head;
+    let jumpHTML = '';
+    const jumpId = codeToId(qEl.value);
+    if (jumpId){
+      const jp = byId[jumpId];
+      jumpHTML = `<div class="jumpbar">
+        <img src="${thumbSrc(jp)}" alt="">
+        <div class="jbtext"><b>Page ${codeOf(jp)}</b><em>${label(jp)} · binder p.${pad(jp.p)}</em><span>${esc(jp.curTitle || jp.title)}</span></div>
+        <button class="jbopen" data-jump="${jumpId}">Open this page →</button>
+      </div>`;
+    }
+    if (tab === 'dup'){
+      head = `<p class="note"><b>${Object.keys(groups).length} duplicate groups.</b>
+        These are pages that appear in the binder more than once.
+        Each row below shows every copy side by side so you can compare them.
+        The copy tagged <b>keep</b> is the one kept in the other tabs; use <b>Mark for delete</b> under the copy you want to drop.
+        Marks build a list you can export from the <b>Marked for delete</b> tab.</p>`;
+    }
+    if (tab === 'scan'){
+      const m = DB.mode();
+      head = `<div class="drop" id="drop">
+          <h2>Scan a page in</h2>
+          <p>Use your phone camera, or drop image files here. Pages are read on this device — nothing is uploaded.</p>
+          <div class="btns">
+            <button class="btn" id="b-cam">Take photo</button>
+            <button class="btn ghost" id="b-file">Choose files</button>
+            <button class="btn ghost" id="b-export" ${(SCANS.length||Object.keys(VERSIONS).length)?'':'disabled'}>Export scans &amp; versions</button>
+          </div>
+        </div>
+        <p class="note"><b>These scans live in this browser only.</b> They are saved on this device
+        (${m==='idb'?'IndexedDB':'local storage'}) and stay searchable next time you open the file here — but they are not
+        in the shared archive and nobody else can see them. Use <b>Export</b> to get them off the device as a file.
+        <b>Read text</b> makes a scan searchable by its words; it needs internet the first time, and works without it if you
+        type keywords yourself.</p>` + head;
+    }
+    if (tab === 'marked'){
+      head = MARKS.size ? `<p class="note warn"><b>${MARKS.size} page${MARKS.size===1?'':'s'} marked for delete.</b>
+          Nothing is deleted here — this is a list to act on. The scans on disk are untouched.
+          <span style="display:block;margin-top:10px">
+          <button class="btn" id="b-copy">Copy list</button>
+          <button class="btn ghost" id="b-csv">Download CSV</button>
+          <button class="btn ghost danger" id="b-unmark">Unmark all</button></span></p>`
+        : `<p class="note"><b>Nothing marked yet.</b> Open the Duplicates tab and mark the copies you want dropped —
+           usually the second copy of a page that got scanned twice.</p>`;
+    }
+
+    if (tab === 'concepts'){
+      head = terms.length
+        ? `<p class="note"><b>${conceptResults.length} of ${Object.keys(CONCEPTS).length} concepts</b> match your search. Open one to read it in full.</p>`
+        : `<p class="note"><b>${Object.keys(CONCEPTS).length} concepts and topic groups, expanded.</b>
+        Each is pulled from the scans and expanded with a plain-language definition, examples, and why it matters —
+        so you can learn the idea, not just find the page. Open one to read it in full.</p>`;
+    }
+
+    // the jump banner sits above whatever note the tab produced
+    head = jumpHTML + head;
+
+    // archive is empty (no documents loaded yet) — show a clear waiting state, not a "no match"
+    if (!PAGES.length && !terms.length){
+      out.innerHTML = head + `<div class="empty">
+        <p class="big">No documents loaded yet.</p>
+        <p class="why">This archive is ready and waiting for the scans.
+        Once the new binder is processed and <code>data.js</code> is added, the pages appear here —
+        search, numbering, duplicates and everything else switch on automatically.</p>
+        <p class="why">You can still use the <b>Scan in</b> tab to add pages from this device right now.</p>
+        </div>`;
+      wire();
+      return;
+    }
+
+    if (tab === 'concepts' && !conceptResults.length){
+      out.innerHTML = head + `<div class="empty"><p class="big">No concept matches <strong>${esc(qEl.value)}</strong>.</p>
+        <p class="why">Try a single word, or search the Everything tab to look inside the pages themselves.</p></div>`;
+      wire();
+      return;
+    }
+    if (!results.length && !(tab === 'concepts' && conceptResults.length)){
+      let hint = '';
+      if (searchMode === 'and' && terms.length > 1){
+        // say WHICH word is the one nothing has, so the search can be fixed intelligently
+        const pool = scopes[tab]() || [];
+        const found = terms.filter(t => pool.some(p => p.hay.indexOf(t) !== -1));
+        const missing = terms.filter(t => !found.includes(t));
+        const detail = missing.length
+          ? `<b>${esc(missing.join(', '))}</b> ${missing.length===1?'appears':'appear'} nowhere in this tab.`
+          : `Each word appears on its own, but no single page carries all ${terms.length}.`;
+        hint = `<p class="why">${detail}
+          <button class="tryor" data-tryany="1">Try any word instead</button> — that finds pages with at least one of them.</p>`;
+      }
+      out.innerHTML = head + (tab==='scan' || tab==='marked' ? '' :
+        `<div class="empty"><p class="big">No page has all of <strong>${esc(qEl.value)}</strong>.</p>
+         ${hint}
+         <p class="why">Words are read off scans, so handwriting and faint toner come through imperfectly.
+         Try fewer words, or a shorter one.</p></div>`);
+      wire();
+      return;
+    }
+    if (tab === 'concepts'){
+      out.innerHTML = head + '<div class="grid">' + conceptResults.map(([cid,c]) => {
+        const pageCount = c.pages.filter(i=>byId[i]).length;
+        return `<div class="card concept" data-concept="${cid}" tabindex="0" role="button" aria-label="Learn about ${esc(c.name)}">
+          <div class="cmeta">
+            <div class="pg"><span class="bk cbk">Concept</span> · ${pageCount} page${pageCount===1?'':'s'}</div>
+            <div class="ttl">${hl(c.name)}</div>
+            <div class="cone">${hl(c.one_line)}</div>
+            <div class="snip">${hl(c.definition.slice(0,150))}…</div>
+            <div class="clearn">Read the full explainer →</div>
+          </div></div>`;
+      }).join('') + '</div>';
+      wire();
+      return;
+    }
+    if (tab === 'dup'){
+      // results holds one representative page per matching group; render each group's copies side by side,
+      // cross-binder (Hawaii + Las Vegas) matches first since those are the ones spanning both binders
+      const gids = [...new Set(results.map(p => p.g).filter(Boolean))];
+      const isCross = g => new Set((groups[g]||[]).map(i => byId[i].book)).size > 1;
+      gids.sort((a,b) => (isCross(b)-isCross(a)) || (a-b));
+      out.innerHTML = head + '<div class="dupwrap">' + gids.map(dupGroupHTML).join('') + '</div>';
+      wire();
+      return;
+    }
+    out.innerHTML = head + '<div class="grid">' +
+      results.map(p => cardHTML(p, {edit: tab==='scan'})).join('') + '</div>';
+    wire();
+  }
+
+  /* ============ scanning in ============ */
+  const filepick = document.getElementById('filepick'), campick = document.getElementById('campick');
+
+  function shrink(file, maxPx, q){
+    return new Promise((res, rej) => {
+      const img = new Image(), url = URL.createObjectURL(file);
+      img.onload = () => {
+        const s = Math.min(1, maxPx / Math.max(img.width, img.height));
+        const c = document.createElement('canvas');
+        c.width = Math.round(img.width*s); c.height = Math.round(img.height*s);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        res(c.toDataURL('image/jpeg', q));
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('not an image')); };
+      img.src = url;
+    });
+  }
+
+  /* ============ versions ============ */
+  let versionTargetId = null;
+
+  async function addVersion(id, file){
+    const p = byId[id]; if (!p) return;
+    try{
+      const [img, thumb] = await Promise.all([shrink(file, 1400, .72), shrink(file, 300, .6)]);
+      const rec = { v: Date.now(), at: Date.now(), img, thumb, text: '', kw: [],
+                    title: p.curTitle || p.title, note: 'New version added ' + new Date().toLocaleDateString() };
+      VERSIONS[id] = (VERSIONS[id] || []).concat(rec);
+      await DB.put('versions', { id, list: VERSIONS[id] });
+      rebuild();
+      viewingVer = null;                 // jump to the new current version
+      render();
+      if (viewer.hasAttribute('open')) paint(id);
+      // offer to read the new version's text
+      if (confirm('Version v' + (VERSIONS[id].length+1) + ' is now current. Read its text now so it is searchable?')) ocr(id);
+    } catch(e){ alert('Could not read that image — is it a photo or scan?'); }
+  }
+
+  async function makeVersionCurrent(id, verIdx){
+    // verIdx is 0=original, 1=first stored version, ...; "make current" re-appends a copy so history is preserved
+    const p = byId[id]; if (!p) return;
+    const hist = VERSIONS[id] || [];
+    let src;
+    if (verIdx === 0) src = { img: basePage(p), thumb: baseThumb(p), text: p.text, kw: p.kw, title: p.title };
+    else src = hist[verIdx-1];
+    if (!src) return;
+    const rec = { v: Date.now(), at: Date.now(), img: src.img, thumb: src.thumb,
+                  text: src.text||'', kw: (src.kw||[]).slice(), title: src.title||p.title,
+                  note: 'Restored v' + (verIdx+1) + ' as current on ' + new Date().toLocaleDateString() };
+    VERSIONS[id] = hist.concat(rec);
+    await DB.put('versions', { id, list: VERSIONS[id] });
+    rebuild(); viewingVer = null; render();
+    if (viewer.hasAttribute('open')) paint(id);
+  }
+
+  // cheap term-overlap check against the existing archive
+  function looksLikeDup(text){
+    const t = new Set(text.toLowerCase().match(/[a-z]{4,}/g) || []);
+    if (t.size < 12) return null;
+    let best = null, bs = 0;
+    for (const p of STATIC){
+      const o = new Set(p.text.toLowerCase().match(/[a-z]{4,}/g) || []);
+      if (o.size < 12) continue;
+      let hit = 0; t.forEach(w => { if (o.has(w)) hit++; });
+      const s = hit / Math.min(t.size, o.size);
+      if (s > bs){ bs = s; best = p; }
+    }
+    return bs >= 0.5 ? `${best.book} p. ${pad(best.p)} (${Math.round(bs*100)}% of words match)` : null;
+  }
+
+  async function addFiles(files){
+    const list = [...files].filter(f => f.type.startsWith('image/'));
+    if (!list.length) return;
+    out.querySelector('#drop')?.classList.remove('over');
+    for (const f of list){
+      try{
+        const [img, thumb] = await Promise.all([shrink(f, 1400, .72), shrink(f, 300, .6)]);
+        const rec = { id:'SC-'+Date.now()+'-'+Math.random().toString(36).slice(2,6), scan:true,
+                      book:'Scanned', p:SCANS.length+1, title:f.name.replace(/\.[^.]+$/,'').slice(0,58) || 'Scanned page',
+                      kw:[], text:'', note:'Scanned in on '+new Date().toLocaleDateString(), g:0, img, thumb };
+        const ok = await DB.put('scans', rec);
+        if (!ok){ alert('This device would not save the scan — storage is full or blocked. It is loaded for now but will not persist.'); }
+        SCANS.push(rec);
+      } catch(e){ alert('Could not read ' + f.name + ' — is it an image?'); }
+    }
+    rebuild(); render();
+  }
+
+  async function ocr(id){
+    const p = byId[id]; if (!p) return;
+    const hist = VERSIONS[id] || [];
+    const cur = hist.length ? hist[hist.length-1] : null;   // OCR the current version if there is one
+    const imgToRead = cur ? cur.img : (p.scan ? p.img : basePage(p));
+    const btn = out.querySelector(`[data-ocr="${id}"]`);
+    if (btn){ btn.disabled = true; btn.textContent = 'Reading…'; }
+    try{
+      if (!window.Tesseract){
+        await new Promise((res, rej) => {
+          const s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+          s.onload = res; s.onerror = () => rej(new Error('offline'));
+          document.head.appendChild(s);
+        });
+      }
+      const r = await window.Tesseract.recognize(imgToRead, 'eng');
+      const text = (r.data.text || '').split(/\s+/).join(' ').trim();
+      const freq = {};
+      (text.toLowerCase().match(/[a-z]{4,}/g) || []).forEach(w => freq[w] = (freq[w]||0)+1);
+      const kw = Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,8).map(e=>e[0]);
+      if (cur){                                    // store on the current version
+        cur.text = text; cur.kw = kw;
+        await DB.put('versions', { id, list: hist });
+      } else {                                     // store on the page/scan itself
+        p.text = text; p.kw = kw; p.dupOf = looksLikeDup(text);
+        if (p.scan) await DB.put('scans', p);
+      }
+      rebuild(); render();
+      if (viewer.hasAttribute('open') && shownId === id) paint(id);
+    } catch(e){
+      alert('Reading the text needs internet the first time (it downloads the OCR engine). '
+          + 'You can still type a title and keywords and the page will be searchable by those.');
+      if (btn){ btn.disabled = false; btn.textContent = 'Read text'; }
+    }
+  }
+
+  function exportScans(){
+    const out = {
+      scans: SCANS.map(p => ({id:p.id, title:p.title, keywords:p.kw, text:p.text, added:p.note, image:p.img})),
+      versions: Object.entries(VERSIONS).map(([id, list]) => ({
+        page: id,
+        current: list.length + 1,
+        history: list.map((v,i) => ({v:i+2, added:v.note, title:v.title, keywords:v.kw, text:v.text, image:v.img}))
+      }))
+    };
+    dl(new Blob([JSON.stringify(out, null, 2)], {type:'application/json'}),
+       'oishi-scans-and-versions-' + new Date().toISOString().slice(0,10) + '.json');
+  }
+  function exportMarks(csv){
+    const rows = [...MARKS].map(id => byId[id]).filter(Boolean);
+    if (csv){
+      const body = [['binder','page','title','duplicate_group','also_in']].concat(rows.map(p => [
+        label(p), pad(p.p), '"'+p.title.replace(/"/g,'""')+'"', p.g || '',
+        '"'+((groups[p.g]||[]).filter(i=>i!==p.id).map(i => label(byId[i])+' p.'+pad(byId[i].p)).join('; '))+'"'
+      ])).map(r => r.join(',')).join('\n');
+      dl(new Blob([body], {type:'text/csv'}), 'oishi-marked-for-delete.csv');
+    } else {
+      const txt = rows.map(p => `${label(p)} p.${pad(p.p)} — ${p.title}` +
+        ((groups[p.g]||[]).filter(i=>i!==p.id).length ? `  (keep: ${(groups[p.g]||[]).filter(i=>i!==p.id).map(i=>label(byId[i])+' p.'+pad(byId[i].p)).join(', ')})` : '')).join('\n');
+      navigator.clipboard?.writeText(txt).then(
+        () => alert('Copied ' + rows.length + ' pages to the clipboard.'),
+        () => prompt('Copy this list:', txt));
+    }
+  }
+  function dl(blob, name){
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = name; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  }
+
+  async function saveKw(id, list){
+    const p = byId[id]; if (!p) return;
+    const kw = list.slice(0, 12);
+    const hist = VERSIONS[id] || [];
+    if (hist.length){                                 // edit the current version's keywords
+      hist[hist.length-1].kw = kw;
+      await DB.put('versions', { id, list: hist });
+    } else {
+      p.kw = kw; p.kwEdited = true; KWEDIT[id] = kw;
+      if (p.scan){ await DB.put('scans', p); }
+      else { await DB.put('kwedits', {id, kw}); }
+    }
+    rebuild();
+    paintChips();
+    if (viewer.hasAttribute('open') && shownId === id) paint(id);
+    render();
+  }
+
+  async function toggleMark(id){
+    if (MARKS.has(id)){ MARKS.delete(id); await DB.del('marks', id); }
+    else {
+      // marking the last surviving copy would lose the document, not de-duplicate it
+      const p = byId[id];
+      const sibs = p && p.g ? (groups[p.g] || []) : [];
+      if (sibs.length > 1 && sibs.every(i => i === id || MARKS.has(i))){
+        const others = sibs.filter(i => i !== id).map(i => label(byId[i]) + ' p.' + pad(byId[i].p)).join(', ');
+        if (!confirm('That marks every copy of this page — ' + others + ' ' +
+                     (sibs.length > 2 ? 'are' : 'is') + ' already marked, so the document would be gone entirely.\n\n' +
+                     'Mark it anyway?')) return;
+      }
+      MARKS.add(id); await DB.put('marks', {id, at: Date.now()});
+    }
+    render();
+    if (viewer.hasAttribute('open') && shownId) paint(shownId);
+  }
+
+  /* ============ viewer ============ */
+  const viewer = document.getElementById('viewer'), vImg = document.getElementById('v-img');
+  const vTab = document.getElementById('v-tab'), vTtl = document.getElementById('v-ttl');
+  const vText = document.getElementById('v-text'), vKws = document.getElementById('v-kws');
+  const vCopies = document.getElementById('v-copies'), vPrev = document.getElementById('v-prev');
+  const vNext = document.getElementById('v-next'), side = document.getElementById('v-side');
+  const sheetBtn = document.getElementById('v-sheet');
+  let vi = -1, shownId = null, viewingVer = null;   // viewingVer: version index being shown, null = current
+
+  // resolve what to display for page p at the currently-viewed version
+  function viewData(p){
+    const hist = VERSIONS[p.id] || [];
+    // versions array is [v2, v3, ...]; the "original" is version 1
+    if (viewingVer === null || viewingVer === hist.length){          // current (newest)
+      const v = hist[hist.length-1];
+      return { img: v?v.img:basePage(p), thumb: v?v.thumb:baseThumb(p),
+               text: v&&v.text?v.text:p.text, kw: v&&v.kw&&v.kw.length?v.kw:p.kw,
+               title: v&&v.title?v.title:p.title, note: v?v.note:p.note, vnum: hist.length+1, current:true };
+    }
+    if (viewingVer === 0){                                            // original, version 1
+      return { img: basePage(p), thumb: baseThumb(p), text: p.text, kw: p.kw,
+               title: p.title, note: p.note, vnum: 1, current: hist.length===0 };
+    }
+    const v = hist[viewingVer-1];                                     // an intermediate stored version
+    return { img: v.img, thumb: v.thumb, text: v.text||'', kw: v.kw||[], title: v.title||p.title,
+             note: v.note, vnum: viewingVer+1, current:false };
+  }
+
+  function paint(id){
+    const p = byId[id]; if (!p) return;
+    shownId = id;
+    const hist = VERSIONS[p.id] || [];
+    const nv = hist.length + 1;
+    const d = viewData(p);
+
+    vImg.src = d.img; vImg.alt = label(p) + ' page ' + p.p + (nv>1 ? ' version ' + d.vnum : '');
+    vImg.classList.remove('zoom');
+    document.querySelector('.stage').scrollTop = 0;
+    vTab.textContent = codeOf(p) + (nv>1 ? ' · v'+d.vnum : '');
+    vTtl.textContent = d.title;
+
+    // keyword editing only edits the CURRENT version; older ones are read-only
+    if (d.current){
+      vKws.innerHTML = d.kw.map((w,idx) =>
+          `<span class="kwchip">${esc(w)}<button class="kwx" data-kwremove="${idx}" aria-label="Remove keyword ${esc(w)}">×</button></span>`).join('')
+        + `<span class="kwadd"><input id="v-kwadd" placeholder="+ add keyword" aria-label="Add keyword"></span>`
+        + (p.kwEdited ? '<span class="kwedited">edited</span>' : '');
+    } else {
+      vKws.innerHTML = d.kw.map(w => `<span>${esc(w)}</span>`).join('') || '<span>none</span>';
+    }
+    vText.innerHTML = (d.note ? '<em>'+esc(d.note)+'</em><br><br>' : '') +
+                      (d.text ? hl(d.text) : '<em>No text has been read from this page yet.</em>');
+
+    // ---- version history block ----
+    let vh = `<h3>Versions</h3><div class="vers">`;
+    for (let k = nv; k >= 1; k--){
+      const isCur = k === nv, viewing = (viewingVer===null && isCur) || viewingVer === (k-1);
+      const when = k===1 ? 'original' : (hist[k-2]?.at ? new Date(hist[k-2].at).toLocaleDateString() : '');
+      vh += `<div class="vrow ${viewing?'on':''}">
+        <button class="vsel" data-ver="${k-1}" aria-current="${viewing}">v${k}${isCur?' · current':''}<span class="vwhen">${when}</span></button>`;
+      if (!isCur) vh += `<button class="vmake" data-makecur="${k-1}" title="Make this the current version">Make current</button>`;
+      vh += `</div>`;
+    }
+    vh += `</div><button class="vreplace" data-replace="${p.id}">Replace with new version…</button>`;
+    document.getElementById('v-versions').innerHTML = vh;
+
+    // the code to call out to the class, plus a link to send them
+    document.getElementById('v-share').innerHTML =
+      `<div class="sharebox">
+         <div class="sharecode">
+           <span class="scl">Tell the class</span>
+           <b id="sharecodeval">${codeOf(p)}</b>
+         </div>
+         <div class="sharebtns">
+           <button class="sbtn" data-copycode="${codeOf(p)}">Copy code</button>
+           <button class="sbtn" data-copylink="${id}">Copy link</button>
+         </div>
+       </div>`;
+
+    // concepts this page belongs to — home group first, click-through to the Concepts tab
+    const isHome = c => (CONCEPTS[c].pin || []).indexOf(p.id) !== -1;
+    const rangeTxt = c => {
+      const nums = (CONCEPTS[c].pin || []).map(i => byId[i] && byId[i].num).filter(Boolean).sort((a,b)=>a-b);
+      if (!nums.length) return '';
+      return nums.length === 1 ? ` · page ${nums[0]}` : ` · pages ${nums[0]}–${nums[nums.length-1]}`;
+    };
+    const cids = (p.concepts || []).filter(c => CONCEPTS[c]).sort((a,b) => (isHome(a)?0:1) - (isHome(b)?0:1));
+    document.getElementById('v-concepts').innerHTML = cids.length
+      ? '<h3>Concepts on this page</h3><div class="claunch">' + cids.map(c =>
+          `<button class="cbtn" data-concept="${c}">📘 ${esc(CONCEPTS[c].name)}
+           <small>${isHome(c) ? 'this page\u2019s group' + rangeTxt(c) : 'related concept'} · tap to see all its pages</small></button>`).join('') + '</div>'
+      : '';
+
+    vCopies.innerHTML = p.g && groups[p.g]
+      ? '<h3>Copies of this page — mark the one to drop</h3><div class="copies">' + groups[p.g].map(i =>
+          `<div class="cp"><button data-copy="${i}" aria-current="${i===id}">Page ${codeOf(byId[i])} · ${label(byId[i])}</button>
+           <button class="mk" data-mark="${i}" aria-pressed="${MARKS.has(i)}">${MARKS.has(i)?'✓ Marked':'Delete'}</button></div>`).join('') + '</div>'
+      : '';
+  }
+  function show(id){
+    vi = results.findIndex(p => p.id === id);
+    // a page opened by code or link may not be in the current result list — widen the list so it still opens
+    if (vi === -1){ navLabel = null; results = (scopes[tab]() || PAGES).slice(); vi = results.findIndex(p => p.id === id); }
+    if (vi === -1){ results = PAGES.slice(); vi = results.findIndex(p => p.id === id); }
+    if (vi === -1) return;
+    viewingVer = null;              // always open on the current version
+    paint(id);
+    vPrev.disabled = vi===0; vNext.disabled = vi===results.length-1;
+    const aP = document.getElementById('v-arrow-prev'), aN = document.getElementById('v-arrow-next');
+    aP.disabled = vPrev.disabled; aN.disabled = vNext.disabled;
+    document.getElementById('v-navctx').textContent =
+      (navLabel ? navLabel + ' · ' : '') + (vi+1) + ' of ' + results.length;
+    viewer.setAttribute('open',''); document.body.style.overflow='hidden';
+    side.dataset.open='0'; sheetBtn.setAttribute('aria-expanded','false'); sheetBtn.textContent='Text';
+    try { history.replaceState(null, '', '#' + id); } catch(e){ location.hash = id; }
+    document.getElementById('v-close').focus();
+  }
+  function close(){
+    navLabel = null;
+    // drop the #page from the URL so a reload starts at the main page, not the last-viewed one
+    try { history.replaceState(null, '', location.pathname + location.search); } catch(e){ location.hash = ''; }
+    viewer.removeAttribute('open'); document.body.style.overflow='';
+    if (!matchMedia('(hover:none)').matches) qEl.focus();
+  }
+
+  /* ============ concept reader ============ */
+  const cmodal = document.getElementById('cmodal'), cbody = document.getElementById('c-body');
+  let openCid = null, navLabel = null;
+  function openConcept(cid){
+    const c = CONCEPTS[cid]; if (!c) return;
+    openCid = cid;
+    const pages = c.pages.filter(i => byId[i]);
+    cbody.innerHTML = `
+      <div class="ceyebrow">Concept · appears on ${pages.length} page${pages.length===1?'':'s'}</div>
+      <h2 class="ctitle">${esc(c.name)}</h2>
+      <p class="clede">${esc(c.one_line)}</p>
+      <h3>Definition</h3><p>${esc(c.definition)}</p>
+      <h3>Examples</h3><ul>${c.examples.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+      <h3>Why it matters</h3><p>${esc(c.why_it_matters)}</p>
+      <h3>Related</h3><div class="crel">${c.related.map(r=>`<span>${esc(r)}</span>`).join('')}</div>
+      <h3>In the binders</h3><div class="cpages">${pages.map(i =>
+        `<button class="cpage" data-cpage="${i}"><img src="${thumbSrc(byId[i])}" alt="">
+         <span>Page ${codeOf(byId[i])}<br><small>${esc(byId[i].curTitle||byId[i].title)}</small></span></button>`).join('')}</div>
+      <p class="cnote">This explainer was written to expand on what the scans teach — the pages above are the scans it comes from.</p>`;
+    cmodal.hidden = false; document.body.style.overflow='hidden';
+    document.getElementById('c-close').focus();
+  }
+  function goToConcept(cid){
+    const c = CONCEPTS[cid]; if (!c) return;
+    close();                              // leave the page viewer
+    tab = 'concepts';
+    qEl.value = c.name;                   // the concepts-tab filter shows just this card
+    clearEl.hidden = !qEl.value;
+    paintTabs(); render();
+    openConcept(cid);                     // straight into the explainer with all its pages
+  }
+  function closeConcept(){ cmodal.hidden = true; document.body.style.overflow=''; }
+  document.getElementById('c-close').onclick = closeConcept;
+  cmodal.addEventListener('click', e => { if (e.target === cmodal) closeConcept(); });
+  cbody.addEventListener('click', e => {
+    const cp = e.target.closest('[data-cpage]');
+    if (cp){
+      closeConcept();
+      // arrows scroll through THIS concept's pages, in binder order
+      navLabel = openCid && CONCEPTS[openCid] ? CONCEPTS[openCid].name : null;
+      results = (openCid && CONCEPTS[openCid])
+        ? CONCEPTS[openCid].pages.filter(i => byId[i]).map(i => byId[i]).sort((a,b) => a.num - b.num)
+        : (scopes[tab]() || PAGES);
+      show(cp.dataset.cpage);
+    }
+  });
+  function step(d){ const p = results[vi+d]; if (p) show(p.id); }
+
+  /* ============ events ============ */
+  function wire(){
+    const tocbox = out.querySelector('#tocbox');
+    if (tocbox){
+      tocbox.addEventListener('toggle', () => { tocOpen = tocbox.open; });
+      out.querySelectorAll('.tocrow').forEach(b => b.onclick = () => {
+        qEl.value = b.dataset.range;      // range search: those pages, in order
+        render();
+        window.scrollTo({top: 0});
+      });
+    }
+    const jb = out.querySelector('[data-jump]');
+    if (jb) jb.onclick = () => show(jb.dataset.jump);
+    const tryany = out.querySelector('[data-tryany]');
+    if (tryany) tryany.onclick = () => setMatch('any');
+    const d = out.querySelector('#drop');
+    if (d){
+      ['dragenter','dragover'].forEach(ev => d.addEventListener(ev, e => { e.preventDefault(); d.classList.add('over'); }));
+      ['dragleave','drop'].forEach(ev => d.addEventListener(ev, e => { e.preventDefault(); d.classList.remove('over'); }));
+      d.addEventListener('drop', e => addFiles(e.dataTransfer.files));
+      out.querySelector('#b-cam').onclick = () => campick.click();
+      out.querySelector('#b-file').onclick = () => filepick.click();
+      const ex = out.querySelector('#b-export'); if (ex) ex.onclick = exportScans;
+    }
+    const c = out.querySelector('#b-copy'); if (c) c.onclick = () => exportMarks(false);
+    const v = out.querySelector('#b-csv'); if (v) v.onclick = () => exportMarks(true);
+    const u = out.querySelector('#b-unmark');
+    if (u) u.onclick = async () => {
+      if (!confirm('Unmark all ' + MARKS.size + ' pages?')) return;
+      for (const id of [...MARKS]) await DB.del('marks', id);
+      MARKS.clear(); render();
+    };
+  }
+  out.addEventListener('click', e => {
+    const con = e.target.closest('[data-concept]'); if (con) return openConcept(con.dataset.concept);
+    const shot = e.target.closest('[data-id]'); if (shot) return show(shot.dataset.id);
+    const mk = e.target.closest('[data-mark]'); if (mk) return toggleMark(mk.dataset.mark);
+    const oc = e.target.closest('[data-ocr]'); if (oc) return ocr(oc.dataset.ocr);
+    const rm = e.target.closest('[data-rm]');
+    if (rm){
+      if (!confirm('Remove this scanned page from this device?')) return;
+      DB.del('scans', rm.dataset.rm).then(() => { SCANS = SCANS.filter(s => s.id !== rm.dataset.rm); rebuild(); render(); });
+    }
+  });
+  out.addEventListener('keydown', e => {
+    if (e.key === 'Enter'){ const con = e.target.closest('[data-concept]'); if (con) openConcept(con.dataset.concept); }
+  });
+  out.addEventListener('change', async e => {
+    const t = e.target.dataset.ttl, k = e.target.dataset.kw;
+    const id = t || k; if (!id) return;
+    const p = byId[id]; if (!p) return;
+    if (t) p.title = e.target.value.slice(0,58) || 'Scanned page';
+    if (k) p.kw = e.target.value.split(',').map(s => s.trim().toLowerCase()).filter(Boolean).slice(0,10);
+    await DB.put('scans', p); rebuild();
+  });
+  filepick.onchange = e => { addFiles(e.target.files); e.target.value = ''; };
+  campick.onchange = e => { addFiles(e.target.files); e.target.value = ''; };
+  const verpick = document.getElementById('verpick'), vercam = document.getElementById('vercam');
+  verpick.onchange = e => { if (e.target.files[0] && versionTargetId) addVersion(versionTargetId, e.target.files[0]); e.target.value=''; };
+  vercam.onchange  = e => { if (e.target.files[0] && versionTargetId) addVersion(versionTargetId, e.target.files[0]); e.target.value=''; };
+
+  // version history events (delegated on the sidebar)
+  document.getElementById('v-versions').addEventListener('click', e => {
+    const sel = e.target.closest('[data-ver]');
+    if (sel){ const idx = +sel.dataset.ver; const nv = (VERSIONS[shownId]||[]).length; viewingVer = (idx===nv?null:idx); return paint(shownId); }
+    const mk = e.target.closest('[data-makecur]');
+    if (mk){ return makeVersionCurrent(shownId, +mk.dataset.makecur); }
+    const rp = e.target.closest('[data-replace]');
+    if (rp){
+      versionTargetId = rp.dataset.replace;
+      // phone gets a camera option; desktop just the file picker
+      if (matchMedia('(hover:none)').matches && confirm('Take a photo of the new version?\n\nOK = camera, Cancel = choose a file'))
+        vercam.click();
+      else verpick.click();
+    }
+  });
+
+  document.getElementById('v-share').addEventListener('click', e => {
+    const cc = e.target.closest('[data-copycode]');
+    const cl = e.target.closest('[data-copylink]');
+    if (!cc && !cl) return;
+    const text = cc ? cc.dataset.copycode
+                    : location.href.split('#')[0] + '#' + cl.dataset.copylink;
+    const btn = cc || cl, was = btn.textContent;
+    const done = () => { btn.textContent = '✓ Copied'; setTimeout(() => btn.textContent = was, 1400); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, () => prompt('Copy this:', text));
+    else prompt('Copy this:', text);
+  });
+  document.getElementById('v-concepts').addEventListener('click', e => {
+    const c = e.target.closest('[data-concept]'); if (c) goToConcept(c.dataset.concept);
+  });
+  vCopies.addEventListener('click', e => {
+    const c = e.target.closest('[data-copy]'); if (c) return paint(c.dataset.copy);
+    const m = e.target.closest('[data-mark]'); if (m) return toggleMark(m.dataset.mark);
+  });
+  // remove a keyword (× on a chip)
+  vKws.addEventListener('click', e => {
+    const x = e.target.closest('[data-kwremove]'); if (!x || !shownId) return;
+    const p = byId[shownId];
+    const list = p.kw.slice(); list.splice(+x.dataset.kwremove, 1);
+    saveKw(shownId, list);
+  });
+  // add a keyword (Enter or comma in the input)
+  vKws.addEventListener('keydown', e => {
+    if (!(e.key === 'Enter' || e.key === ',')) return;
+    e.preventDefault();
+    const inp = e.target.closest('#v-kwadd'); if (!inp || !shownId) return;
+    const w = inp.value.trim().toLowerCase().replace(/,$/,'');
+    if (!w) return;
+    const p = byId[shownId];
+    if (!p.kw.includes(w)) saveKw(shownId, p.kw.concat(w));
+    else inp.value = '';
+  });
+  document.getElementById('v-close').onclick = close;
+  vPrev.onclick = () => step(-1); vNext.onclick = () => step(1);
+  document.getElementById('v-arrow-prev').onclick = () => step(-1);
+  document.getElementById('v-arrow-next').onclick = () => step(1);
+  sheetBtn.onclick = () => {
+    const o = side.dataset.open === '1';
+    side.dataset.open = o ? '0' : '1';
+    sheetBtn.setAttribute('aria-expanded', String(!o)); sheetBtn.textContent = o ? 'Text' : 'Hide';
+  };
+  document.addEventListener('keydown', e => {
+    if (!cmodal.hidden && e.key === 'Escape') return closeConcept();
+    if (!viewer.hasAttribute('open')){
+      if (e.key === '/' && document.activeElement !== qEl && !/INPUT/.test(document.activeElement.tagName)){ e.preventDefault(); qEl.focus(); }
+      return;
+    }
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+  viewer.addEventListener('click', e => { if (e.target.classList.contains('stage')) close(); });
+
+  // page turning is via the arrows (and keyboard) only — no tap-zoom, no swipe-to-turn.
+  // Pinch-zoom stays native via touch-action on .stage.
+
+  document.getElementById('tabs').onclick = e => {
+    const b = e.target.closest('[data-tab]'); if (!b) return;
+    tab = b.dataset.tab; render();
+  };
+  document.getElementById('chips').onclick = e => {
+    if (e.target.classList.contains('chip')){ qEl.value = e.target.textContent; render(); }
+  };
+  let timer;
+  qEl.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(render, 110); });
+  qEl.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    const id = codeToId(qEl.value);
+    if (id){ e.preventDefault(); show(id); }         // "HI-047" + Enter goes straight there
+  });
+  clearEl.onclick = () => { qEl.value=''; render(); qEl.focus(); };
+  // phone: pin only the search field + tabs. The header sits at a negative sticky
+  // top equal to the height of everything above the search field, so the title,
+  // tagline and controls scroll off naturally with the page — pure native scrolling.
+  const phoneHdr = matchMedia('(max-width:700px)');
+  function sizePin(){
+    const sb = document.querySelector('.searchbar');
+    if (!phoneHdr.matches){ sb.style.top = ''; return; }
+    const above = document.querySelector('.searchbar .field').getBoundingClientRect().top
+                - sb.getBoundingClientRect().top;
+    sb.style.top = (-Math.max(0, Math.round(above))) + 'px';
+  }
+  window.addEventListener('resize', sizePin, {passive: true});
+  window.addEventListener('orientationchange', sizePin);
+  setTimeout(sizePin, 0);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizePin);
+  const setSort = s => {
+    sort = s;
+    document.getElementById('s-rel').setAttribute('aria-pressed', String(s==='rel'));
+    document.getElementById('s-page').setAttribute('aria-pressed', String(s==='page'));
+    render();
+  };
+  document.getElementById('s-rel').onclick = () => setSort('rel');
+  document.getElementById('s-page').onclick = () => setSort('page');
+  function setMatch(m){
+    matchMode = m;
+    document.getElementById('m-all').setAttribute('aria-pressed', String(m === 'all'));
+    document.getElementById('m-any').setAttribute('aria-pressed', String(m === 'any'));
+    render();
+  }
+  document.getElementById('m-all').onclick = () => setMatch('all');
+  document.getElementById('m-any').onclick = () => setMatch('any');
+  document.getElementById('s-dups').onclick = e => {
+    hideDups = !hideDups;
+    e.target.setAttribute('aria-pressed', String(!hideDups));
+    e.target.textContent = hideDups ? 'Show duplicates' : 'Hiding extras';
+    render();
+  };
+
+  /* ============ boot ============ */
+  (async () => {
+    rebuild();
+    await DB.init();
+    SCANS = (await DB.all('scans')) || [];
+    (await DB.all('marks') || []).forEach(m => MARKS.add(m.id));
+    (await DB.all('kwedits') || []).forEach(k => { KWEDIT[k.id] = k.kw; });
+    (await DB.all('versions') || []).forEach(v => { VERSIONS[v.id] = v.list; });
+    rebuild(); paintChips();
+    if (matchMedia('(max-width:760px)').matches) qEl.placeholder = 'Search, or a page number';
+    render();
+
+    // a link like ...index.htm#HI-047 opens straight onto that page
+    const openFromHash = () => {
+      const h = decodeURIComponent(location.hash.replace('#','')).trim();
+      if (!h) return;
+      const id = byId[h] ? h : codeToId(h);
+      if (id) show(id);
+    };
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+
+    if (!matchMedia('(hover:none)').matches && !location.hash) qEl.focus();
+  })();
+})();
+</script>
+</body>
+</html>

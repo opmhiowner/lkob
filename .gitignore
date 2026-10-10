@@ -1,0 +1,10 @@
+# build inputs and rasters never enter the repo (CLAUDE.md > Deployment)
+_work/
+lko_src/
+raw_*/
+# page images are shipped as zips to Bluehost, not through git (~650 MB)
+sitehtm/pages/
+sitehtm/thumbs/
+__pycache__/
+*.pyc
+.DS_Store

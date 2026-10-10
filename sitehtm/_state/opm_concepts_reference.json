@@ -1,0 +1,865 @@
+{
+ "parkinsons-law": {
+  "name": "Parkinson's Law",
+  "pages": [
+   "PG-020",
+   "PG-021",
+   "PG-022",
+   "PG-023",
+   "PG-024",
+   "PG-025",
+   "PG-005",
+   "PG-026",
+   "PG-054"
+  ],
+  "one_line": "Work expands to fill the time available for its completion.",
+  "definition": "Parkinson's Law is the observation that a task will swell in perceived importance and complexity to fill whatever time you give it. Coined by Cyril Northcote Parkinson in a 1955 Economist essay and expanded in his 1957 book, it started as a wry remark about bureaucracy but holds up as a genuine productivity principle: the amount of work is far less fixed than the deadline that contains it.",
+  "examples": [
+   "A move-out inspection that could take an afternoon stretches across a week when no cutoff is set.",
+   "A one-hour report fills the whole day when the day is all that's available; give it thirty minutes and it still gets done.",
+   "A repair estimate 'in progress' for two weeks turns out to need two hours of actual work once a hard deadline lands."
+  ],
+  "why_it_matters": "In property management the law shows up wherever a process lacks a tight structure: move-out workflows, estimates and large repairs, and tenant/owner communication cycles all expand to fill loose timelines. Turned around, it becomes a tool: set a deliberately short, firm deadline and the work compresses to fit it. The deadline is the lever, not the workload.",
+  "related": [
+   "Pareto Principle",
+   "procrastination",
+   "deadlines",
+   "time management",
+   "turn time",
+   "Bounce Back"
+  ],
+  "search_terms": "parkinson's law work expands time deadline procrastination time management deadline pressure move out workflow turn time efficiency cyril northcote parkinson",
+  "match": [
+   "parkinson"
+  ],
+  "pin": [
+   "PG-020",
+   "PG-021",
+   "PG-022",
+   "PG-023",
+   "PG-024",
+   "PG-025",
+   "PG-026"
+  ]
+ },
+ "dunning-kruger": {
+  "name": "Dunning-Kruger Effect",
+  "pages": [
+   "PG-027"
+  ],
+  "one_line": "The least skilled are often the most confident; real experts tend to doubt themselves.",
+  "definition": "The Dunning-Kruger effect is a cognitive bias in which people with low ability at a task overestimate their competence, because the very skills needed to do the task well are the skills needed to recognise how badly they're doing it. Its mirror image is that genuinely skilled people often underestimate themselves, assuming what they find easy is easy for everyone.",
+  "examples": [
+   "A new employee confident they've 'mastered' a process after one week, missing the failure modes an experienced hand watches for.",
+   "A skilled technician who downplays their own expertise because the work feels obvious to them.",
+   "The gap between 'I read the manual once' and 'I've handled this a hundred times' — the first person is often louder."
+  ],
+  "why_it_matters": "It reframes both overconfidence and impostor feelings as predictable, not personal. On a team it argues for humility checks and real feedback: the loudest certainty isn't evidence of competence, and quiet self-doubt often sits with the most capable people. Pairing newer staff with experienced ones surfaces the blind spots the bias hides.",
+  "related": [
+   "cognitive bias",
+   "competence",
+   "humility",
+   "feedback",
+   "continuous learning",
+   "confidence"
+  ],
+  "search_terms": "dunning kruger effect cognitive bias overconfidence competence incompetence impostor syndrome self assessment humility skill confidence blind spot",
+  "match": [
+   "dunning",
+   "kruger"
+  ],
+  "pin": [
+   "PG-027"
+  ]
+ },
+ "five-dysfunctions": {
+  "name": "The Five Dysfunctions of a Team",
+  "pages": [
+   "PG-038",
+   "PG-039"
+  ],
+  "one_line": "Team failure stacks up from the bottom: no trust, then no conflict, no commitment, no accountability, no results.",
+  "definition": "Patrick Lencioni's model (from his 2002 book) describes five layered causes of team failure, each enabling the next. 1) Absence of trust — members won't show vulnerability. 2) Fear of conflict — the team settles for artificial harmony instead of honest debate. 3) Lack of commitment — without real debate, no one truly buys in. 4) Avoidance of accountability — uncommitted people won't hold each other to standards. 5) Inattention to results — everyone protects their own status over the shared goal.",
+  "examples": [
+   "A meeting where everyone nods, then relitigates the decision in the hallway — artificial harmony hiding unspoken disagreement.",
+   "A missed standard nobody mentions, because calling it out feels like conflict.",
+   "Individuals optimising their own numbers while the team's outcome slips."
+  ],
+  "why_it_matters": "Because the dysfunctions build on each other, you fix them bottom-up: trust first. A team that can be vulnerable can argue honestly; honest argument produces real commitment; commitment lets people hold each other accountable; accountability keeps everyone pointed at results. Skip the base and the higher fixes don't hold.",
+  "related": [
+   "trust",
+   "conflict",
+   "accountability",
+   "commitment",
+   "Lencioni",
+   "team building",
+   "harmony"
+  ],
+  "search_terms": "five dysfunctions team lencioni trust conflict commitment accountability results vulnerability artificial harmony team failure leadership",
+  "match": [
+   "dysfunction",
+   "lencioni"
+  ],
+  "pin": [
+   "PG-038",
+   "PG-039"
+  ]
+ },
+ "kanban": {
+  "name": "Kanban",
+  "pages": [
+   "PG-041",
+   "PG-042",
+   "PG-107",
+   "PG-043",
+   "PG-044",
+   "PG-045",
+   "PG-046",
+   "PG-047"
+  ],
+  "one_line": "A visual signal that pulls new work only when the previous work is used up.",
+  "definition": "Kanban is Japanese for 'sign board' — the cards Toyota used to signal when parts needed reordering. It's a replenishment system built on pull from the customer rather than push from the producer: you make or order more only when a real signal says the downstream step is ready. That prevents overproduction and keeps inventory and work-in-progress low.",
+  "examples": [
+   "Office supplies reordered when a marker card surfaces, not on a guessed schedule — the card is the signal.",
+   "A tenant request board where a new card is pulled only as the current one clears, so nothing piles up unseen.",
+   "A two-bin system: when the first bin empties, its tag triggers the reorder while the second bin covers the gap."
+  ],
+  "why_it_matters": "Kanban makes work visible and paces it to real demand instead of to assumptions. Pulling instead of pushing exposes bottlenecks, caps how much is in flight at once, and ties directly to just-in-time: do the right work, in the right amount, at the right time. Writing the process down 'crystallizes' it so it can be followed and taught rather than living in one person's head.",
+  "related": [
+   "just-in-time",
+   "pull system",
+   "Toyota",
+   "value stream",
+   "visual management",
+   "work in progress",
+   "inventory"
+  ],
+  "search_terms": "kanban sign board pull system push producer customer just in time inventory reorder replenishment visual board toyota lean work in progress supplies",
+  "match": [
+   "kanban"
+  ],
+  "pin": [
+   "PG-041",
+   "PG-042",
+   "PG-043",
+   "PG-044",
+   "PG-045",
+   "PG-046",
+   "PG-047",
+   "PG-048"
+  ]
+ },
+ "toyota-problem-solving": {
+  "name": "Problem-Solving (Toyota vs Western)",
+  "pages": [
+   "PG-035",
+   "PG-036",
+   "PG-041",
+   "PG-003",
+   "PG-107",
+   "PG-037",
+   "PG-061",
+   "PG-043",
+   "PG-047",
+   "PG-048"
+  ],
+  "one_line": "Treat a problem as a deviation from standard to fix, not a person to blame.",
+  "definition": "The Toyota view reframes what a 'problem' is. In the traditional Western frame a problem means someone messed up, so people hide problems to avoid blame. In the Toyota frame a problem is simply a deviation from standard — surfaced early, traced to a system cause with the 5 Whys, and used as a chance to improve. 'Five Why's equal One How' (5W=1H): keep asking why until the root cause, then act.",
+  "examples": [
+   "Instead of 'who broke this?', asking 'why did the standard allow this to happen?' — and getting a fix that prevents recurrence.",
+   "Calling attention to a problem early for help, rather than solving it quietly and letting it recur elsewhere.",
+   "Five Whys on a late estimate: late → waited on parts → parts not ordered → no reorder signal → no kanban. Fix the signal, not the person."
+  ],
+  "why_it_matters": "When problems mean blame, they get hidden, and hidden problems repeat. When problems mean 'deviation from standard', they get surfaced and solved at the root. This is the cultural base under kanban, continuous improvement, and the whole value stream — errors become opportunities for learning rather than occasions for punishment.",
+  "related": [
+   "5 Whys",
+   "root cause",
+   "continuous improvement",
+   "kanban",
+   "value stream",
+   "standard work",
+   "Deming"
+  ],
+  "search_terms": "toyota problem solving western deviation from standard blame 5 whys five whys root cause 5w=1h opportunity error learning system cause",
+  "match": [
+   "toyota",
+   "5 why",
+   "five why"
+  ],
+  "pin": [
+   "PG-035",
+   "PG-036"
+  ]
+ },
+ "pareto-principle": {
+  "name": "Pareto Principle (80/20)",
+  "pages": [
+   "PG-025"
+  ],
+  "one_line": "Roughly 80% of results come from 20% of the effort or causes.",
+  "definition": "The Pareto Principle, or 80/20 rule, observes that outcomes are usually driven by a small share of inputs: a minority of causes, clients, or tasks account for the majority of results. Named after economist Vilfredo Pareto, it's a rule of thumb about imbalance, not an exact law — the split might be 70/30 or 90/10, but the point stands that effort and impact are rarely evenly matched.",
+  "examples": [
+   "A small share of properties or tenants generating most of the workload — or most of the revenue.",
+   "A handful of recurring issues causing the bulk of maintenance calls.",
+   "Twenty percent of a to-do list delivering most of the day's real value."
+  ],
+  "why_it_matters": "It's a prioritisation lens. If a fifth of the work drives most of the result, finding and protecting that fifth beats spreading effort evenly. Paired with Parkinson's Law — cut the time, find the vital few — it's a strong argument for focus over busyness.",
+  "related": [
+   "Parkinson's Law",
+   "prioritisation",
+   "time management",
+   "focus",
+   "the vital few"
+  ],
+  "search_terms": "pareto principle 80/20 rule vilfredo pareto prioritisation vital few focus imbalance effort results diminishing returns",
+  "match": [
+   "pareto",
+   "80/20"
+  ],
+  "pin": []
+ },
+ "continuous-improvement": {
+  "name": "Continuous Improvement (CANEI / Kaizen)",
+  "pages": [
+   "PG-006",
+   "PG-007",
+   "PG-098",
+   "PG-037",
+   "PG-033",
+   "PG-048"
+  ],
+  "one_line": "Continuous And Never-Ending Improvement — many small gains, forever.",
+  "definition": "Continuous improvement is the discipline of getting a little better constantly rather than waiting for big overhauls. The binder frames it as CANEI — Continuous And Never-Ending Improvement — the local cousin of the Japanese kaizen and of Deming's PDCA cycle (Plan, Do, Check, Act). Improvement never ends; writing each gain down crystallizes it so it can be repeated and taught.",
+  "examples": [
+   "A weekly tweak to a move-out checklist that compounds into a much smoother process over a year.",
+   "Running Plan-Do-Check-Act on a communication script: try it, measure, adjust, standardise.",
+   "Capturing a fix in writing so the next person inherits the improvement instead of rediscovering it."
+  ],
+  "why_it_matters": "Small, steady, documented gains outperform occasional big pushes, because they stick and they teach. It's the engine that turns problem-solving and kanban into a habit rather than a one-off, and it depends on the Toyota view that surfacing problems is good.",
+  "related": [
+   "PDCA",
+   "Kaizen",
+   "Deming",
+   "kanban",
+   "problem-solving",
+   "standard work",
+   "Simple Action Plan"
+  ],
+  "search_terms": "continuous improvement canei kaizen never ending pdca plan do check act deming small gains standardise incremental",
+  "match": [
+   "canei",
+   "kaizen",
+   "continuous and never"
+  ],
+  "pin": [
+   "PG-037"
+  ]
+ },
+ "bounce-back": {
+  "name": "Bounce Back Initiative",
+  "pages": [
+   "PG-107",
+   "PG-049",
+   "PG-050"
+  ],
+  "one_line": "A method to move forward and resolve when procedures slip.",
+  "definition": "The Bounce Back Initiative is the binder's own framework for recovering when something goes wrong — when a procedure is missed, a deadline slips, or an agreed task isn't completed. Rather than dwelling on the lapse, it's a structured way to re-engage, resolve the issue, and get the workflow moving again, so a single miss doesn't cascade into lost trust among co-workers.",
+  "examples": [
+   "A missed deadline met with a resolve-and-recover step instead of blame — the team bounces back rather than stalls.",
+   "A skipped procedure caught and corrected through a set recovery routine.",
+   "Re-establishing momentum after a dropped task so co-workers don't lose confidence."
+  ],
+  "why_it_matters": "Every team slips sometimes; what separates strong teams is how fast and cleanly they recover. Bounce Back ties directly to accountability and trust: a reliable recovery method means a lapse costs the team a moment, not a relationship.",
+  "related": [
+   "accountability",
+   "trust",
+   "procedures",
+   "Five Dysfunctions",
+   "Parkinson's Law",
+   "resolve"
+  ],
+  "search_terms": "bounce back initiative recover resolve procedure missed deadline forward momentum accountability trust recovery co-workers",
+  "match": [
+   "bounce back"
+  ],
+  "pin": [
+   "PG-049",
+   "PG-050"
+  ]
+ },
+ "peter-principle": {
+  "name": "Peter Principle",
+  "one_line": "People rise to their level of incompetence — and stay there.",
+  "definition": "Laurence J. Peter's 1969 observation that in a hierarchy, employees are promoted for being good at their current job until they land in a role they can't do well — and promotions stop, leaving them stuck there. Over time, positions tend to be filled by people operating at the edge of their competence.",
+  "examples": [
+   "A great property manager promoted into a supervisor role that needs skills nobody trained them for.",
+   "Promoting the best technician to office manager and losing a great technician while gaining a struggling manager."
+  ],
+  "why_it_matters": "Promotion should follow demonstrated ability for the NEXT job, not just results in the current one — and staying excellent in a role you love is a valid career path, not a failure.",
+  "related": [
+   "Dunning-Kruger Effect",
+   "Two Types of Team Members"
+  ],
+  "search_terms": "peter principle promotion hierarchy incompetence",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-019"
+  ],
+  "pages": []
+ },
+ "shut-up-and-listen": {
+  "name": "Shut Up and Listen! (Tilman Fertitta)",
+  "one_line": "Billionaire restaurateur Tilman Fertitta's blunt lessons on hospitality, numbers, and leading through change.",
+  "definition": "A chapter-by-chapter scan of Tilman Fertitta's 2019 book Shut Up and Listen! — hard business truths from the owner of Landry's and the Houston Rockets. The selected spreads cover hospitality ('the plussing culture'), never saying no to a customer, catering to the masses not the classes, knowing your numbers cold, the 'the 5%' rule (it's the 5 percent you don't control that hurts you), cash flow, keeping your hands dirty, teaching one-on-one, anticipating change, hiring people stronger than you, and never giving up.",
+  "examples": [
+   "'Never say no' — find a way to accommodate the customer even when the first answer is no.",
+   "Know your numbers: if you can't state your occupancy, delinquency, and cash position from memory, you're not running the business.",
+   "The 5%: obsess over the small fraction of details that can sink you."
+  ],
+  "why_it_matters": "OPM is a hospitality business as much as a property business — owners and tenants judge us the way diners judge a restaurant. These pages are the binder's core customer-service and numbers curriculum.",
+  "related": [
+   "More Than Fair / Sweet Spot",
+   "Listening & Communication",
+   "Continuous Improvement (CANEI / Kaizen)"
+  ],
+  "search_terms": "shut up and listen fertitta hospitality plussing never say no know your numbers 5 percent cash flow",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-073",
+   "PG-074",
+   "PG-075",
+   "PG-076",
+   "PG-077",
+   "PG-078",
+   "PG-079",
+   "PG-080",
+   "PG-081",
+   "PG-082",
+   "PG-083",
+   "PG-084",
+   "PG-085",
+   "PG-086",
+   "PG-087",
+   "PG-088",
+   "PG-089",
+   "PG-090",
+   "PG-091"
+  ],
+  "pages": []
+ },
+ "who-not-how": {
+  "name": "Who Not How (Sullivan & Hardy)",
+  "one_line": "Stop asking 'How do I do this?' — ask 'Who can do this for me?'",
+  "definition": "Scanned chapters from Dan Sullivan and Benjamin Hardy's Who Not How (2020). The core shift: high achievers stall by trying to learn and do everything themselves. Procrastination is often a signal that you're the wrong 'who' for the task. Finding the right person multiplies time and money instead of spending them.",
+  "examples": [
+   "Delegating a renovation punch-list to a trusted vendor instead of researching how to do each repair.",
+   "'Time creates money' — buying back your hours by handing work to the right who."
+  ],
+  "why_it_matters": "It reframes delegation from a luxury into the main engine of growth — directly applicable to how OPM splits work between staff, vendors, and systems.",
+  "related": [
+   "Parkinson's Law",
+   "Simple Action Plan (SAP)"
+  ],
+  "search_terms": "who not how sullivan hardy delegation procrastination time creates money",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-092",
+   "PG-093",
+   "PG-094",
+   "PG-095",
+   "PG-096",
+   "PG-097"
+  ],
+  "pages": []
+ },
+ "telephone-etiquette": {
+  "name": "Telephone Etiquette",
+  "one_line": "The office standard for answering, holding, transferring, and ending calls.",
+  "definition": "OPM's four-part telephone etiquette guide (it appears twice in the binder). Covers answering by the third ring, preparing your phone voice, proper greetings without elaborate drawn-out openings, taking accurate messages, and leaving callers with a professional impression.",
+  "examples": [
+   "Answer by the third ring, identify yourself and the company.",
+   "Ask permission before placing a caller on hold — and come back when you said you would."
+  ],
+  "why_it_matters": "The phone is most owners' and tenants' first live contact with OPM; consistent etiquette is the cheapest customer-service upgrade there is.",
+  "related": [
+   "Voicemail & Personal Greetings",
+   "Message Policy & Email",
+   "C2=4E and Listening"
+  ],
+  "search_terms": "telephone etiquette answering phone voice hold transfer third ring",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-063",
+   "PG-064",
+   "PG-065",
+   "PG-066",
+   "PG-067"
+  ],
+  "pages": []
+ },
+ "email-messages": {
+  "name": "Message Policy & Email",
+  "one_line": "How OPM writes messages worth reading — email, phone notes, or handwritten.",
+  "definition": "The Message Policy (communication standards for email, phone, and written messages), Email Etiquette from the CEO's desk, and the 'How to Write E-mail Worth Reading' article. Together they set the writing standard: clear subject, short purposeful body, professional tone, and a reply the reader can act on.",
+  "examples": [
+   "Subject lines that state the point: 'Unit 204 — plumber scheduled Tue 9am'.",
+   "One topic per message; action requested stated up front."
+  ],
+  "why_it_matters": "Written messages are OPM's paper trail with owners, tenants, and vendors — sloppy email is sloppy service, and clear email prevents disputes.",
+  "related": [
+   "Telephone Etiquette",
+   "Listening & Communication"
+  ],
+  "search_terms": "message policy email etiquette write email worth reading",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-070",
+   "PG-071",
+   "PG-072"
+  ],
+  "pages": []
+ },
+ "voicemail-greetings": {
+  "name": "Voicemail & Personal Greetings",
+  "one_line": "Scripts and system reference for a current, professional voicemail.",
+  "definition": "The Personal Greeting objectives sheet (keep your greeting current, state your availability, tell callers what to expect) plus the Perfect Voice Office reference card for navigating the voicemail system itself.",
+  "examples": [
+   "Re-record your greeting when you'll be out — 'I'm in the office today, Tuesday the 12th…'",
+   "Check messages after every absence and return calls the same business day."
+  ],
+  "why_it_matters": "A stale or unprofessional greeting tells callers nobody is minding the store; a current one buys patience even when you can't pick up.",
+  "related": [
+   "Telephone Etiquette",
+   "Message Policy & Email"
+  ],
+  "search_terms": "voicemail personal greeting perfect voice mailbox",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-068",
+   "PG-069"
+  ],
+  "pages": []
+ },
+ "communication-skills": {
+  "name": "Listening & Communication",
+  "one_line": "LUA, C2=4E, the Level UP! matrix — OPM's frameworks for listening first and communicating effectively.",
+  "definition": "The binder's communication toolkit: LUA (Listen, Understand, Answer — via Jensen Huang), C2=4E (in-person and phone communication = effective encounters), the Level UP! Communication Matrix for matching the channel to the message, quotes on communication and time, and the Conversation & Bonding spread.",
+  "examples": [
+   "LUA in a tenant dispute: hear the whole complaint, restate it, then answer.",
+   "Level UP!: bad news travels by phone or in person, never by text."
+  ],
+  "why_it_matters": "Most service failures are communication failures; these pages are the shared vocabulary for fixing them.",
+  "related": [
+   "Telephone Etiquette",
+   "Message Policy & Email",
+   "Shut Up and Listen! (Tilman Fertitta)"
+  ],
+  "search_terms": "LUA listen understand answer C2=4E level up communication matrix conversation bonding",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-060",
+   "PG-061",
+   "PG-062"
+  ],
+  "pages": []
+ },
+ "walk-in-triage": {
+  "name": "Walk-in Triage",
+  "one_line": "The front-desk flowchart: greet, sort, and route every walk-in.",
+  "definition": "The Walk-in Triage flowchart (printed and hand-drawn versions): 'How may I help you? What is this concerning?' — then route the visitor to the right person or process instead of letting the interruption land on whoever is nearest.",
+  "examples": [
+   "A tenant walking in with a repair request gets logged and routed, not bounced between desks."
+  ],
+  "why_it_matters": "Triage protects deep work while guaranteeing every visitor is handled — the same discipline hospitals use, scaled to the front desk.",
+  "related": [
+   "Office Basics, Procedures & Rules",
+   "Kanban"
+  ],
+  "search_terms": "walk-in triage flowchart front desk how may i help you",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-051",
+   "PG-052"
+  ],
+  "pages": []
+ },
+ "fu-pan-reflection": {
+  "name": "Fu Pan — Review & Reflection",
+  "one_line": "Lenovo's 'replay the chessboard' habit and Eric Schmidt's weekend reflection.",
+  "definition": "Fu Pan (复盘) — 'replaying the chessboard' — is Lenovo founder Liu Chuanzhi's discipline of systematically reviewing what happened and why before moving on. Paired here with articles on Eric Schmidt's deceptively simple weekend habit of stepping back from screens to reflect. Both argue that review time is not overhead; it's where the learning happens.",
+  "examples": [
+   "A five-minute Fu Pan after a difficult move-out: what happened, why, what do we change?",
+   "Blocking reflection time at week's end instead of rolling straight into the next task."
+  ],
+  "why_it_matters": "Without deliberate review, the office repeats its mistakes; Fu Pan turns experience into procedure.",
+  "related": [
+   "Continuous Improvement (CANEI / Kaizen)",
+   "Problem-Solving (Toyota vs Western)"
+  ],
+  "search_terms": "fu pan lenovo liu chuanzhi replay chessboard eric schmidt google reflection",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-030",
+   "PG-031",
+   "PG-032"
+  ],
+  "pages": []
+ },
+ "words-to-live-by": {
+  "name": "Words to Live By — Our Culture",
+  "one_line": "OPM's mission statement and cultural vocabulary on one sheet.",
+  "definition": "The 'Words to Live By … Our Culture' sheets: the mission statement plus the shared terms (including the Hawaiian 'lua' wordplay) that define how OPM talks about its own culture.",
+  "examples": [
+   "New-hire orientation starts here: the words everyone in the office is expected to know and use."
+  ],
+  "why_it_matters": "Culture is what people say and do when nobody assigns it; writing the words down keeps them in circulation.",
+  "related": [
+   "Who We Are, Mission & Hedgehog",
+   "I Care Chart"
+  ],
+  "search_terms": "words to live by our culture mission statement lua",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-005"
+  ],
+  "pages": []
+ },
+ "who-we-are-mission": {
+  "name": "Who We Are, Mission & Hedgehog",
+  "one_line": "Founded 1977: OPM's story, mission chart, and Hedgehog Concept.",
+  "definition": "The 'Who We Are' section: the About Us history (founded 1977), the Mission / Hedgehog / Oishi Rental System chart (2004), and the Hedgehog Concept & Circle of Opportunity page (2007). The Hedgehog Concept — from Jim Collins — is the intersection of what you're deeply passionate about, what you can be best at, and what drives your economic engine. For OPM: property management is our ONLY business.",
+  "examples": [
+   "The Circle of Opportunity (MOWO → training → inspections) mapped as one repeating cycle.",
+   "Hedgehog in practice: turning away sales work to stay the best at management."
+  ],
+  "why_it_matters": "Every 'should we also do X?' decision routes back to these pages.",
+  "related": [
+   "Great by Choice",
+   "Words to Live By — Our Culture",
+   "Rental Management Philosophy & Agreement"
+  ],
+  "search_terms": "about us founded 1977 mission hedgehog circle of opportunity oishi rental system",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-001",
+   "PG-002",
+   "PG-003",
+   "PG-004"
+  ],
+  "pages": []
+ },
+ "i-care-chart": {
+  "name": "I Care Chart",
+  "one_line": "The I-CARE acronym and org chart — who cares for what.",
+  "definition": "The I Care chart in both its annotated and org-chart forms: the acronym that assigns every function an owner and reminds the office that care is a job duty, not a mood.",
+  "examples": [
+   "Using the chart to find the accountable person for an owner question instead of guessing."
+  ],
+  "why_it_matters": "Accountability maps prevent the 'I thought someone else had it' failure mode.",
+  "related": [
+   "Words to Live By — Our Culture",
+   "Two Types of Team Members"
+  ],
+  "search_terms": "i care chart acronym org chart accountability",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-006",
+   "PG-007"
+  ],
+  "pages": []
+ },
+ "rental-philosophy": {
+  "name": "Rental Management Philosophy & Agreement",
+  "one_line": "How OPM manages rentals — the philosophy, and the agreement that encodes it.",
+  "definition": "'Our Rental Management Philosophy' (three pages, signed by LKO) and the Rental Management Agreement Highlights: rent due dates and the five-business-day demand cycle, use of the standard Hawaii Association of Realtors rental agreement, and the terms owners agree to.",
+  "examples": [
+   "The 11th-of-the-month demand timeline explained to a new owner directly from these pages."
+  ],
+  "why_it_matters": "This is the product OPM sells, in writing — staff should be able to explain any line of it.",
+  "related": [
+   "More Than Fair / Sweet Spot",
+   "Who We Are, Mission & Hedgehog"
+  ],
+  "search_terms": "rental management philosophy agreement highlights demand hawaii association realtors",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-008",
+   "PG-009",
+   "PG-010",
+   "PG-011",
+   "PG-012"
+  ],
+  "pages": []
+ },
+ "more-than-fair": {
+  "name": "More Than Fair / Sweet Spot",
+  "one_line": "Dealing with owners, tenants, vendors, and staff: aim past fair — and know fair isn't equal.",
+  "definition": "The 'More Than Fair' sweet-spot diagrams (color and annotated) on balancing owners, tenants, and vendors, plus the PMIC 'Fair vs. Equal' page: treating people fairly means giving each what their situation requires, which is not always identical treatment.",
+  "examples": [
+   "A payment plan for a long-good tenant hit by a layoff — more than fair, not equal.",
+   "Splitting a disputed repair cost when the lease is ambiguous."
+  ],
+  "why_it_matters": "OPM sits between parties with opposing interests every day; these pages are the standard for judgment calls.",
+  "related": [
+   "Shut Up and Listen! (Tilman Fertitta)",
+   "Rental Management Philosophy & Agreement"
+  ],
+  "search_terms": "more than fair sweet spot fair vs equal PMIC owners tenants vendors",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-013"
+  ],
+  "pages": []
+ },
+ "liability-lawsuits": {
+  "name": "Liability & Safety — News Clippings",
+  "one_line": "Local lawsuits that show what deferred maintenance costs.",
+  "definition": "Press clippings kept as cautionary tales: the falling-branch fatality (Star-Bulletin), the Ala Moana railing death and lawsuit coverage (Star-Advertiser, HNN, KITV), and the $4M repair bill that followed.",
+  "examples": [
+   "Reading the railing case before deciding whether a 'cosmetic' repair can wait."
+  ],
+  "why_it_matters": "Property managers carry real duty-of-care liability; these are local, named, expensive proof.",
+  "related": [
+   "Problem-Solving (Toyota vs Western)",
+   "Continuous Improvement (CANEI / Kaizen)"
+  ],
+  "search_terms": "lawsuit falling branch ala moana railing liability negligence star advertiser KITV",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-014",
+   "PG-015",
+   "PG-016",
+   "PG-017",
+   "PG-018"
+  ],
+  "pages": []
+ },
+ "great-by-choice": {
+  "name": "Great by Choice",
+  "one_line": "Jim Collins: greatness is discipline plus empirical creativity, not luck.",
+  "definition": "An annotated page from Jim Collins' Great by Choice — the research that 10x companies win through fanatic discipline, empirical creativity, and productive paranoia. Source of the 20-Mile March and the Hedgehog family of ideas used elsewhere in the binder.",
+  "examples": [
+   "A 20-Mile March for the office: steady weekly inspection quotas in good weeks and bad."
+  ],
+  "why_it_matters": "It's the intellectual backbone behind the mission chart's discipline language.",
+  "related": [
+   "Who We Are, Mission & Hedgehog",
+   "Parkinson's Law"
+  ],
+  "search_terms": "great by choice jim collins discipline 20 mile march",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-028"
+  ],
+  "pages": []
+ },
+ "four-agreements": {
+  "name": "Four Agreements / Round Tuit",
+  "one_line": "Be impeccable with your word; don't take things personally; don't assume; do your best — and no more 'I'll get around to it.'",
+  "definition": "Don Miguel Ruiz's Four Agreements paired with the classic 'Round Tuit' token — now you have one, so nothing waits on getting around to it.",
+  "examples": [
+   "'Don't make assumptions' applied to a terse owner email before firing back a defensive reply."
+  ],
+  "why_it_matters": "Four rules that de-escalate most interpersonal friction in an office week.",
+  "related": [
+   "Listening & Communication",
+   "Decision Making & Asking Questions"
+  ],
+  "search_terms": "four agreements ruiz round tuit impeccable word assumptions",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-029"
+  ],
+  "pages": []
+ },
+ "procedures-rules": {
+  "name": "Office Basics, Procedures & Rules",
+  "one_line": "Coding, filing, 5S, the Bliss Matrix, and the rules for writing procedures.",
+  "definition": "The Basics sheet (coding for keys/files/invoices, Yardi conventions, triage, 5S, Bliss Matrix) plus the three-page Procedure Steps & Rules guide for how OPM procedures are written, numbered, and maintained.",
+  "examples": [
+   "Filing a new vendor invoice by the coding standard so anyone can find it later.",
+   "Writing a new procedure using the required step format instead of a free-form memo."
+  ],
+  "why_it_matters": "Procedures are the office's memory; the rules keep that memory consistent.",
+  "related": [
+   "Kanban",
+   "Simple Action Plan (SAP)",
+   "Walk-in Triage"
+  ],
+  "search_terms": "basics coding filing 5S bliss matrix procedure steps rules yardi",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-053",
+   "PG-054"
+  ],
+  "pages": []
+ },
+ "simple-action-plan": {
+  "name": "Simple Action Plan (SAP)",
+  "one_line": "One page: project, team, steps, owners, dates.",
+  "definition": "The Simple Action Plan form and the 'Time — the most precious commodity' page that frames it: any initiative worth doing gets a one-page plan with a team lead, steps, and dates — because unplanned work spends the one resource you can't buy back.",
+  "examples": [
+   "A SAP for the office-supply Kanban rollout: lead, steps, review date."
+  ],
+  "why_it_matters": "The SAP is the bridge from a good idea in a meeting to something that actually happens.",
+  "related": [
+   "Who Not How (Sullivan & Hardy)",
+   "Parkinson's Law",
+   "Office Basics, Procedures & Rules"
+  ],
+  "search_terms": "simple action plan SAP form project team lead time precious commodity",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-055",
+   "PG-056"
+  ],
+  "pages": []
+ },
+ "decision-making": {
+  "name": "Decision Making & Asking Questions",
+  "one_line": "Decision discipline, better questions, and learning from choices that fail.",
+  "definition": "The decision-making intro page, Decision Discipline quotes, Asking Questions quotes, and Choices & Failure quotes: a small curriculum on slowing down, interrogating assumptions, and owning outcomes.",
+  "examples": [
+   "Running an expensive vendor decision through the discipline questions before signing.",
+   "'What would we need to believe for this to be true?' asked out loud in a meeting."
+  ],
+  "why_it_matters": "Most costly errors trace to a rushed decision nobody questioned.",
+  "related": [
+   "Fu Pan — Review & Reflection",
+   "Dunning-Kruger Effect",
+   "Four Agreements / Round Tuit"
+  ],
+  "search_terms": "decision making discipline asking questions choices failure quotes",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-033",
+   "PG-034"
+  ],
+  "pages": []
+ },
+ "teamwork-collaboration": {
+  "name": "Teamwork & Collaboration",
+  "one_line": "Two types of team members, and the collaborate posters.",
+  "definition": "The 'Two Types of Team Members' page (produce results or offer support — everyone is one or the other on every task) with the Collaborate quote-poster spreads: teamwork divides the task and multiplies the success.",
+  "examples": [
+   "Naming who is producing and who is supporting before a big move-out week."
+  ],
+  "why_it_matters": "Collaboration language keeps credit and accountability from blurring together.",
+  "related": [
+   "The Five Dysfunctions of a Team",
+   "I Care Chart"
+  ],
+  "search_terms": "two types team members collaborate teamwork posters",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-040"
+  ],
+  "pages": []
+ },
+ "excel-shortcuts": {
+  "name": "Excel Keyboard Shortcuts",
+  "one_line": "The two-page Excel shortcut reference card.",
+  "definition": "A printed reference of Excel keyboard shortcuts — navigation, selection, formatting — kept in the binder for anyone working the spreadsheets.",
+  "examples": [
+   "Ctrl+arrow to jump to the edge of a rent roll instead of scrolling."
+  ],
+  "why_it_matters": "Small speed-ups compound for anyone living in spreadsheets daily.",
+  "related": [
+   "Office Basics, Procedures & Rules"
+  ],
+  "search_terms": "excel keyboard shortcuts reference",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-058",
+   "PG-059"
+  ],
+  "pages": []
+ },
+ "behavior-metrics": {
+  "name": "Behavior Metrics Review",
+  "one_line": "Reviewing behaviors, not just outcomes.",
+  "definition": "The Behavior Metrics Review sheet: tracking the observable behaviors that produce results (calls returned, inspections done, procedures followed) rather than judging on outcomes alone.",
+  "examples": [
+   "A review that counts same-day callbacks instead of arguing about whether a tenant 'feels' served."
+  ],
+  "why_it_matters": "Behaviors are coachable and countable; outcomes lag and hide luck.",
+  "related": [
+   "Continuous Improvement (CANEI / Kaizen)",
+   "Decision Making & Asking Questions"
+  ],
+  "search_terms": "behavior metrics review measurement",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-057"
+  ],
+  "pages": []
+ },
+ "quotes-posters": {
+  "name": "Business Quotes & Posters",
+  "one_line": "The standalone quote pages: commencement wisdom, market wisdom, Yang & Liu.",
+  "definition": "Quote collections that stand on their own: the commencement / stock-market quotes page and the business quotes from Jerry Yang and Liu Chuanzhi.",
+  "examples": [
+   "Pulling a quote for the Monday huddle."
+  ],
+  "why_it_matters": "Shorthand for ideas the longer articles develop.",
+  "related": [
+   "Fu Pan — Review & Reflection",
+   "Teamwork & Collaboration"
+  ],
+  "search_terms": "quotes commencement stock market yang liu posters",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-098"
+  ],
+  "pages": []
+ },
+ "covers-blanks": {
+  "name": "Covers, Blanks & Photos",
+  "one_line": "Structural pages: binder covers, tab sheets, blank back sides, and photos.",
+  "definition": "The non-content pages kept for completeness: binder covers and tables of contents, section tab sheets, blank back sides of double-sided scans, and the gym photo.",
+  "examples": [
+   "The Company Binder cover with its tab list — useful as the binder's own map."
+  ],
+  "why_it_matters": "Grouped so they're accounted for and easy to skip — or to prune in a future cleanup.",
+  "related": [],
+  "search_terms": "cover table of contents blank page back side photo",
+  "match": [],
+  "pin_only": true,
+  "pin": [
+   "PG-099",
+   "PG-100",
+   "PG-101",
+   "PG-102",
+   "PG-103",
+   "PG-104",
+   "PG-105",
+   "PG-106",
+   "PG-107"
+  ],
+  "pages": []
+ }
+}

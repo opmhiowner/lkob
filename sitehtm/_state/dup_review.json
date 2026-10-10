@@ -1,0 +1,2121 @@
+{
+ "clusters": [
+  {
+   "group": 1,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 290,
+     "id": "D290",
+     "pages": 1,
+     "src": "08312026_The preceding process must do what the subsequent proce.pdf",
+     "quality": 0.719,
+     "chars": 538
+    },
+    {
+     "doc": 291,
+     "id": "D291",
+     "pages": 1,
+     "src": "08312026_The preceding process must do what the subsequent proce_001.pdf",
+     "quality": 0.719,
+     "chars": 538
+    }
+   ],
+   "sims": {
+    "D290~D291": 1.0
+   }
+  },
+  {
+   "group": 2,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 401,
+     "id": "D401",
+     "pages": 1,
+     "src": "11272019_F__0.PROJECTS.chris.lko_CHURCHILL.191127.docx-191127 11.pdf",
+     "quality": 0.767,
+     "chars": 381
+    },
+    {
+     "doc": 402,
+     "id": "D402",
+     "pages": 1,
+     "src": "11272019_The optimist sees the opportunity in every difficulty..pdf",
+     "quality": 0.767,
+     "chars": 378
+    }
+   ],
+   "sims": {
+    "D401~D402": 1.0
+   }
+  },
+  {
+   "group": 3,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 6,
+     "id": "D006",
+     "pages": 1,
+     "src": "01112020_We covered 4Acronyms_ t rN__CANEI TEAMS_The road to hel.pdf",
+     "quality": 0.789,
+     "chars": 1291
+    },
+    {
+     "doc": 7,
+     "id": "D007",
+     "pages": 1,
+     "src": "01112020__The road to hell is paved with good intention_.pdf",
+     "quality": 0.779,
+     "chars": 1268
+    },
+    {
+     "doc": 8,
+     "id": "D008",
+     "pages": 1,
+     "src": "01112020__The road to hell is paved with good intention__001.pdf",
+     "quality": 0.782,
+     "chars": 1263
+    }
+   ],
+   "sims": {
+    "D006~D007": 0.92,
+    "D006~D008": 0.92,
+    "D007~D008": 1.0
+   }
+  },
+  {
+   "group": 4,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 23,
+     "id": "D023",
+     "pages": 1,
+     "src": "03032019_An observation that in an organizational hierarchy,  ev.pdf",
+     "quality": 0.812,
+     "chars": 1301
+    },
+    {
+     "doc": 408,
+     "id": "D408",
+     "pages": 1,
+     "src": "12032019_PETER PRINCIPLE.pdf",
+     "quality": 0.814,
+     "chars": 1317
+    }
+   ],
+   "sims": {
+    "D023~D408": 1.0
+   }
+  },
+  {
+   "group": 5,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 76,
+     "id": "D076",
+     "pages": 7,
+     "src": "08162013_Deming philosophy synopsis.pdf",
+     "quality": 0.78,
+     "chars": 22496
+    },
+    {
+     "doc": 77,
+     "id": "D077",
+     "pages": 7,
+     "src": "08162013_Deming philosophy synopsis_001.pdf",
+     "quality": 0.78,
+     "chars": 22501
+    }
+   ],
+   "sims": {
+    "D076~D077": 0.99
+   }
+  },
+  {
+   "group": 6,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 384,
+     "id": "D384",
+     "pages": 1,
+     "src": "10162018_How to Disagree (Without Being Disagreeable).pdf",
+     "quality": 0.768,
+     "chars": 1095
+    },
+    {
+     "doc": 385,
+     "id": "D385",
+     "pages": 8,
+     "src": "10162018_How to Disagree (Without Being Disagreeable)_001.pdf",
+     "quality": 0.788,
+     "chars": 15907
+    },
+    {
+     "doc": 386,
+     "id": "D386",
+     "pages": 8,
+     "src": "10162018_How to Disagree (Without Being Disagreeable)_002.pdf",
+     "quality": 0.79,
+     "chars": 16940
+    },
+    {
+     "doc": 387,
+     "id": "D387",
+     "pages": 8,
+     "src": "10162018_K__Moving Forward.disagreeable.181016.docx -10_16_2018 .pdf",
+     "quality": 0.789,
+     "chars": 16973
+    }
+   ],
+   "sims": {
+    "D384~D385": 0.13,
+    "D384~D386": 0.33,
+    "D384~D387": 0.33,
+    "D385~D386": 0.96,
+    "D385~D387": 0.96,
+    "D386~D387": 0.99
+   }
+  },
+  {
+   "group": 7,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 142,
+     "id": "D142",
+     "pages": 2,
+     "src": "08272026_Management Clause #3_ FAIR HOUSING CLAUSE Owner is ackn.pdf",
+     "quality": 0.804,
+     "chars": 9171
+    },
+    {
+     "doc": 143,
+     "id": "D143",
+     "pages": 2,
+     "src": "08272026_Management Clause #7_ MAINTENANCE AND REPAIRS At AGENTS.pdf",
+     "quality": 0.803,
+     "chars": 8975
+    }
+   ],
+   "sims": {
+    "D142~D143": 0.98
+   }
+  },
+  {
+   "group": 8,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 28,
+     "id": "D028",
+     "pages": 2,
+     "src": "03222021_Being in business can involve all sorts of formulas.  B.pdf",
+     "quality": 0.779,
+     "chars": 5281
+    },
+    {
+     "doc": 29,
+     "id": "D029",
+     "pages": 2,
+     "src": "03222021_Being in business can involve all sorts of formulas.  B_001.pdf",
+     "quality": 0.781,
+     "chars": 5208
+    }
+   ],
+   "sims": {
+    "D028~D029": 0.97
+   }
+  },
+  {
+   "group": 9,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 403,
+     "id": "D403",
+     "pages": 1,
+     "src": "11292023_1. The first type of stress is the fight-or-flight  res.pdf",
+     "quality": 0.814,
+     "chars": 1326
+    },
+    {
+     "doc": 404,
+     "id": "D404",
+     "pages": 1,
+     "src": "11292023_What What doesn't feel good is the net that happens  if.pdf",
+     "quality": 0.792,
+     "chars": 1326
+    }
+   ],
+   "sims": {
+    "D403~D404": 0.96
+   }
+  },
+  {
+   "group": 10,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 17,
+     "id": "D017",
+     "pages": 1,
+     "src": "01292021_warren l3uIIett naS given US pleniyor ounE!-aa Gr-nIs-1.pdf",
+     "quality": 0.812,
+     "chars": 2523
+    },
+    {
+     "doc": 96,
+     "id": "D096",
+     "pages": 1,
+     "src": "08272026_1 f Warren Buffett Says This 1Investment Decision Will .pdf",
+     "quality": 0.805,
+     "chars": 2700
+    }
+   ],
+   "sims": {
+    "D017~D096": 0.96
+   }
+  },
+  {
+   "group": 11,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 54,
+     "id": "D054",
+     "pages": 2,
+     "src": "06012021_2. Someone to help you _Paddle_ _to help you get to  yo.pdf",
+     "quality": 0.754,
+     "chars": 1070
+    },
+    {
+     "doc": 254,
+     "id": "D254",
+     "pages": 1,
+     "src": "08312026_10 Lessons.pdf",
+     "quality": 0.781,
+     "chars": 1045
+    }
+   ],
+   "sims": {
+    "D054~D254": 0.95
+   }
+  },
+  {
+   "group": 12,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 132,
+     "id": "D132",
+     "pages": 13,
+     "src": "08272026_I've heard Indiana's coach, Kurt Sigetti, football  coa.pdf",
+     "quality": 0.747,
+     "chars": 12425
+    },
+    {
+     "doc": 133,
+     "id": "D133",
+     "pages": 13,
+     "src": "08272026_I've heard Indiana's coach, Kurt Sigetti, football  coa_001.pdf",
+     "quality": 0.755,
+     "chars": 12429
+    },
+    {
+     "doc": 134,
+     "id": "D134",
+     "pages": 14,
+     "src": "08272026_I've heard Indiana's coach, Kurt Sigetti, football  coa_002.pdf",
+     "quality": 0.754,
+     "chars": 12225
+    }
+   ],
+   "sims": {
+    "D132~D133": 0.94,
+    "D132~D134": 0.95,
+    "D133~D134": 0.93
+   }
+  },
+  {
+   "group": 13,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 192,
+     "id": "D192",
+     "pages": 2,
+     "src": "08272026_muscular mind 245 Kids who are taught to persevere succ.pdf",
+     "quality": 0.829,
+     "chars": 8709
+    },
+    {
+     "doc": 279,
+     "id": "D279",
+     "pages": 2,
+     "src": "08312026_MINDSET_ Abetter way to encourage achild to learn.pdf",
+     "quality": 0.836,
+     "chars": 8598
+    }
+   ],
+   "sims": {
+    "D192~D279": 0.93
+   }
+  },
+  {
+   "group": 14,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 47,
+     "id": "D047",
+     "pages": 2,
+     "src": "05192026_It was one of the most painful experiences of my life  .pdf",
+     "quality": 0.797,
+     "chars": 1751
+    },
+    {
+     "doc": 50,
+     "id": "D050",
+     "pages": 1,
+     "src": "05252026_It was one of the most painful experiences of my life  .pdf",
+     "quality": 0.802,
+     "chars": 1320
+    },
+    {
+     "doc": 365,
+     "id": "D365",
+     "pages": 2,
+     "src": "09092026_avior metric euall.pdf",
+     "quality": 0.798,
+     "chars": 1739
+    }
+   ],
+   "sims": {
+    "D047~D050": 0.83,
+    "D047~D365": 0.93,
+    "D050~D365": 0.82
+   }
+  },
+  {
+   "group": 15,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 31,
+     "id": "D031",
+     "pages": 1,
+     "src": "03242021_II1C. ti ))0 CREATIVITY Follow-the-'70-20-10 Rule' to P.pdf",
+     "quality": 0.811,
+     "chars": 3101
+    },
+    {
+     "doc": 32,
+     "id": "D032",
+     "pages": 1,
+     "src": "03242021_inc. 5000 CREATIVITY Follow the '70-20-10 Rule' to Prod.pdf",
+     "quality": 0.813,
+     "chars": 3141
+    }
+   ],
+   "sims": {
+    "D031~D032": 0.92
+   }
+  },
+  {
+   "group": 16,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 16,
+     "id": "D016",
+     "pages": 3,
+     "src": "01272022_6. _Be true to yourself, help others, make each day  yo.pdf",
+     "quality": 0.78,
+     "chars": 2595
+    },
+    {
+     "doc": 100,
+     "id": "D100",
+     "pages": 3,
+     "src": "08272026_1. _Talent is God given. Be humble. Fame is man-given. .pdf",
+     "quality": 0.779,
+     "chars": 4746
+    },
+    {
+     "doc": 289,
+     "id": "D289",
+     "pages": 3,
+     "src": "08312026_The legendary UCLA _rmen's basketball coach and six-tim.pdf",
+     "quality": 0.778,
+     "chars": 4725
+    },
+    {
+     "doc": 358,
+     "id": "D358",
+     "pages": 5,
+     "src": "09092026_The legendary UCLA men's basketball coach and six-time .pdf",
+     "quality": 0.773,
+     "chars": 6154
+    }
+   ],
+   "sims": {
+    "D016~D100": 0.59,
+    "D016~D289": 0.64,
+    "D016~D358": 0.54,
+    "D100~D289": 0.91,
+    "D100~D358": 0.8,
+    "D289~D358": 0.82
+   }
+  },
+  {
+   "group": 17,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 215,
+     "id": "D215",
+     "pages": 1,
+     "src": "08282026_AShort Course in Statistics.pdf",
+     "quality": 0.803,
+     "chars": 2201
+    },
+    {
+     "doc": 216,
+     "id": "D216",
+     "pages": 1,
+     "src": "08282026_AShort Course in Statistics_001.pdf",
+     "quality": 0.801,
+     "chars": 2203
+    }
+   ],
+   "sims": {
+    "D215~D216": 0.91
+   }
+  },
+  {
+   "group": 18,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 99,
+     "id": "D099",
+     "pages": 2,
+     "src": "08272026_1. Create aconstancy of purpose toward improvement  of .pdf",
+     "quality": 0.748,
+     "chars": 2833
+    },
+    {
+     "doc": 120,
+     "id": "D120",
+     "pages": 1,
+     "src": "08272026_Deming's leadership principles (Theory of Profound  Kno.pdf",
+     "quality": 0.765,
+     "chars": 2692
+    }
+   ],
+   "sims": {
+    "D099~D120": 0.9
+   }
+  },
+  {
+   "group": 19,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 105,
+     "id": "D105",
+     "pages": 1,
+     "src": "08272026_6M STARTED THINNING ABOUT THE DAILY EXPERIENCE OF THE 0.pdf",
+     "quality": 0.794,
+     "chars": 6919
+    },
+    {
+     "doc": 368,
+     "id": "D368",
+     "pages": 1,
+     "src": "09092026_doesn't have the shiny bravado of so many long been kno.pdf",
+     "quality": 0.795,
+     "chars": 6963
+    }
+   ],
+   "sims": {
+    "D105~D368": 0.9
+   }
+  },
+  {
+   "group": 20,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 304,
+     "id": "D304",
+     "pages": 1,
+     "src": "08312026_owners' value for the improvements,_ says Robb. _Instal.pdf",
+     "quality": 0.817,
+     "chars": 4554
+    },
+    {
+     "doc": 313,
+     "id": "D313",
+     "pages": 1,
+     "src": "09042026_It should come as no surprise messy homes that smell  b.pdf",
+     "quality": 0.815,
+     "chars": 4482
+    },
+    {
+     "doc": 325,
+     "id": "D325",
+     "pages": 1,
+     "src": "09092026_(5% Factor) uo rol vl aaDv is huty 72.2007 Pros ofPrioi.pdf",
+     "quality": 0.805,
+     "chars": 4619
+    }
+   ],
+   "sims": {
+    "D304~D313": 0.9,
+    "D304~D325": 0.9,
+    "D313~D325": 0.88
+   }
+  },
+  {
+   "group": 21,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 382,
+     "id": "D382",
+     "pages": 1,
+     "src": "10132016_Debrief and Brief For Flawless Execution -161013.pdf",
+     "quality": 0.728,
+     "chars": 947
+    },
+    {
+     "doc": 383,
+     "id": "D383",
+     "pages": 1,
+     "src": "10132016_Debrief and Brief For Flawless Execution -Oct 13,  2016.pdf",
+     "quality": 0.733,
+     "chars": 972
+    }
+   ],
+   "sims": {
+    "D382~D383": 0.9
+   }
+  },
+  {
+   "group": 22,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 92,
+     "id": "D092",
+     "pages": 8,
+     "src": "08272026_.Pe4rr4 fJt ` Ra,_1_ f,,R, ' y '#U2022'y' rY RZ''Rf #U2022..1_r ,.pdf",
+     "quality": 0.787,
+     "chars": 22389
+    },
+    {
+     "doc": 302,
+     "id": "D302",
+     "pages": 8,
+     "src": "08312026_i, ,'y '_`S,e ^l71+x- p{ T'f _,r_, #.  s5d#U2022_ `i'tZ' 'Sl.pdf",
+     "quality": 0.782,
+     "chars": 22457
+    }
+   ],
+   "sims": {
+    "D092~D302": 0.9
+   }
+  },
+  {
+   "group": 23,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 122,
+     "id": "D122",
+     "pages": 10,
+     "src": "08272026_Excuse for requesting an itemized estir -t com ap re  b.pdf",
+     "quality": 0.769,
+     "chars": 14421
+    },
+    {
+     "doc": 229,
+     "id": "D229",
+     "pages": 6,
+     "src": "08282026_Isaac Mizrahi-branded yarn. Its 1,352 stores brought in.pdf",
+     "quality": 0.798,
+     "chars": 16510
+    },
+    {
+     "doc": 230,
+     "id": "D230",
+     "pages": 6,
+     "src": "08282026_JAN KAEO gr _,__ Principal, owner, trainer Dale Carnegi.pdf",
+     "quality": 0.802,
+     "chars": 16603
+    },
+    {
+     "doc": 267,
+     "id": "D267",
+     "pages": 8,
+     "src": "08312026_Dealing with 2nd_3rd Estimates & Owners Doing Their Own.pdf",
+     "quality": 0.773,
+     "chars": 9762
+    }
+   ],
+   "sims": {
+    "D122~D229": 0.17,
+    "D122~D230": 0.15,
+    "D122~D267": 0.48,
+    "D229~D230": 0.9,
+    "D229~D267": 0.04,
+    "D230~D267": 0.04
+   }
+  },
+  {
+   "group": 24,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 218,
+     "id": "D218",
+     "pages": 3,
+     "src": "08282026_As property managers, one of pur mst important responsi.pdf",
+     "quality": 0.81,
+     "chars": 5641
+    },
+    {
+     "doc": 258,
+     "id": "D258",
+     "pages": 3,
+     "src": "08312026_As property managers, one of ci mst important responsib.pdf",
+     "quality": 0.799,
+     "chars": 5681
+    }
+   ],
+   "sims": {
+    "D218~D258": 0.9
+   }
+  },
+  {
+   "group": 25,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 55,
+     "id": "D055",
+     "pages": 4,
+     "src": "06052022_Key points $1 invested in Warren Buffett's Berkshire Ha.pdf",
+     "quality": 0.772,
+     "chars": 13866
+    },
+    {
+     "doc": 56,
+     "id": "D056",
+     "pages": 1,
+     "src": "06052022_Key points $1 invested in Warren Buffett's Berkshire Ha_001.pdf",
+     "quality": 0.777,
+     "chars": 3492
+    }
+   ],
+   "sims": {
+    "D055~D056": 0.89
+   }
+  },
+  {
+   "group": 26,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 72,
+     "id": "D072",
+     "pages": 1,
+     "src": "07302016_LEVEL 1 2 3 4 5 SILENCE I'M DONE WHAT DO YOU_ WHAT IF_ .pdf",
+     "quality": 0.733,
+     "chars": 2328
+    },
+    {
+     "doc": 79,
+     "id": "D079",
+     "pages": 2,
+     "src": "08232016_Level UP! _COMMUNICATIONAND CHORES_.pdf",
+     "quality": 0.732,
+     "chars": 4453
+    },
+    {
+     "doc": 148,
+     "id": "D148",
+     "pages": 4,
+     "src": "08272026_PMs _1)DRI 2)PMIC Out 3)Any PMIC Avail.pdf",
+     "quality": 0.742,
+     "chars": 5637
+    }
+   ],
+   "sims": {
+    "D072~D079": 0.89,
+    "D072~D148": 0.56,
+    "D079~D148": 0.53
+   }
+  },
+  {
+   "group": 27,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 276,
+     "id": "D276",
+     "pages": 1,
+     "src": "08312026_Knowledge is Power Most people have heard the phrase _k.pdf",
+     "quality": 0.804,
+     "chars": 2598
+    },
+    {
+     "doc": 277,
+     "id": "D277",
+     "pages": 1,
+     "src": "08312026_Knowledge is Power.pdf",
+     "quality": 0.809,
+     "chars": 2565
+    }
+   ],
+   "sims": {
+    "D276~D277": 0.87
+   }
+  },
+  {
+   "group": 28,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 287,
+     "id": "D287",
+     "pages": 3,
+     "src": "08312026_Ten years afterthe worldwide bestsellerGoodto Great,Jim.pdf",
+     "quality": 0.839,
+     "chars": 7267
+    },
+    {
+     "doc": 292,
+     "id": "D292",
+     "pages": 3,
+     "src": "08312026_Weaving the story of South Pole explorers Roald Amundse.pdf",
+     "quality": 0.833,
+     "chars": 7018
+    }
+   ],
+   "sims": {
+    "D287~D292": 0.87
+   }
+  },
+  {
+   "group": 29,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 263,
+     "id": "D263",
+     "pages": 12,
+     "src": "08312026_COMPANIES TICK-THE MAP.pdf",
+     "quality": 0.809,
+     "chars": 38966
+    },
+    {
+     "doc": 320,
+     "id": "D320",
+     "pages": 12,
+     "src": "09092026_#U2022Why do some start-ups and small businesses grow into  .pdf",
+     "quality": 0.81,
+     "chars": 39465
+    }
+   ],
+   "sims": {
+    "D263~D320": 0.85
+   }
+  },
+  {
+   "group": 30,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 90,
+     "id": "D090",
+     "pages": 23,
+     "src": "08272026_.. #U2022_..,-. ).'. ._l.. s;,., k.,. `,, _i. .3'F, -, _.-F .pdf",
+     "quality": 0.792,
+     "chars": 51905
+    },
+    {
+     "doc": 184,
+     "id": "D184",
+     "pages": 23,
+     "src": "08272026_a..s qM.i ly_ +t_5 E.,, '.. 437 g#U2022x'. r r'V#U201e_v __s7Y--c.pdf",
+     "quality": 0.789,
+     "chars": 51016
+    }
+   ],
+   "sims": {
+    "D090~D184": 0.85
+   }
+  },
+  {
+   "group": 31,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 69,
+     "id": "D069",
+     "pages": 2,
+     "src": "07252018_AGreat Lesson on Stress.pdf",
+     "quality": 0.788,
+     "chars": 3135
+    },
+    {
+     "doc": 376,
+     "id": "D376",
+     "pages": 2,
+     "src": "09202014__As with the glass of water, you have to put it down  f.pdf",
+     "quality": 0.791,
+     "chars": 2896
+    }
+   ],
+   "sims": {
+    "D069~D376": 0.84
+   }
+  },
+  {
+   "group": 32,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 232,
+     "id": "D232",
+     "pages": 1,
+     "src": "08282026_N1_ Iply.pdf",
+     "quality": 0.779,
+     "chars": 4712
+    },
+    {
+     "doc": 272,
+     "id": "D272",
+     "pages": 1,
+     "src": "08312026_IJ VIal.pdf",
+     "quality": 0.772,
+     "chars": 4725
+    }
+   ],
+   "sims": {
+    "D232~D272": 0.84
+   }
+  },
+  {
+   "group": 33,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 170,
+     "id": "D170",
+     "pages": 3,
+     "src": "08272026_WHO NOT HOW.pdf",
+     "quality": 0.794,
+     "chars": 8015
+    },
+    {
+     "doc": 195,
+     "id": "D195",
+     "pages": 5,
+     "src": "08272026_or _hard is-cw. Of course, 1'ou need to work harp. LEI .pdf",
+     "quality": 0.786,
+     "chars": 10321
+    }
+   ],
+   "sims": {
+    "D170~D195": 0.82
+   }
+  },
+  {
+   "group": 34,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 156,
+     "id": "D156",
+     "pages": 1,
+     "src": "08272026_THE MINDSETS ,7 you're dealt and have_t live with,. liw.pdf",
+     "quality": 0.778,
+     "chars": 4327
+    },
+    {
+     "doc": 248,
+     "id": "D248",
+     "pages": 1,
+     "src": "08282026_you're dealt and have to live with, always trying to  c.pdf",
+     "quality": 0.805,
+     "chars": 4493
+    }
+   ],
+   "sims": {
+    "D156~D248": 0.81
+   }
+  },
+  {
+   "group": 35,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 102,
+     "id": "D102",
+     "pages": 1,
+     "src": "08272026_1r; t IJr1 WHA'C IT TAKES (_CL'. what to do before we p.pdf",
+     "quality": 0.733,
+     "chars": 2859
+    },
+    {
+     "doc": 253,
+     "id": "D253",
+     "pages": 1,
+     "src": "08312026_1-{ '1 1WxA'r ITTAKES-- C((1T E what to do before we pu.pdf",
+     "quality": 0.747,
+     "chars": 2868
+    },
+    {
+     "doc": 336,
+     "id": "D336",
+     "pages": 1,
+     "src": "09092026_7_i _Vl(AC lr T_1KEs (c what to do before we put them t.pdf",
+     "quality": 0.741,
+     "chars": 2748
+    }
+   ],
+   "sims": {
+    "D102~D253": 0.78,
+    "D102~D336": 0.79,
+    "D253~D336": 0.8
+   }
+  },
+  {
+   "group": 36,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 197,
+     "id": "D197",
+     "pages": 6,
+     "src": "08272026_performance indicators that acquiring information can  .pdf",
+     "quality": 0.787,
+     "chars": 22388
+    },
+    {
+     "doc": 233,
+     "id": "D233",
+     "pages": 7,
+     "src": "08282026_OPPORTUNITIES GAINED OR OPPORTUNITIES LOST.pdf",
+     "quality": 0.773,
+     "chars": 21167
+    },
+    {
+     "doc": 246,
+     "id": "D246",
+     "pages": 1,
+     "src": "08282026_recurring root causes, in order for the organization  t.pdf",
+     "quality": 0.768,
+     "chars": 1959
+    }
+   ],
+   "sims": {
+    "D197~D233": 0.78,
+    "D197~D246": 0.3,
+    "D233~D246": 0.23
+   }
+  },
+  {
+   "group": 37,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 224,
+     "id": "D224",
+     "pages": 5,
+     "src": "08282026_F LIJt years1 developed expertise in portfolio engineer.pdf",
+     "quality": 0.777,
+     "chars": 9829
+    },
+    {
+     "doc": 247,
+     "id": "D247",
+     "pages": 5,
+     "src": "08282026_year .had developed expertise in portfolio engineering,.pdf",
+     "quality": 0.785,
+     "chars": 10076
+    },
+    {
+     "doc": 351,
+     "id": "D351",
+     "pages": 6,
+     "src": "09092026_Of course we continued to make mistakes, though theywer.pdf",
+     "quality": 0.775,
+     "chars": 9915
+    },
+    {
+     "doc": 379,
+     "id": "D379",
+     "pages": 6,
+     "src": "10112017_.Ray Dalio October 11, 2017 `__ eth#U00abnilit Inee ecLt 'j .pdf",
+     "quality": 0.751,
+     "chars": 11805
+    }
+   ],
+   "sims": {
+    "D224~D247": 0.75,
+    "D224~D351": 0.77,
+    "D224~D379": 0.66,
+    "D247~D351": 0.74,
+    "D247~D379": 0.66,
+    "D351~D379": 0.65
+   }
+  },
+  {
+   "group": 38,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 227,
+     "id": "D227",
+     "pages": 1,
+     "src": "08282026_Intel Inside'. Parkinson's law Sts ExtraordinaryPert % .pdf",
+     "quality": 0.75,
+     "chars": 3415
+    },
+    {
+     "doc": 228,
+     "id": "D228",
+     "pages": 1,
+     "src": "08282026_Intellnside`. Parkinson's law st t`as_ Extraordinary Pe.pdf",
+     "quality": 0.75,
+     "chars": 3334
+    }
+   ],
+   "sims": {
+    "D227~D228": 0.76
+   }
+  },
+  {
+   "group": 39,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 331,
+     "id": "D331",
+     "pages": 32,
+     "src": "09092026_2009-2010.pdf",
+     "quality": 0.793,
+     "chars": 109776
+    },
+    {
+     "doc": 348,
+     "id": "D348",
+     "pages": 32,
+     "src": "09092026_J4 1,n'.pdf",
+     "quality": 0.797,
+     "chars": 112946
+    }
+   ],
+   "sims": {
+    "D331~D348": 0.76
+   }
+  },
+  {
+   "group": 40,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 268,
+     "id": "D268",
+     "pages": 2,
+     "src": "08312026_Eliminate task saturation in your workplace. _Kill  the.pdf",
+     "quality": 0.806,
+     "chars": 2483
+    },
+    {
+     "doc": 332,
+     "id": "D332",
+     "pages": 1,
+     "src": "09092026_3. Mutual Support -Wingman -Fly as team a. Learn each o.pdf",
+     "quality": 0.814,
+     "chars": 1390
+    },
+    {
+     "doc": 352,
+     "id": "D352",
+     "pages": 1,
+     "src": "09092026_Real or imagined... it can kill you (us) 1. Acknowledge.pdf",
+     "quality": 0.794,
+     "chars": 1080
+    }
+   ],
+   "sims": {
+    "D268~D332": 0.75,
+    "D268~D352": 0.64,
+    "D332~D352": 0.05
+   }
+  },
+  {
+   "group": 41,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 231,
+     "id": "D231",
+     "pages": 1,
+     "src": "08282026_Let's consider two different responses to Assume that a.pdf",
+     "quality": 0.77,
+     "chars": 2046
+    },
+    {
+     "doc": 252,
+     "id": "D252",
+     "pages": 1,
+     "src": "08312026_.n our aining are so.pdf",
+     "quality": 0.755,
+     "chars": 1918
+    }
+   ],
+   "sims": {
+    "D231~D252": 0.73
+   }
+  },
+  {
+   "group": 42,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 169,
+     "id": "D169",
+     "pages": 2,
+     "src": "08272026_W'Orkin, snarter#U2022 I R2ng aCostco warehouse is teal spor.pdf",
+     "quality": 0.804,
+     "chars": 8586
+    },
+    {
+     "doc": 172,
+     "id": "D172",
+     "pages": 2,
+     "src": "08272026_Working smarter.pdf",
+     "quality": 0.817,
+     "chars": 8734
+    },
+    {
+     "doc": 173,
+     "id": "D173",
+     "pages": 2,
+     "src": "08272026_Working, smarter..pdf",
+     "quality": 0.813,
+     "chars": 8600
+    },
+    {
+     "doc": 174,
+     "id": "D174",
+     "pages": 2,
+     "src": "08272026_Working, smarter._001.pdf",
+     "quality": 0.809,
+     "chars": 8736
+    },
+    {
+     "doc": 175,
+     "id": "D175",
+     "pages": 2,
+     "src": "08272026_Working, smarter.pdf",
+     "quality": 0.813,
+     "chars": 7575
+    }
+   ],
+   "sims": {
+    "D169~D172": 0.68,
+    "D169~D173": 0.65,
+    "D169~D174": 0.67,
+    "D169~D175": 0.61,
+    "D172~D173": 0.69,
+    "D172~D174": 0.72,
+    "D172~D175": 0.66,
+    "D173~D174": 0.73,
+    "D173~D175": 0.64,
+    "D174~D175": 0.67
+   }
+  },
+  {
+   "group": 43,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 108,
+     "id": "D108",
+     "pages": 3,
+     "src": "08272026_After the curtain descended on UCLA's majestic run, it .pdf",
+     "quality": 0.768,
+     "chars": 8520
+    },
+    {
+     "doc": 249,
+     "id": "D249",
+     "pages": 4,
+     "src": "08312026_!rt _ {4 i'.Ire +4 tcv. #U2022r' _J ,V, _r, s wr _r tY! J.5 .pdf",
+     "quality": 0.78,
+     "chars": 10324
+    }
+   ],
+   "sims": {
+    "D108~D249": 0.71
+   }
+  },
+  {
+   "group": 44,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 61,
+     "id": "D061",
+     "pages": 9,
+     "src": "06232020_May 9, 20_11 3_00 AM HST.pdf",
+     "quality": 0.767,
+     "chars": 20840
+    },
+    {
+     "doc": 85,
+     "id": "D085",
+     "pages": 6,
+     "src": "08272026_)bOMSTEVE JOBSDO WN TO THE JANITOR' HO WAMERICA 'S MOST.pdf",
+     "quality": 0.784,
+     "chars": 18049
+    },
+    {
+     "doc": 250,
+     "id": "D250",
+     "pages": 7,
+     "src": "08312026_(k nis1f#U2666 ..tv ; 4tNf uQ ,_ fftQ ;p- q.... #U00abf r#U2666Mix r.pdf",
+     "quality": 0.782,
+     "chars": 18275
+    }
+   ],
+   "sims": {
+    "D061~D085": 0.67,
+    "D061~D250": 0.7,
+    "D085~D250": 0.7
+   }
+  },
+  {
+   "group": 45,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 357,
+     "id": "D357",
+     "pages": 1,
+     "src": "09092026_The Book of Elon_ AGuide to Purpose and Success by Eric.pdf",
+     "quality": 0.785,
+     "chars": 988
+    },
+    {
+     "doc": 372,
+     "id": "D372",
+     "pages": 1,
+     "src": "09112026_by Eric Jorgenson (Author), Naval Ravikant (Foreword)  .pdf",
+     "quality": 0.779,
+     "chars": 1001
+    }
+   ],
+   "sims": {
+    "D357~D372": 0.7
+   }
+  },
+  {
+   "group": 46,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 324,
+     "id": "D324",
+     "pages": 3,
+     "src": "09092026_(-' _ 5Wa sTo Fix ur Dysfunctional Team Wt OF Kevin Kru.pdf",
+     "quality": 0.764,
+     "chars": 4081
+    },
+    {
+     "doc": 330,
+     "id": "D330",
+     "pages": 3,
+     "src": "09092026_12rk Dysfunctional Wa To Fix ur Team -Kovin-Kru e -----.pdf",
+     "quality": 0.789,
+     "chars": 4060
+    }
+   ],
+   "sims": {
+    "D324~D330": 0.68
+   }
+  },
+  {
+   "group": 47,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 42,
+     "id": "D042",
+     "pages": 10,
+     "src": "05042026_#U2022Misunderstood Stoicism_ It is often incorrectly though.pdf",
+     "quality": 0.794,
+     "chars": 12438
+    },
+    {
+     "doc": 43,
+     "id": "D043",
+     "pages": 3,
+     "src": "05042026_#U2022Misunderstood Stoicism_ It is often incorrectly though_001.pdf",
+     "quality": 0.803,
+     "chars": 5175
+    },
+    {
+     "doc": 183,
+     "id": "D183",
+     "pages": 9,
+     "src": "08272026__we don't need firefighters; we need people who could b.pdf",
+     "quality": 0.772,
+     "chars": 7638
+    }
+   ],
+   "sims": {
+    "D042~D043": 0.6,
+    "D042~D183": 0.66,
+    "D043~D183": 0.06
+   }
+  },
+  {
+   "group": 48,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 126,
+     "id": "D126",
+     "pages": 1,
+     "src": "08272026_Fail Fast Fail Forward Fait Often Fjai.}~Cheaply.pdf",
+     "quality": 0.693,
+     "chars": 817
+    },
+    {
+     "doc": 269,
+     "id": "D269",
+     "pages": 1,
+     "src": "08312026_FIP.E 8u4.LT5 TI4EJJ piSc Pc N&4.tS. ion %O _#U25baM$1Ttpl.pdf",
+     "quality": 0.702,
+     "chars": 750
+    }
+   ],
+   "sims": {
+    "D126~D269": 0.66
+   }
+  },
+  {
+   "group": 49,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 91,
+     "id": "D091",
+     "pages": 2,
+     "src": "08272026_... ................ r........................_ 7_  nn .pdf",
+     "quality": 0.777,
+     "chars": 12355
+    },
+    {
+     "doc": 103,
+     "id": "D103",
+     "pages": 1,
+     "src": "08272026_3Ea18UY' STVRNAR0UN0 TEAM Economic Forum in Davos. They.pdf",
+     "quality": 0.807,
+     "chars": 5534
+    },
+    {
+     "doc": 251,
+     "id": "D251",
+     "pages": 2,
+     "src": "08312026_........................................................pdf",
+     "quality": 0.775,
+     "chars": 11034
+    }
+   ],
+   "sims": {
+    "D091~D103": 0.04,
+    "D091~D251": 0.36,
+    "D103~D251": 0.64
+   }
+  },
+  {
+   "group": 50,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 57,
+     "id": "D057",
+     "pages": 4,
+     "src": "06142015_6_14_2015 Comparing Lean Principles to the 14 Tcryota  .pdf",
+     "quality": 0.816,
+     "chars": 9834
+    },
+    {
+     "doc": 67,
+     "id": "D067",
+     "pages": 6,
+     "src": "07212010_JUL 28 Posted by Matt Wrye.pdf",
+     "quality": 0.806,
+     "chars": 9884
+    },
+    {
+     "doc": 118,
+     "id": "D118",
+     "pages": 8,
+     "src": "08272026_Comparing the Five Lean Principles to the Toyota 14 Pri.pdf",
+     "quality": 0.813,
+     "chars": 17471
+    }
+   ],
+   "sims": {
+    "D057~D067": 0.4,
+    "D057~D118": 0.64,
+    "D067~D118": 0.58
+   }
+  },
+  {
+   "group": 51,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 155,
+     "id": "D155",
+     "pages": 3,
+     "src": "08272026_TEAM BUILDING IN AN OFFICE By_ Mari Eagar Presented on_.pdf",
+     "quality": 0.797,
+     "chars": 5673
+    },
+    {
+     "doc": 206,
+     "id": "D206",
+     "pages": 3,
+     "src": "08282026_#U2022Consistency is the key to deliver good performance  AL.pdf",
+     "quality": 0.792,
+     "chars": 5519
+    }
+   ],
+   "sims": {
+    "D155~D206": 0.63
+   }
+  },
+  {
+   "group": 52,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 107,
+     "id": "D107",
+     "pages": 1,
+     "src": "08272026_ALack of Ownership.pdf",
+     "quality": 0.75,
+     "chars": 2141
+    },
+    {
+     "doc": 178,
+     "id": "D178",
+     "pages": 2,
+     "src": "08272026__So oFten we find ourselves reacting to problems, putti.pdf",
+     "quality": 0.814,
+     "chars": 4410
+    },
+    {
+     "doc": 179,
+     "id": "D179",
+     "pages": 3,
+     "src": "08272026__So often we find ourselves reacting to problems, putti_001.pdf",
+     "quality": 0.791,
+     "chars": 6625
+    }
+   ],
+   "sims": {
+    "D107~D178": 0.02,
+    "D107~D179": 0.53,
+    "D178~D179": 0.62
+   }
+  },
+  {
+   "group": 53,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 51,
+     "id": "D051",
+     "pages": 1,
+     "src": "05282022_Jeff Bezos released his final shareholder letter as  CE.pdf",
+     "quality": 0.777,
+     "chars": 2025
+    },
+    {
+     "doc": 138,
+     "id": "D138",
+     "pages": 3,
+     "src": "08272026_If you want to be successful in business (in life,  act.pdf",
+     "quality": 0.788,
+     "chars": 5186
+    }
+   ],
+   "sims": {
+    "D051~D138": 0.61
+   }
+  },
+  {
+   "group": 54,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 154,
+     "id": "D154",
+     "pages": 1,
+     "src": "08272026_Stressed out_ It can be good Lotyou By Alma Tugend with.pdf",
+     "quality": 0.777,
+     "chars": 3971
+    },
+    {
+     "doc": 285,
+     "id": "D285",
+     "pages": 1,
+     "src": "08312026_Stressed out_ It can be good for you.pdf",
+     "quality": 0.772,
+     "chars": 4420
+    }
+   ],
+   "sims": {
+    "D154~D285": 0.59
+   }
+  },
+  {
+   "group": 55,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 14,
+     "id": "D014",
+     "pages": 9,
+     "src": "01202026_4' Share q6 E There were so many memorable moments this.pdf",
+     "quality": 0.842,
+     "chars": 9619
+    },
+    {
+     "doc": 15,
+     "id": "D015",
+     "pages": 2,
+     "src": "01202026_Share q6 k There were so many memorable moments this se.pdf",
+     "quality": 0.85,
+     "chars": 2124
+    }
+   ],
+   "sims": {
+    "D014~D015": 0.57
+   }
+  },
+  {
+   "group": 56,
+   "kind": "same",
+   "members": [
+    {
+     "doc": 70,
+     "id": "D070",
+     "pages": 4,
+     "src": "07262021_$ $ $ Day 1 0.01 Day 11 10.24 Day 21 10,485.76 Day 2 0..pdf",
+     "quality": 0.782,
+     "chars": 6432
+    },
+    {
+     "doc": 71,
+     "id": "D071",
+     "pages": 1,
+     "src": "07262021_Iydon.sipe (67)in #mone #U20224years ago.pdf",
+     "quality": 0.796,
+     "chars": 2807
+    }
+   ],
+   "sims": {
+    "D070~D071": 0.56
+   }
+  },
+  {
+   "group": 57,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 35,
+     "id": "D035",
+     "pages": 12,
+     "src": "04132017_You can read Bezos' full letter below_ Lc - _Jeff, what.pdf",
+     "quality": 0.805,
+     "chars": 36221
+    },
+    {
+     "doc": 36,
+     "id": "D036",
+     "pages": 7,
+     "src": "04132017__Jeff, what does Day 2look like__ That's aquestion Ijus.pdf",
+     "quality": 0.804,
+     "chars": 11775
+    },
+    {
+     "doc": 245,
+     "id": "D245",
+     "pages": 1,
+     "src": "08282026_r_ I About seven years ago, Netflix announced that they.pdf",
+     "quality": 0.817,
+     "chars": 4028
+    }
+   ],
+   "sims": {
+    "D035~D036": 0.48,
+    "D035~D245": 0.28,
+    "D036~D245": 0.07
+   }
+  },
+  {
+   "group": 58,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 22,
+     "id": "D022",
+     "pages": 2,
+     "src": "02282021_2. Ownership. Leaders are owners. They think long term .pdf",
+     "quality": 0.86,
+     "chars": 3455
+    },
+    {
+     "doc": 407,
+     "id": "D407",
+     "pages": 7,
+     "src": "12032019_Ownership..pdf",
+     "quality": 0.81,
+     "chars": 13712
+    }
+   ],
+   "sims": {
+    "D022~D407": 0.48
+   }
+  },
+  {
+   "group": 59,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 158,
+     "id": "D158",
+     "pages": 2,
+     "src": "08272026_The Principles (revised for OPM 08_02_05).pdf",
+     "quality": 0.821,
+     "chars": 3673
+    },
+    {
+     "doc": 235,
+     "id": "D235",
+     "pages": 1,
+     "src": "08282026_WORDS TO LIVE BY ...OUR CULTURE.pdf",
+     "quality": 0.782,
+     "chars": 2844
+    },
+    {
+     "doc": 311,
+     "id": "D311",
+     "pages": 4,
+     "src": "09042026_Bolt CEO says he let go of his entire HR team for creat.pdf",
+     "quality": 0.76,
+     "chars": 5051
+    },
+    {
+     "doc": 355,
+     "id": "D355",
+     "pages": 17,
+     "src": "09092026_Team Train an_dout Er Ilre, Systems &Best Practices.pdf",
+     "quality": 0.798,
+     "chars": 19065
+    }
+   ],
+   "sims": {
+    "D158~D235": 0.34,
+    "D158~D311": 0.01,
+    "D158~D355": 0.14,
+    "D235~D311": 0.01,
+    "D235~D355": 0.34,
+    "D311~D355": 0.46
+   }
+  },
+  {
+   "group": 60,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 131,
+     "id": "D131",
+     "pages": 1,
+     "src": "08272026_How valuable is that information from Ray Dalio_ If  ot.pdf",
+     "quality": 0.747,
+     "chars": 4622
+    },
+    {
+     "doc": 200,
+     "id": "D200",
+     "pages": 6,
+     "src": "08272026_surges can overwhelm us, and when that happens to trade.pdf",
+     "quality": 0.825,
+     "chars": 11546
+    },
+    {
+     "doc": 207,
+     "id": "D207",
+     "pages": 5,
+     "src": "08282026_#U2022John C. Bogle, the 85-year-old sage with 64 years  of .pdf",
+     "quality": 0.756,
+     "chars": 19442
+    }
+   ],
+   "sims": {
+    "D131~D200": 0.04,
+    "D131~D207": 0.44,
+    "D200~D207": 0.22
+   }
+  },
+  {
+   "group": 61,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 11,
+     "id": "D011",
+     "pages": 9,
+     "src": "01152016_A. Senior_Problem Solver 13 1. Schedule WB_ 'j ,bDD v 1.pdf",
+     "quality": 0.719,
+     "chars": 11962
+    },
+    {
+     "doc": 339,
+     "id": "D339",
+     "pages": 7,
+     "src": "09092026_AT PRE-INSPECTION CR 1. Ask if any repairs_issues. Poin.pdf",
+     "quality": 0.726,
+     "chars": 11803
+    }
+   ],
+   "sims": {
+    "D011~D339": 0.35
+   }
+  },
+  {
+   "group": 62,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 78,
+     "id": "D078",
+     "pages": 1,
+     "src": "08172017_1. Let go of the old, make. tlae most of he future 2. A.pdf",
+     "quality": 0.751,
+     "chars": 1469
+    },
+    {
+     "doc": 212,
+     "id": "D212",
+     "pages": 4,
+     "src": "08282026_08_09_17 ME The Founder Ray Kroc, 1954 Order =6milkshak.pdf",
+     "quality": 0.705,
+     "chars": 4762
+    }
+   ],
+   "sims": {
+    "D078~D212": 0.34
+   }
+  },
+  {
+   "group": 63,
+   "kind": "partial/overlap",
+   "members": [
+    {
+     "doc": 265,
+     "id": "D265",
+     "pages": 9,
+     "src": "08312026_Companies face an increasingly complex world. Globaliza.pdf",
+     "quality": 0.826,
+     "chars": 26915
+    },
+    {
+     "doc": 281,
+     "id": "D281",
+     "pages": 3,
+     "src": "08312026_Principle 8. Use only reliable, thoroughly tested techn.pdf",
+     "quality": 0.799,
+     "chars": 8292
+    }
+   ],
+   "sims": {
+    "D265~D281": 0.19
+   }
+  }
+ ],
+ "opm_overlap": [
+  {
+   "lko": "D023-001",
+   "doc": 23,
+   "src": "03032019_An observation that in an organizational hierarchy,  ev.pdf",
+   "opm": "PG-019",
+   "sim": 0.95
+  },
+  {
+   "lko": "D037-001",
+   "doc": 37,
+   "src": "04132021_IIF YOU WANT TO GO FAST, GO ALONE. IF Y00 WANT TO GO FA.pdf",
+   "opm": "PG-040",
+   "sim": 0.74
+  },
+  {
+   "lko": "D040-001",
+   "doc": 40,
+   "src": "04172026_#U2751What he actually meant (original context) Parkinson wa.pdf",
+   "opm": "PG-020",
+   "sim": 1.0
+  },
+  {
+   "lko": "D040-002",
+   "doc": 40,
+   "src": "04172026_#U2751What he actually meant (original context) Parkinson wa.pdf",
+   "opm": "PG-026",
+   "sim": 1.0
+  },
+  {
+   "lko": "D040-003",
+   "doc": 40,
+   "src": "04172026_#U2751What he actually meant (original context) Parkinson wa.pdf",
+   "opm": "PG-021",
+   "sim": 0.95
+  },
+  {
+   "lko": "D040-004",
+   "doc": 40,
+   "src": "04172026_#U2751What he actually meant (original context) Parkinson wa.pdf",
+   "opm": "PG-054",
+   "sim": 0.91
+  },
+  {
+   "lko": "D040-005",
+   "doc": 40,
+   "src": "04172026_#U2751What he actually meant (original context) Parkinson wa.pdf",
+   "opm": "PG-022",
+   "sim": 1.0
+  },
+  {
+   "lko": "D047-001",
+   "doc": 47,
+   "src": "05192026_It was one of the most painful experiences of my life  .pdf",
+   "opm": "PG-098",
+   "sim": 0.95
+  },
+  {
+   "lko": "D047-002",
+   "doc": 47,
+   "src": "05192026_It was one of the most painful experiences of my life  .pdf",
+   "opm": "PG-057",
+   "sim": 0.89
+  },
+  {
+   "lko": "D050-001",
+   "doc": 50,
+   "src": "05252026_It was one of the most painful experiences of my life  .pdf",
+   "opm": "PG-098",
+   "sim": 0.95
+  },
+  {
+   "lko": "D072-001",
+   "doc": 72,
+   "src": "07302016_LEVEL 1 2 3 4 5 SILENCE I'M DONE WHAT DO YOU_ WHAT IF_ .pdf",
+   "opm": "PG-048",
+   "sim": 0.86
+  },
+  {
+   "lko": "D075-001",
+   "doc": 75,
+   "src": "08152011_08_15_2011 09_34 FAX 8089421811 OISHI'S PROPERTY MGMT  .pdf",
+   "opm": "PG-034",
+   "sim": 0.86
+  },
+  {
+   "lko": "D079-001",
+   "doc": 79,
+   "src": "08232016_Level UP! _COMMUNICATIONAND CHORES_.pdf",
+   "opm": "PG-048",
+   "sim": 0.87
+  },
+  {
+   "lko": "D079-002",
+   "doc": 79,
+   "src": "08232016_Level UP! _COMMUNICATIONAND CHORES_.pdf",
+   "opm": "PG-048",
+   "sim": 0.61
+  },
+  {
+   "lko": "D125-001",
+   "doc": 125,
+   "src": "08272026_FU PAN.pdf",
+   "opm": "PG-030",
+   "sim": 0.57
+  },
+  {
+   "lko": "D148-003",
+   "doc": 148,
+   "src": "08272026_PMs _1)DRI 2)PMIC Out 3)Any PMIC Avail.pdf",
+   "opm": "PG-048",
+   "sim": 0.87
+  },
+  {
+   "lko": "D158-001",
+   "doc": 158,
+   "src": "08272026_The Principles (revised for OPM 08_02_05).pdf",
+   "opm": "PG-037",
+   "sim": 0.63
+  },
+  {
+   "lko": "D170-001",
+   "doc": 170,
+   "src": "08272026_WHO NOT HOW.pdf",
+   "opm": "PG-095",
+   "sim": 0.68
+  },
+  {
+   "lko": "D170-002",
+   "doc": 170,
+   "src": "08272026_WHO NOT HOW.pdf",
+   "opm": "PG-096",
+   "sim": 0.98
+  },
+  {
+   "lko": "D170-003",
+   "doc": 170,
+   "src": "08272026_WHO NOT HOW.pdf",
+   "opm": "PG-097",
+   "sim": 0.94
+  },
+  {
+   "lko": "D195-003",
+   "doc": 195,
+   "src": "08272026_or _hard is-cw. Of course, 1'ou need to work harp. LEI .pdf",
+   "opm": "PG-095",
+   "sim": 0.69
+  },
+  {
+   "lko": "D195-004",
+   "doc": 195,
+   "src": "08272026_or _hard is-cw. Of course, 1'ou need to work harp. LEI .pdf",
+   "opm": "PG-096",
+   "sim": 0.98
+  },
+  {
+   "lko": "D195-005",
+   "doc": 195,
+   "src": "08272026_or _hard is-cw. Of course, 1'ou need to work harp. LEI .pdf",
+   "opm": "PG-097",
+   "sim": 0.94
+  },
+  {
+   "lko": "D234-001",
+   "doc": 234,
+   "src": "08282026_WORDS TO LIVE BY ... OUR CULTURE.pdf",
+   "opm": "PG-033",
+   "sim": 0.83
+  },
+  {
+   "lko": "D235-001",
+   "doc": 235,
+   "src": "08282026_WORDS TO LIVE BY ...OUR CULTURE.pdf",
+   "opm": "PG-037",
+   "sim": 0.81
+  },
+  {
+   "lko": "D355-005",
+   "doc": 355,
+   "src": "09092026_Team Train an_dout Er Ilre, Systems &Best Practices.pdf",
+   "opm": "PG-020",
+   "sim": 0.61
+  },
+  {
+   "lko": "D355-008",
+   "doc": 355,
+   "src": "09092026_Team Train an_dout Er Ilre, Systems &Best Practices.pdf",
+   "opm": "PG-037",
+   "sim": 0.72
+  },
+  {
+   "lko": "D355-009",
+   "doc": 355,
+   "src": "09092026_Team Train an_dout Er Ilre, Systems &Best Practices.pdf",
+   "opm": "PG-033",
+   "sim": 0.63
+  },
+  {
+   "lko": "D355-011",
+   "doc": 355,
+   "src": "09092026_Team Train an_dout Er Ilre, Systems &Best Practices.pdf",
+   "opm": "PG-040",
+   "sim": 0.59
+  },
+  {
+   "lko": "D355-014",
+   "doc": 355,
+   "src": "09092026_Team Train an_dout Er Ilre, Systems &Best Practices.pdf",
+   "opm": "PG-057",
+   "sim": 0.57
+  },
+  {
+   "lko": "D363-001",
+   "doc": 363,
+   "src": "09092026__T i ewH hole stem to me saout identification of roble .pdf",
+   "opm": "PG-035",
+   "sim": 0.67
+  },
+  {
+   "lko": "D365-001",
+   "doc": 365,
+   "src": "09092026_avior metric euall.pdf",
+   "opm": "PG-057",
+   "sim": 0.92
+  },
+  {
+   "lko": "D365-002",
+   "doc": 365,
+   "src": "09092026_avior metric euall.pdf",
+   "opm": "PG-098",
+   "sim": 0.93
+  },
+  {
+   "lko": "D406-001",
+   "doc": 406,
+   "src": "12032019_For small tasks, use what Icall Ingvar's Rule-assume  e.pdf",
+   "opm": "PG-024",
+   "sim": 0.89
+  },
+  {
+   "lko": "D406-002",
+   "doc": 406,
+   "src": "12032019_For small tasks, use what Icall Ingvar's Rule-assume  e.pdf",
+   "opm": "PG-025",
+   "sim": 0.89
+  },
+  {
+   "lko": "D408-001",
+   "doc": 408,
+   "src": "12032019_PETER PRINCIPLE.pdf",
+   "opm": "PG-019",
+   "sim": 0.95
+  }
+ ]
+}
