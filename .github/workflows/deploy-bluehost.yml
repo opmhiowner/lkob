@@ -1,0 +1,25 @@
+# Optional: push the site to Bluehost over FTPS from GitHub. Runs ONLY when started by hand
+# (Actions tab > "Deploy to Bluehost" > Run workflow), so a missing secret never breaks a push.
+# Needs repository secrets FTP_SERVER, FTP_USERNAME, FTP_PASSWORD (Settings > Secrets and variables > Actions).
+# Page images are not in git, so they are not deployed by this workflow (see DEPLOY.md).
+name: Deploy to Bluehost
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: sitehtm/
+          server-dir: public_html/iservices/lvhi/lkobinder/
+          exclude: |
+            _state/**
+            rebuild.py
+            combined.json
+            __pycache__/**

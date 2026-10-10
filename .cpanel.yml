@@ -1,0 +1,11 @@
+---
+# cPanel "Git Version Control" deployment (Bluehost).
+# After "Update from Remote" + "Deploy HEAD Commit" in cPanel, these tasks copy the site folder's CONTENTS
+# into the hosted folder. Edit the first line to the cPanel user name shown at the top right of cPanel.
+# Page images (pages/, thumbs/) are not in git: upload them once by zip or SFTP (see DEPLOY.md).
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/CPANEL_USER/public_html/iservices/lvhi/lkobinder
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R sitehtm/. $DEPLOYPATH/
+    - /bin/rm -rf $DEPLOYPATH/_state $DEPLOYPATH/rebuild.py $DEPLOYPATH/combined.json $DEPLOYPATH/__pycache__
