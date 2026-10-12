@@ -70,6 +70,7 @@ Operational gotchas: background jobs (`nohup`/`setsid`) die when the chat sessio
 3. `tabDefs()` adds `['dup','Duplicates', n]` when any groups exist (OPM 8 had removed the tab after deleting its copies).
 4. Primary-copy rule: `ids.find(i => byId[i].keep) || …` before OPM's old `LV-` / lowest-id fallback.
 5. `brandbar`/`sitenav` block removed from `<header>` (logo band only).
+6. Page-number regexes `\d{1,3}` → `\d{1,4}` (three places) so four-digit pages and ranges work (2026-10-12).
 
 Everything else (search, ranges, typo-tolerant fallback, TOC, viewer arrows, concept scoping, Add-scan/IndexedDB, negative-sticky phone header) is unchanged OPM 8 code — see `_state/HANDOFF.md` from OPM 8 for the full feature list if needed.
 
@@ -97,7 +98,7 @@ The owner's rule from `FRAMEWORK.md` (OPM app framework): **the app is only the 
 - `sitehtm/_state/build_lko2.py` (run from the build folder: `python3 sitehtm/_state/build_lko2.py`) replaces `assemble_lko.py`. It reads the same checkpoints (`pages.jsonl`, `dup_review.json`, `manifest.json`), plus `_state/doc_groups.py` (every document D001-D415 in exactly one concept group, groups in teaching order) and `sitehtm/concepts.json` (the 26 group explainers), and writes `data.js` in the framework's exact page shape (`id book p num title text kw g concepts learn`; `g` is 0 when not a duplicate; `keep:true` is the one extra field, on the better copy of a duplicate - the LKO `index.htm` honours it, a stock framework `index.htm` ignores it and shows the lowest-numbered copy). Pages are renumbered PG-0001… in teaching order so every group is one contiguous range (the TOC rule); `_state/idmap_lko.json` keeps the trace back to the scan. `_work/doc_order.json` and `_work/doc_titles.json` are written too, so `assemble_lko.py` would reproduce the same order.
 - Titles: the scan's own name (ScanSnap's first OCR line, cleaned) when it reads like words, else the kit's auto title. 252 of 415 come from the scan names. All still auto - curate by editing `_work/doc_titles.json` (`"D123": "Title"`) and re-running the build.
 - The 26 groups are a **proposal for the owner's approval** (the kit's open item 3). Change membership in `_state/doc_groups.py`, the words in `concepts.json`, re-run the build. `to-be-identified` holds the 23 scans whose OCR is unreadable; nothing is deleted.
-- Known framework limit: `index.htm` reads a page number or range of at most three digits (`\d{1,3}`), so pages 1000-1440 cannot be opened by number from the search box (search words, the TOC and the Duplicates tab still reach them). Fixing that is an edit to the shared framework, not to this app.
+- Sanctioned edit 6 (owner's call, 2026-10-12): the three page-number regexes in `index.htm` (`plain` page lookup, the HI/LV lookup, `rangeOf`) read `\d{1,4}` instead of the framework's `\d{1,3}`, so pages 1000-1440 and TOC ranges past 999 work. Cache stamp `data.js?v=202610121`. Staff who had the icon on the home screen before this change delete and re-add it once (iOS caches the old `index.htm`).
 - Deployment is in `DEPLOY.md` (GitHub -> Bluehost by cPanel Git Version Control, SSH, or the optional manual GitHub Action); `.cpanel.yml` holds the cPanel deploy tasks.
 
 ## Version line

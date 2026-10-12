@@ -459,7 +459,7 @@
   <p>Oishi's Property Management &middot; Honolulu &amp; Las Vegas &middot; Property Management is our <em>only</em> business!</p>
 </div></footer>
 
-<script src="data.js?v=202610101"></script>
+<script src="data.js?v=202610121"></script>
 <script>
 (function(){
   /* ============ storage: IndexedDB, with a localStorage fallback ============ */
@@ -573,13 +573,13 @@
   // Old-style codes (HI-047 / LV 12) still work so nothing breaks.
   function codeToId(q){
     const s = String(q).trim();
-    const plain = s.match(/^#?\s*(\d{1,3})$/);
+    const plain = s.match(/^#?\s*(\d{1,4})$/);
     if (plain){
       const n = parseInt(plain[1], 10);
       const hit = PAGES.find(p => p.num === n);
       return hit ? hit.id : null;
     }
-    const m = s.match(/^(hi|hawaii|lv|lasvegas|las vegas|vegas)[\s\-_.#]*(\d{1,3})$/i);
+    const m = s.match(/^(hi|hawaii|lv|lasvegas|las vegas|vegas)[\s\-_.#]*(\d{1,4})$/i);
     if (!m) return null;
     const w = m[1].toLowerCase().replace(/\s/g,'');
     const pre = (w === 'hi' || w === 'hawaii') ? 'HI' : 'LV';
@@ -635,7 +635,7 @@
   }
 
   function rangeOf(q){
-    const m = String(q||'').trim().match(/^#?\s*(\d{1,3})\s*(?:-|\u2013|\u2014|:|to)\s*(\d{1,3})\s*$/i);
+    const m = String(q||'').trim().match(/^#?\s*(\d{1,4})\s*(?:-|\u2013|\u2014|:|to)\s*(\d{1,4})\s*$/i);
     if (!m) return null;
     let a = parseInt(m[1],10), b = parseInt(m[2],10);
     if (a > b) [a,b] = [b,a];
