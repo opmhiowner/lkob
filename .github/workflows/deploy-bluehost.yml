@@ -1,6 +1,8 @@
 # Optional: push the site to Bluehost over FTPS from GitHub. Runs ONLY when started by hand
 # (Actions tab > "Deploy to Bluehost" > Run workflow), so a missing secret never breaks a push.
-# Needs repository secrets FTP_SERVER, FTP_USERNAME, FTP_PASSWORD (Settings > Secrets and variables > Actions).
+# Needs repository secrets FTP_SERVER (ftp.oishis.net), FTP_USERNAME (deploy@oishis.net) and FTP_PASSWORD
+# (Settings > Secrets and variables > Actions). That account is jailed to public_html/iservices, so the
+# server-dir below is relative to that jail (DEPLOY.md of OPM Recitals).
 # Page images are not in git, so they are not deployed by this workflow (see DEPLOY.md).
 name: Deploy to Bluehost
 on:
@@ -16,8 +18,9 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
+          port: 21
           local-dir: sitehtm/
-          server-dir: public_html/iservices/lvhi/lkobinder/
+          server-dir: lvhi/lkobinder/
           exclude: |
             _state/**
             rebuild.py
