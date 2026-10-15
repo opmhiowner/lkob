@@ -71,6 +71,7 @@ Operational gotchas: background jobs (`nohup`/`setsid`) die when the chat sessio
 4. Primary-copy rule: `ids.find(i => byId[i].keep) || …` before OPM's old `LV-` / lowest-id fallback.
 5. `brandbar`/`sitenav` block removed from `<header>` (logo band only).
 6. Page-number regexes `\d{1,3}` → `\d{1,4}` (three places) so four-digit pages and ranges work (2026-10-12).
+7. **↻ Refresh** button at the right end of the logo band (owner's ask, 2026-10-15, LKO 2.3): reloads with a fresh query string (`?r=<time>`) so a home-screen copy fetches the newest `index.htm` and, through its stamp, `data.js`. Staff no longer delete and re-add the icon after a release.
 
 Everything else (search, ranges, typo-tolerant fallback, TOC, viewer arrows, concept scoping, Add-scan/IndexedDB, negative-sticky phone header) is unchanged OPM 8 code — see `_state/HANDOFF.md` from OPM 8 for the full feature list if needed.
 
