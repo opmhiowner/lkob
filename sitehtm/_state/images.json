@@ -1,0 +1,1 @@
+{"numbering": "lko1", "note": "The pages/ and thumbs/ files on Bluehost are named by the LKO 1 (September 2026) page numbers, _state/idmap_lko1.json. While this says lko1, data.js carries window.PAGEIMG / window.THUMB so each LKO 2 page points at its LKO 1 file. Set to lko2 once the images are regenerated or renamed in LKO 2 numbering (_state/renumber_images.py)."}

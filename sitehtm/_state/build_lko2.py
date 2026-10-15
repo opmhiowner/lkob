@@ -116,11 +116,25 @@ json.dump(concepts, open(f"{site}/concepts.json", "w"), indent=1, ensure_ascii=F
 json.dump(idmap, open(f"{site}/_state/idmap_lko.json", "w"), indent=0)
 json.dump(order, open("_work/doc_order.json", "w")); json.dump(doc_titles, open("_work/doc_titles.json", "w"), indent=0, ensure_ascii=False)
 json.dump(imgmap, open("_work/imgmap.json", "w"))
+# images: when _state/images.json says the files on the server are still numbered the LKO 1 way, data.js maps
+# each page id to its LKO 1 file name (index.htm reads window.PAGEIMG / window.THUMB before the default path)
+imgcfg = json.load(open(f"{site}/_state/images.json")) if os.path.exists(f"{site}/_state/images.json") else {"numbering": "lko2"}
+pagemap = thumbmap = None
+if imgcfg.get("numbering") == "lko1":
+    old = json.load(open(f"{site}/_state/idmap_lko1.json"))            # LKO 1 PG -> Dnnn-ppp
+    old_of = {v: k for k, v in old.items()}                             # Dnnn-ppp -> LKO 1 PG
+    pagemap = {pid: f"pages/{old_of[src]}.jpg" for pid, src in idmap.items()}
+    thumbmap = {pid: f"thumbs/{old_of[src]}.jpg" for pid, src in idmap.items()}
+    assert len(pagemap) == len(idmap) == 1440
 with open(f"{site}/data.js", "w") as f:
     f.write("window.BINDER=" + json.dumps(records, ensure_ascii=False) + ";\n")
     f.write("window.CONCEPTS=" + json.dumps(concepts, ensure_ascii=False) + ";\n")
+    if pagemap:
+        f.write("window.PAGEIMG=" + json.dumps(pagemap) + ";\n")
+        f.write("window.THUMB=" + json.dumps(thumbmap) + ";\n")
 json.dump(records, open(f"{site}/combined.json", "w"), ensure_ascii=False)
 ng = len(set(r["g"] for r in records if r["g"])); ns = sum(1 for r in records if r["g"] and not r.get("keep"))
 named = sum(1 for d in docs if clean_name(d))
+print(f"images: {imgcfg.get('numbering')} numbering" + (" (data.js maps page ids to LKO 1 files)" if pagemap else ""))
 print(f"{len(records)} pages, {len(concepts)} groups, {ng} dup groups, {ns} surplus copies hidden, "
       f"{named} of {len(docs)} titles from the scan names; data.js {os.path.getsize(site + '/data.js') // 1024} KB")
