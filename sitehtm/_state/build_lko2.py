@@ -12,6 +12,11 @@ spec = importlib.util.spec_from_file_location("rb", f"{site}/rebuild.py"); rb = 
 sys.path.insert(0, "_work"); from doc_groups import GROUPS
 
 pages = [json.loads(l) for l in open("_work/pages.jsonl") if l.strip()]
+# proof-read text: _state/text_curated.json {"Dnnn-ppp": "..."} replaces the OCR of that page (the checkpoint itself is never edited)
+if os.path.exists(f"{site}/_state/text_curated.json"):
+    fixed = json.load(open(f"{site}/_state/text_curated.json"))
+    for p in pages:
+        if p["id"] in fixed: p["text"] = fixed[p["id"]]
 docs = collections.defaultdict(list)
 for p in pages: docs[p["doc"]].append(p)
 for d in docs: docs[d].sort(key=lambda p: p["p"])
@@ -83,6 +88,8 @@ def auto_title(d):
 doc_titles = {}
 for d in docs:
     doc_titles[f"D{d:03d}"] = clean_name(d) or auto_title(d) or f"Scan {man[d]['name'][:8]} (document {d})"
+# curated titles: _state/titles_curated.json {"Dnnn": "Title"} wins over the scan-name / auto title
+if os.path.exists(f"{site}/_state/titles_curated.json"): doc_titles.update(json.load(open(f"{site}/_state/titles_curated.json")))
 
 # ---- renumber and shape every page the framework's way
 ordered = [p for d in order for p in docs[d]]
