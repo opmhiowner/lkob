@@ -66,7 +66,7 @@ Operational gotchas: background jobs (`nohup`/`setsid`) die when the chat sessio
 ## Sanctioned edits to `index.htm` (beyond OPM 8)
 
 1. Color tokens renamed/recolored to brown (`--brown`, `--brown-dk`, `--tan`, `--tan-wash`); logo `<path fill>` and `apple-touch-icon.png` recolored.
-2. `<title>` and `apple-mobile-web-app-title` → "OPM LKO"; `<h1>` "LKO"; tagline "(LKO binder)".
+2. `<title>` and `apple-mobile-web-app-title` → "OPM LKO"; `<h1>` "LKO"; tagline "(LKO binder · LKO <version>)" — the tagline carries the release number since 2.2 (owner's ask, 2026-10-15) so the live build can be read off the page; every release updates it together with the `data.js?v=` stamp.
 3. `tabDefs()` adds `['dup','Duplicates', n]` when any groups exist (OPM 8 had removed the tab after deleting its copies).
 4. Primary-copy rule: `ids.find(i => byId[i].keep) || …` before OPM's old `LV-` / lowest-id fallback.
 5. `brandbar`/`sitenav` block removed from `<header>` (logo band only).
